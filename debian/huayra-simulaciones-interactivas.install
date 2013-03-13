@@ -1,2 +1,2 @@
 simulaciones.sh usr/share/huayra-simulaciones-interactivas/
-debian/phet-logo.xpm usr/share/pixmaps/
+debian/simulaciones.svg /usr/share/icons/hicolor/scalable/apps

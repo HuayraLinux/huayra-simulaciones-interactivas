@@ -1,8 +1,8 @@
 ?package(huayra-simulaciones-interactivas):needs="x11" \
-	section="Applications/Education" \
+	section="Applications/Huayra" \
         title="Simulaciones Interactivas" \
         longtitle="Simulaciones Interactivas" \
         command="/usr/bin/simulaciones-interactivas" \
 	hints="Simulaciones, Java, Fisica" \
-	icon="/usr/share/pixmaps/phet-logo.xpm"
+	icon="/usr/share/icons/hicolor/scalable/apps/simulaciones.svg"
 

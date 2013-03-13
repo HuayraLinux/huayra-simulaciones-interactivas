@@ -1,3 +1,11 @@
+huayra-simulaciones-interactivas (1.0-1.1) UNRELEASED; urgency=low
+
+  * Non-maintainer upload.
+  * Cambié el logo que usa en el menú
+  * Cambié la ubicación en el menú 
+
+ -- Julia Palandri <julia.palandri@gmail.com>  Wed, 13 Mar 2013 00:46:00 -0300
+
 huayra-simulaciones-interactivas (1.0-1) testing; urgency=low
 
   * Entrada para las simulaciones.
