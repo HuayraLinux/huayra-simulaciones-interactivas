@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Icon[es_AR]=partner
+Name[es_AR]=Simulaciones Interactivas
+Exec=/usr/bin/simulaciones-interactivas
+Comment[es_AR]=Simulaciones Interactivas Huayra
+Name=Simulaciones Interactivas
+Comment=Simulaciones Interactivas Huayra
+Icon=partner
