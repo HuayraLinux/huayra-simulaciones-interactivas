@@ -1,2 +1,3 @@
 simulaciones-interactivas usr/share/huayra-simulaciones-interactivas/
 debian/simulaciones.svg /usr/share/icons/hicolor/scalable/apps
+debian/huayra-simulaciones-interactivas.desktop usr/share/applications/
