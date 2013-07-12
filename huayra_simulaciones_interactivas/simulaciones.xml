@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- los nombres de los tags están en plural para que tenga más sentido al leer el objeto -->
+<simulaciones>
+	<categorias nombre="Física" id="fisica">
+		<imagen>fisica/screenshot.png</imagen>
+		<subcategorias nombre="Movimiento" id="movimiento">
+			<imagen>fisica/screenshot_movimiento.png</imagen>
+			<sims>
+				<titulo>Fuerzas y Movimiento: Fundamentos</titulo>
+				<imagen>fisica/forces-and-motion-basics-screenshot.png</imagen>
+				<descripcion>Explora las fuerzas que actúan en un tira y afloja o empuje un refrigerador, caja, o una persona. Crea una fuerza aplicada y ver cómo se hace mover objetos. Cambia la fricción y observa cómo afecta el movimiento de los objetos.</descripcion>
+			</sims>
+		</subcategorias>
+		<subcategorias nombre="Sonido &amp; ondas" id="sonido_ondas">
+			<imagen>fisica/screenshot_sonido_ondas.png</imagen>
+			<sims>
+				<titulo>Frecuencias resonantes</titulo>
+				<imagen>fisica/normal-modes-screenshot.png</imagen>
+				<descripcion>Juega con un sistema de 1D o 2D de resortes osciladores acoplados. Varía el número de masas, ajusta las condiciones iniciales, y observa que el sistema evolucione. Ve todo el espectro de frecuencias resonantes del movimiento arbitrario. Véase las frecuencias longitudinales y transversales en el sistema 1D.</descripcion>
+			</sims>
+			<sims>
+				<titulo>Interferencia De la Onda</titulo>
+				<imagen>fisica/wave-interference-screenshot.png</imagen>
+				<descripcion>Haz ondas con un grifo que gotea, altavoces de audio, o láser! Añade una segunda fuente o un par de rendijas para crear un patrón de interferencia.</descripcion>
+			</sims>
+		</subcategorias>
+	</categorias>
+	<categorias nombre="Biología" id="biologia">
+		<imagen>fisica/forces-and-motion-basics-screenshot.png</imagen>
+		<subcategorias nombre="default" id="biologia_default">
+			<sims>
+				<titulo>Ajustando la Curva</titulo>
+				<imagen>biologia/curve-fitting-screenshot.png</imagen>
+				<descripcion>Con el ratón, arrastra los puntos y sus barras de error, y mira el mejor ajuste de la curva polinomial que instantáneamente se actualiza. Puedes escoger el tipo de ajuste: lineal, cuadrático, cúbico, o cuártico. La estadística reducida de chi-cuadrado te muestra cuando el ajuste es bueno. O puedes tratar de encontrar el mejor arreglo manualmente ajustando los parámetros.</descripcion>
+			</sims>
+		</subcategorias>
+	</categorias>
+</simulaciones>
