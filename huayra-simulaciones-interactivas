@@ -25,7 +25,7 @@ from pprint import pprint
 
 sim = SimulacionesInteractivas()
 sim.leer_xml("huayra_simulaciones_interactivas/simulaciones.xml")
-pprint(sim.data)
-
+		
+#pprint(sim.xml_data)
 
 #sim.iniciar()

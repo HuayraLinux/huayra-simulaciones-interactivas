@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- los nombres de los tags están en plural para que tenga más sentido al leer el objeto -->
+<!-- los nombres de los tags están en plural para que tenga más sentido al leer el objeto , ejemplo: sim.data.categorias -->
 <simulaciones>
 	<categorias nombre="Física" id="fisica">
 		<imagen>fisica/screenshot.png</imagen>
