@@ -24,8 +24,12 @@ from huayra_simulaciones_interactivas import SimulacionesInteractivas
 from pprint import pprint
 
 sim = SimulacionesInteractivas()
-sim.leer_xml("huayra_simulaciones_interactivas/simulaciones.xml")
-		
-#pprint(sim.xml_data)
+#sim.leer_xml("huayra_simulaciones_interactivas/simulaciones.xml")
+sim.cargar_simulaciones_desde_archivo('huayra_simulaciones_interactivas.simulaciones')
+
+pprint(sim.categorias)
+
+for cat in sim.data['categorias']:
+	pass
 
 #sim.iniciar()
