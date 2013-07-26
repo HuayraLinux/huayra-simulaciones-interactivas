@@ -3,7 +3,6 @@
 import pilas
 import os
 import Config
-from xml_dict import ConvertXmlToDict
 from pprint import pprint
 
 class SimulacionesInteractivas:
@@ -27,3 +26,4 @@ class SimulacionesInteractivas:
 		exec "from " + simulaciones_file + " import simulaciones"
 		self.data = simulaciones
 		self.categorias = self.data['categorias']
+
