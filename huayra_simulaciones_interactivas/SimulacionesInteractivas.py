@@ -3,6 +3,7 @@
 import pilas
 import os
 import Config
+from escenas import EscenaBienvenida
 from pprint import pprint
 
 class SimulacionesInteractivas:
@@ -16,9 +17,10 @@ class SimulacionesInteractivas:
 		pilas.iniciar(ancho=800, alto=600, titulo='Huayra - Simulaciones Interactivas', usar_motor='qtgl', \
 			rendimiento=60, modo='detectar', gravedad=(0, -90), pantalla_completa=False, \
 			permitir_depuracion=True, audio='phonon', centrado=True)
+		
 		pilas.fondos.Color(pilas.colores.negro)
-		#pilas.ejecutar()
-	
+		pilas.cambiar_escena(EscenaBienvenida())
+		pilas.ejecutar()
 
 	" Cargar desde un archivo con formato dict de python "
 	def cargar_simulaciones_desde_archivo(self, simulaciones_file):

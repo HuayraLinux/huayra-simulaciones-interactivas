@@ -20,13 +20,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
+import pilas
 from huayra_simulaciones_interactivas import SimulacionesInteractivas
-from huayra_simulaciones_interactivas.escenas import *
 from pprint import pprint
+
+#pilas.iniciar()
 
 sim = SimulacionesInteractivas()
 sim.cargar_simulaciones_desde_archivo('huayra_simulaciones_interactivas.simulaciones')
+sim.iniciar()
 
-pilas.cambiar_escena(EscenaBienvenida())
+#pilas.ejecutar()
 
 #sim.iniciar()
