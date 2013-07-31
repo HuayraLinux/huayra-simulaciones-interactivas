@@ -1,1 +1,2 @@
 from EscenaBienvenida import EscenaBienvenida
+from EscenaCategorias import EscenaCategorias
