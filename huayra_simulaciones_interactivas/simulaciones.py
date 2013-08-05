@@ -4,7 +4,7 @@ simulaciones = {
 	'categorias': [
 		{
 			'id': 'fisica', 
-			'nombre': 'Física',
+			'nombre': u'Física',
 			'screenshot': 'imagenes/screenshots/fisica.png',
 			'descripcion': 'Lorem ipsum blah blah',
 			'actor': None,
@@ -53,7 +53,7 @@ simulaciones = {
 		}, # fin categoría Física
 		{
 			'id': 'biologia', 
-			'nombre': 'Biología',
+			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'Lorem ipsum blah blah',
 			'actor': None,

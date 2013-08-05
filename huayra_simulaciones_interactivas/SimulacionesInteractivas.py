@@ -2,6 +2,7 @@
 
 import pilas
 import os
+import random
 import Config
 from escenas import EscenaBienvenida
 from CategoriaSimulacion import CategoriaSimulacion
@@ -22,15 +23,18 @@ class SimulacionesInteractivas:
 		pilas.fondos.Color(pilas.colores.negro)
 		pilas.cambiar_escena(EscenaBienvenida())
 		
-		# Categorías		
-		for categoria in self.data.categorias:
+		# Categorías
+		i = 0
+		for categoria in self.data['categorias']:
 			self.categorias.append(categoria)
-			categoria['actor'] = CategoriaSimulacion(categoria['screenshot'])
-			categoria['actor'].x = 1000
-			# Subcategorías
-			#for subcat in categoria:
-				#categoria['actor'] = pilas.actores.Actor(categoria['screenshot'])
-		self.categorias[0]['actor'].x = 0
+			categoria['actor'] = CategoriaSimulacion(
+				titulo=categoria['nombre'], 
+				screenshot=categoria['screenshot'], 
+				descripcion=categoria['descripcion'],
+				x=i*300
+			)
+			i += 1
+						
 		pilas.ejecutar()
 
 	" Cargar desde un archivo con formato dict de python "

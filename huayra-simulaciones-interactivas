@@ -29,4 +29,3 @@ main.init()
 main.sim = SimulacionesInteractivas()
 main.sim.cargar_simulaciones_desde_archivo('huayra_simulaciones_interactivas.simulaciones')
 main.sim.iniciar()
-
