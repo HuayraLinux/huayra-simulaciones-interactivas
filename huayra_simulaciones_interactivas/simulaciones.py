@@ -6,7 +6,7 @@ simulaciones = {
 			'id': 'fisica', 
 			'nombre': u'Física',
 			'screenshot': 'imagenes/screenshots/fisica.png',
-			'descripcion': 'Lorem ipsum blah blah',
+			'descripcion': 'Lorem ipsum dolor sit amet, consetetur',
 			'actor': None,
 			'subcategorias': [
 				{
@@ -55,7 +55,7 @@ simulaciones = {
 			'id': 'biologia', 
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
-			'descripcion': 'Lorem ipsum blah blah',
+			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
 			'actor': None,
 			'subcategorias': [
 				{
