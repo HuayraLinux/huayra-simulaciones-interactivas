@@ -76,5 +76,55 @@ simulaciones = {
 				},
 			],
 		}, # fin categoría Biología
+		{
+			'id': 'biologia', 
+			'nombre': u'Biología',
+			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
+			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
+			'actor': None,
+			'subcategorias': [
+				{
+					'id': None,
+					'nombre': None,
+					'screenshot': 'imagenes/screenshots/movimiento.png',
+					'actor': None,
+					'simulaciones': [
+						{
+							'id': 'fuerzas-movimiento-fundamentos',
+							'nombre': 'Fuerzas y Movimiento: Fundamentos',
+							'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
+							'descripcion': 'Explora las fuerzas que actúan en un tira y afloja o empuje un refrigerador, caja, o una persona. Crea una fuerza aplicada y ver cómo se hace mover objetos. Cambia la fricción y observa cómo afecta el movimiento de los objetos.',
+							'file': '---',
+							'actor': None
+						},
+					]
+				},
+			],
+		}, # fin categoría Biología
+		{
+			'id': 'biologia', 
+			'nombre': u'Biología',
+			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
+			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
+			'actor': None,
+			'subcategorias': [
+				{
+					'id': None,
+					'nombre': None,
+					'screenshot': 'imagenes/screenshots/movimiento.png',
+					'actor': None,
+					'simulaciones': [
+						{
+							'id': 'fuerzas-movimiento-fundamentos',
+							'nombre': 'Fuerzas y Movimiento: Fundamentos',
+							'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
+							'descripcion': 'Explora las fuerzas que actúan en un tira y afloja o empuje un refrigerador, caja, o una persona. Crea una fuerza aplicada y ver cómo se hace mover objetos. Cambia la fricción y observa cómo afecta el movimiento de los objetos.',
+							'file': '---',
+							'actor': None
+						},
+					]
+				},
+			],
+		}, # fin categoría Biología
 	], # fin categorías
 }

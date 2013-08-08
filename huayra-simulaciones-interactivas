@@ -24,6 +24,7 @@ from huayra_simulaciones_interactivas import SimulacionesInteractivas
 from pprint import pprint
 import main
 
+
 main.init()
 
 main.sim = SimulacionesInteractivas()
