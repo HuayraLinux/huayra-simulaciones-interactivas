@@ -45,23 +45,21 @@ class EscenaCategorias(pilas.escena.Base):
 			paso = -1
 		else:
 			paso = evento.delta
+			
 		
-		
-		self.nav.actual = self.nav.actual + paso
-		
-		print "Actual:", self.nav.actual
+		self.nav.actual = self.nav.actual + paso		
 		
 		if self.nav.actual < 0:
 			self.nav.actual = 0
-		elif self.nav.actual > self.nav.total:
-			self.nav.actual = self.nav.total
-		#print "Actual:", self.nav.actual
+		elif self.nav.actual >= self.nav.total:
+			self.nav.actual = self.nav.total-1
+		print "Actual:", self.nav.actual
 		
-		#self.nav.setear_tamanios()
-		
+		self.nav.setear_tamanios()
 		camara_x = pilas.escena_actual().camara.x + (paso * self.nav.paso)
+		#print "Delta:", evento.delta, ", paso:", paso, ", camara x:",  camara_x
 		#print "Camara x:", camara_x
-		pilas.escena_actual().camara.x = pilas.interpolar(camara_x, duracion=.1)
+		pilas.escena_actual().camara.x = pilas.interpolar(camara_x, duracion=.2)
 			
 		
 		
