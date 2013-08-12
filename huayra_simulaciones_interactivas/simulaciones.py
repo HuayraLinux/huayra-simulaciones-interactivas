@@ -7,13 +7,13 @@ simulaciones = {
 			'nombre': u'Física',
 			'screenshot': 'imagenes/screenshots/fisica.png',
 			'descripcion': 'Lorem ipsum dolor sit amet, consetetur',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': 'movimiento',
 					'nombre': 'Movimiento',
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -29,7 +29,7 @@ simulaciones = {
 					'id': 'sonido_ondas',
 					'nombre': 'Sonido &amp; ondas',
 					'screenshot': 'imagenes/screenshots/sonido_ondas.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'frecuencias-resonantes',
@@ -56,13 +56,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -81,13 +81,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -106,13 +106,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -131,13 +131,13 @@ simulaciones = {
 			'nombre': u'Física',
 			'screenshot': 'imagenes/screenshots/fisica.png',
 			'descripcion': 'Lorem ipsum dolor sit amet, consetetur',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': 'movimiento',
 					'nombre': 'Movimiento',
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -153,7 +153,7 @@ simulaciones = {
 					'id': 'sonido_ondas',
 					'nombre': 'Sonido &amp; ondas',
 					'screenshot': 'imagenes/screenshots/sonido_ondas.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'frecuencias-resonantes',
@@ -180,13 +180,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -205,13 +205,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',
@@ -230,13 +230,13 @@ simulaciones = {
 			'nombre': u'Biología',
 			'screenshot': 'imagenes/screenshots/forces-and-motion-basics-screenshot.png',
 			'descripcion': 'sed diam nonumyeirmod tempor invidunt',
-			'actor': None,
+			
 			'subcategorias': [
 				{
 					'id': None,
 					'nombre': None,
 					'screenshot': 'imagenes/screenshots/movimiento.png',
-					'actor': None,
+					
 					'simulaciones': [
 						{
 							'id': 'fuerzas-movimiento-fundamentos',

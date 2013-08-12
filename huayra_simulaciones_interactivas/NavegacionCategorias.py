@@ -8,8 +8,9 @@ class NavegacionCategorias(pilas.actores.Actor):
 	
 	ancho = 0
 	mitad = 0
-	limite_izquierdo = 0
-	limite_derecho = 0
+	paso = 0
+	actual = 0
+	total = 0
 	
 	
 	def __init__(self, x=0, y=0):
@@ -17,29 +18,35 @@ class NavegacionCategorias(pilas.actores.Actor):
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
-		self.centro = ("izquierda", "arriba")
 		
 
-	def calcular_medidas(self):
-		self.ancho = len(self.actores) + ((CategoriaSimulacion.ancho + CategoriaSimulacion.separacion) * CategoriaSimulacion.total)
-		self.mitad = self.ancho / 2 - CategoriaSimulacion.separacion / 2
-		self.limite_izquierdo = 118
-		self.limite_derecho = -118
+	def iniciar_valores(self):
+		self.paso = CategoriaSimulacion.ancho + CategoriaSimulacion.separacion
+		self.total = len(self.actores)
+		self.ancho = self.paso * NavegacionCategorias.total
+		self.mitad = self.ancho / 2
+		
 
-
-	def centrar_categorias(self):
+	def distribuir_categorias(self):
+		i = 0
 		for cat in self.actores:
-			cat.x = cat.x - self.mitad
+			cat.x = i * (self.paso)
+			i = i+1	
+		self.setear_tamanios()
+
+
+	def setear_tamanios(self):
+		anteriores = self.actores[:self.actual]			
+		for act in anteriores:
+			act.escala = .7
+			
+		siguientes = self.actores[self.actual+1:]
+		for act in siguientes:
+			act.escala = .7
 		
-	
-	def definir_posicion(self, x, y):
-		delta_x = x - self.x
-		delta_y = y - self.y
-		for actor in self.actores:
-			actor.x += delta_x
-			actor.y += delta_y
-		pilas.actores.Actor.definir_posicion(self, x, y)
+		self.actores[self.actual].escala = 1
 		
+			
 	
 	
 		

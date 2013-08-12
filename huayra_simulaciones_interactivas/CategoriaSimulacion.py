@@ -6,7 +6,6 @@ class CategoriaSimulacion(pilas.actores.Actor):
 	
 	ancho = 300
 	separacion = 10
-	total = 0
 	
 	def __init__(self, x=0, y=0, titulo="", screenshot="", descripcion=""):
 		self.actores = pilas.grupo.Grupo([
@@ -25,9 +24,7 @@ class CategoriaSimulacion(pilas.actores.Actor):
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
-		
-		CategoriaSimulacion.total = CategoriaSimulacion.total + 1
-		
+				
 
 	
 	def definir_posicion(self, x, y):
@@ -38,5 +35,10 @@ class CategoriaSimulacion(pilas.actores.Actor):
 			actor.y += delta_y
 
 		pilas.actores.Actor.definir_posicion(self, x, y)
+
+	
+	def definir_escala(self, escala):
+		for actor in self.actores:
+			actor.escala = escala
 		
 			
