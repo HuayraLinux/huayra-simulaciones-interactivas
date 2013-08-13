@@ -3,10 +3,10 @@ import pilas
 import pilas.evento
 import main
 from pilas.escena import Base
-from ..CategoriaSimulacion import CategoriaSimulacion
-from ..NavegacionCategorias import NavegacionCategorias
+from ..Simulacion import Simulacion
+from ..NavegacionSimulaciones import NavegacionSimulaciones
 
-class EscenaCategorias(pilas.escena.Base):
+class EscenaSimulaciones(pilas.escena.Base):
 	
 	nav = None  # Navegación de categorías
 	
@@ -18,19 +18,19 @@ class EscenaCategorias(pilas.escena.Base):
 		pilas.fondos.Color(pilas.colores.gris)
 		
 		# Categorías
-		self.nav = NavegacionCategorias()
+		self.nav = NavegacionSimulaciones()
 		
-		for categoria in main.sim.data['categorias']:				
+		for sim in main.sim.simulaciones:				
 			self.nav.actores.append(
-				CategoriaSimulacion(
-					titulo=categoria['nombre'], 
-					screenshot=categoria['screenshot'], 
-					descripcion=categoria['descripcion'],
+				Simulacion(
+					titulo=sim['nombre'], 
+					screenshot=sim['screenshot'], 
+					descripcion=sim['descripcion'],
 				)
 			)
 		
 		self.nav.iniciar_valores()
-		self.nav.distribuir_categorias()
+		self.nav.distribuir_simulaciones()
 		self.nav.definir_centro(("izquierda", "arriba"))
 		
 		pilas.escena_actual().mueve_rueda.conectar(self.mover)

@@ -2,7 +2,7 @@
 
 import pilas
 
-class CategoriaSimulacion(pilas.actores.Actor):
+class Simulacion(pilas.actores.Actor):
 	
 	ancho = 300
 	separacion = 10
@@ -11,7 +11,7 @@ class CategoriaSimulacion(pilas.actores.Actor):
 		self.actores = pilas.grupo.Grupo([
 			pilas.actores.Texto(titulo, magnitud=15, fijo=False),
 			pilas.actores.Actor(screenshot),
-			pilas.actores.Texto(descripcion, magnitud=10, fijo=False)
+			pilas.actores.Texto(descripcion[0:30], magnitud=10, fijo=False)
 		])
 		# Título
 		self.actores[0].y = 200
@@ -33,12 +33,18 @@ class CategoriaSimulacion(pilas.actores.Actor):
 		for actor in self.actores:
 			actor.x += delta_x
 			actor.y += delta_y
-
 		pilas.actores.Actor.definir_posicion(self, x, y)
 
 	
 	def definir_escala(self, escala):
 		for actor in self.actores:
 			actor.escala = escala
+		pilas.actores.Actor.definir_escala(self, escala)
+
+	
+	def definir_transparencia(self, transparencia):
+		for actor in self.actores:
+			actor.transparencia = transparencia
+		pilas.actores.Actor.definir_transparencia(self, transparencia)
 		
 			

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 import pilas
 from pilas.escena import Base
-from EscenaCategorias import EscenaCategorias
+from EscenaSimulaciones import EscenaSimulaciones
 
 class EscenaBienvenida(pilas.escena.Base):
 	
@@ -20,5 +20,5 @@ class EscenaBienvenida(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta colisionando con la pelota?                                                                           
 		if self.texto.colisiona_con_un_punto(x, y):
-			pilas.cambiar_escena(EscenaCategorias())
+			pilas.cambiar_escena(EscenaSimulaciones())
 

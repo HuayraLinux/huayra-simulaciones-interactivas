@@ -2,9 +2,9 @@
 
 import pilas
 import main
-from CategoriaSimulacion import CategoriaSimulacion
+from Simulacion import Simulacion
 
-class NavegacionCategorias(pilas.actores.Actor):
+class NavegacionSimulaciones(pilas.actores.Actor):
 	
 	ancho = 0
 	mitad = 0
@@ -21,16 +21,16 @@ class NavegacionCategorias(pilas.actores.Actor):
 		
 
 	def iniciar_valores(self):
-		self.paso = CategoriaSimulacion.ancho + CategoriaSimulacion.separacion
+		self.paso = Simulacion.ancho + Simulacion.separacion
 		self.total = len(self.actores)
-		self.ancho = self.paso * NavegacionCategorias.total
+		self.ancho = self.paso * NavegacionSimulaciones.total
 		self.mitad = self.ancho / 2
 		
 
-	def distribuir_categorias(self):
+	def distribuir_simulaciones(self):
 		i = 0
-		for cat in self.actores:
-			cat.x = i * (self.paso)
+		for sim in self.actores:
+			sim.x = i * (self.paso)
 			i = i+1	
 		self.setear_tamanios()
 
@@ -45,12 +45,15 @@ class NavegacionCategorias(pilas.actores.Actor):
 		anteriores = self.actores[:self.actual]
 		for act in anteriores:
 			act.escala = .7
+			act.transparencia = 50
 			
 		siguientes = self.actores[self.actual+1:]
 		for act in siguientes:
 			act.escala = .7
+			act.transparencia = 50
 		
 		self.actores[self.actual].escala = 1
+		self.actores[self.actual].transparencia = 0
 		
 			
 	
