@@ -9,6 +9,7 @@ from ..NavegacionSimulaciones import NavegacionSimulaciones
 class EscenaSimulaciones(pilas.escena.Base):
 	
 	nav = None  # Navegación de categorías
+	camara_x = 0
 	
 	def __init__(self):
 		Base.__init__(self)
@@ -45,22 +46,26 @@ class EscenaSimulaciones(pilas.escena.Base):
 			paso = -1
 		else:
 			paso = evento.delta
-			
-		
-		self.nav.actual = self.nav.actual + paso		
-		
+
+		# Fijar límites
+		self.nav.actual = self.nav.actual + paso
 		if self.nav.actual < 0:
 			self.nav.actual = 0
-		elif self.nav.actual >= self.nav.total:
-			self.nav.actual = self.nav.total-1
-		print "Actual:", self.nav.actual
+		elif self.nav.actual > (self.nav.total-1):
+			self.nav.actual = (self.nav.total-1)
+
+		print "Actual:", self.nav.actual, ", Paso:", paso
+		# Mover?
+		if self.nav.actual == 0 and paso == -1:
+			return
+		if self.nav.actual == (self.nav.total-1) and paso == 1:
+			return
+				
 		
-		self.nav.setear_tamanios()
-		camara_x = pilas.escena_actual().camara.x + (paso * self.nav.paso)
-		#print "Delta:", evento.delta, ", paso:", paso, ", camara x:",  camara_x
-		#print "Camara x:", camara_x
-		pilas.escena_actual().camara.x = pilas.interpolar(camara_x, duracion=.2)
+		self.camara_x = self.camara_x + (paso * self.nav.paso)
+		#print "Delta:", evento.delta, ", paso:", paso, ", camara x:",  self.camara_x			
+		#self.nav.setear_tamanios()	
+		pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, duracion=.2)
 			
-		
 		
 		

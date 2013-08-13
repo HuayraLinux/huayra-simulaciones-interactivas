@@ -36,11 +36,11 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 
 
 	def setear_tamanios(self):
-		temp = range(0, self.total)
-		print "Temp:", temp
-		print "Anteriores:", temp[:self.actual]
-		print "Siguientes:", temp[self.actual+1:]
-		print "----------------"
+		#temp = range(0, self.total)
+		#print "Temp:", temp
+		#print "Anteriores:", temp[:self.actual]
+		#print "Siguientes:", temp[self.actual+1:]
+		#print "----------------"
 		
 		anteriores = self.actores[:self.actual]
 		for act in anteriores:
