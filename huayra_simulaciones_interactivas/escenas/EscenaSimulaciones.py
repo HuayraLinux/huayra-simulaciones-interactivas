@@ -9,7 +9,7 @@ from ..NavegacionSimulaciones import NavegacionSimulaciones
 class EscenaSimulaciones(pilas.escena.Base):
 	
 	nav = None  # Navegación de categorías
-	camara_x = 0
+	camara_x = 0.0
 	
 	def __init__(self):
 		Base.__init__(self)
@@ -44,7 +44,6 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 	
 	def mover(self, evento):
-		self.nav.sonido_mover.reproducir()
 		# Desconectar la señal hasta que termine la animación de la cámara
 		pilas.escena_actual().mueve_rueda.desconectar_por_id('mover_simulaciones')
 		
@@ -68,10 +67,14 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.nav.actual = actual
 			
 		#print "Actual:", actual, 'Paso', paso
-		
-		self.nav.setear_tamanios()		
-		self.camara_x = self.nav.paso * actual
-		pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
-		pilas.mundo.agregar_tarea(.2, self.reconectar_mueve_rueda)
-		
+		self.camara_x = self.nav.paso * actual + 0.0
+		print "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x 
+
+		if self.camara_x != pilas.escena_actual().camara.x:
+			self.nav.sonido_mover.reproducir()
+			self.nav.setear_tamanios()
+			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
+			pilas.mundo.agregar_tarea(.2, self.reconectar_mueve_rueda)
+		else:
+			self.reconectar_mueve_rueda()
 		
