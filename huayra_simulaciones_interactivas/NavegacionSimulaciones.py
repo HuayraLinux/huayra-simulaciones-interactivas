@@ -11,6 +11,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 	paso = 0
 	actual = 0
 	total = 0
+	sonido_mover = None
 	
 	
 	def __init__(self, x=0, y=0):
@@ -18,6 +19,8 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
+		self.sonido_mover = pilas.sonidos.cargar("sounds/Arcade_S-wwwbeat-8529_hifi.mp3")
+
 		
 
 	def iniciar_valores(self):
@@ -31,8 +34,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		i = 0
 		for sim in self.actores:
 			sim.x = i * (self.paso)
-			i = i+1	
-		self.setear_tamanios()
+			i = i+1
 
 
 	def setear_tamanios(self):
