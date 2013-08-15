@@ -3,6 +3,7 @@
 import pilas
 import main
 from Simulacion import Simulacion
+import pygame.mixer
 
 class NavegacionSimulaciones(pilas.actores.Actor):
 	
@@ -19,8 +20,6 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
-		self.sonido_mover = pilas.sonidos.cargar("sounds/Arcade_S-wwwbeat-8529_hifi.mp3")
-
 		
 
 	def iniciar_valores(self):
@@ -38,11 +37,6 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 
 
 	def setear_tamanios(self):
-		#temp = range(0, self.total)
-		#print "Temp:", temp
-		#print "Anteriores:", temp[:self.actual]
-		#print "Siguientes:", temp[self.actual+1:]
-		#print "----------------"
 		
 		anteriores = self.actores[:self.actual]
 		for act in anteriores:

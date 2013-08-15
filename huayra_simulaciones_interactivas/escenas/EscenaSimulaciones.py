@@ -71,7 +71,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		print "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x 
 
 		if self.camara_x != pilas.escena_actual().camara.x:
-			self.nav.sonido_mover.reproducir()
+			
+			main.sim.sounds['navegacion_simulaciones_mover'].play()
+			
 			self.nav.setear_tamanios()
 			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
 			pilas.mundo.agregar_tarea(.2, self.reconectar_mueve_rueda)

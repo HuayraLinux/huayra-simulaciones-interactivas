@@ -6,12 +6,14 @@ import random
 import Config
 from escenas import EscenaBienvenida
 import pprint
+import pygame.mixer
 
 class SimulacionesInteractivas:
 	
 	simulaciones = []
 	pantalla_ancho = 1000
 	pantalla_alto = 600
+	sounds = []
 			
 	" Inicializa pilas y propiedades de las simulaciones "
 	def iniciar(self):
@@ -29,9 +31,15 @@ class SimulacionesInteractivas:
 			centrado=True
 		)
 		
+		pygame.mixer.init()	
+		self.sounds = {
+			'navegacion_simulaciones_mover': pygame.mixer.Sound('sounds/Arcade_S-wwwbeat-8529_hifi.ogg'),
+			'navegacion_simulaciones_aceptar': pygame.mixer.Sound('sounds/RewardSo-Mark_E_B-8078_hifi.ogg'),
+		}
+					
+		
 		pilas.fondos.Color(pilas.colores.gris)
-		pilas.cambiar_escena(EscenaBienvenida())
-						
+		pilas.cambiar_escena(EscenaBienvenida())	
 		pilas.ejecutar()
 
 	" Cargar desde un archivo con formato dict de python "
