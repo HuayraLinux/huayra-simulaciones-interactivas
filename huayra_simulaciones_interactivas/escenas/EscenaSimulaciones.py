@@ -49,71 +49,62 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.next.y = -200
 		self.next.espejado = True
 		 
-		pilas.escena_actual().mueve_rueda.conectar(self.mover_desde_rueda, id='mover_simulaciones_desde_rueda')
-		pilas.escena_actual().click_de_mouse.conectar(self.mover_desde_botones, id='mover_simulaciones_desde_botones')
+		self.conectar_eventos()
+		
+		ayuda = pilas.actores.TextoInferior(
+			"Se puede navegar con las flechas del teclado, la rueda del mouse o haciendo click sobre las flechas",
+			magnitud=12,
+			autoeliminar=True
+		)
 	
 	
-	def reconectar_mueve_rueda(self):
-		pilas.escena_actual().mueve_rueda.conectar(self.mover_desde_rueda, id='mover_simulaciones_desde_rueda')
+	def conectar_eventos(self):
+		pilas.escena_actual().click_de_mouse.conectar(self.mover, id='mover_simulaciones_desde_botones')
+		pilas.escena_actual().click_de_mouse.conectar(self.clickear_simulacion, id='clickear_simulacion')
+		pilas.escena_actual().mueve_rueda.conectar(self.mover, id='mover_simulaciones_desde_rueda')
+		pilas.escena_actual().suelta_tecla.conectar(self.mover, id='mover_simulaciones_desde_teclado')
+		
 	
-	
-	def reconectar_click(self):
-		pilas.escena_actual().click_de_mouse.conectar(self.mover_desde_botones, id='mover_simulaciones_desde_botones')
-	
-	
-	def mover_desde_rueda(self, evento):
-		# Desconectar la señal hasta que termine la animación de la cámara
+	def desconectar_eventos(self):
+		pilas.escena_actual().click_de_mouse.desconectar_por_id('mover_simulaciones_desde_botones')
+		pilas.escena_actual().click_de_mouse.desconectar_por_id('clickear_simulacion')
 		pilas.escena_actual().mueve_rueda.desconectar_por_id('mover_simulaciones_desde_rueda')
-		
+		pilas.escena_actual().suelta_tecla.desconectar_por_id('mover_simulaciones_desde_teclado')
+	
+	
+	def mover(self, evento):
+		self.desconectar_eventos()
 		paso = 0
 		
-		# Límites para que pase de a 1
-		if evento.delta >= 1:
-			paso = 1
-		elif evento.delta <= -1:
-			paso = -1
-		else:
-			paso = evento.delta
-
-		# Fijar límites
-		actual = self.nav.actual + paso
-		if actual <= 0:
-			actual = 0
-		elif actual >= self.nav.total-1:
-			actual = self.nav.total-1
+		#main.debug(evento)
 		
-		self.nav.actual = actual
+		if evento.has_key("delta"):  # Rueda
+			# Límites para que pase de a 1
+			if evento.delta >= 1:
+				paso = 1
+			elif evento.delta <= -1:
+				paso = -1
+			else:
+				paso = evento.delta
 			
-		self.camara_x = self.nav.paso * actual + 0.0
-		print "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x 
-
-		if self.camara_x != pilas.escena_actual().camara.x:
-			
-			main.sim.sounds['navegacion_simulaciones_mover'].play()
-			
-			self.nav.setear_tamanios()
-			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
-			pilas.mundo.agregar_tarea(.2, self.reconectar_mueve_rueda)
-		else:
-			self.reconectar_mueve_rueda()
-		
-			
-	def mover_desde_botones(self, evento):
-		paso = 0
-		print "X del botón izq:", self.prev.x
-		print "Camara x:", pilas.escena_actual().camara.x
-		print "Evento x:", evento.x
-		x, y = evento.x - pilas.escena_actual().camara.x, evento.y  # X corregido
-		
-		# Esta colisionando con la pelota?                                                                           
-		if self.prev.colisiona_con_un_punto(x, y):
-			paso = -1
-		elif self.next.colisiona_con_un_punto(x, y):
-			paso = 1
-			
-		if paso != 0:
-			# Desconectar la señal hasta que termine la animación de la cámara
-			pilas.escena_actual().click_de_mouse.desconectar_por_id('mover_simulaciones_desde_botones')
+		elif evento.has_key("x"):  # click
+			x, y = evento.x - pilas.escena_actual().camara.x, evento.y  # X corregido
+			# Esta tocando la flecha?                                                                           
+			if self.prev.colisiona_con_un_punto(x, y):
+				paso = -1
+			elif self.next.colisiona_con_un_punto(x, y):
+				paso = 1
+				
+		elif evento.has_key("codigo"):  # teclado
+			if evento.codigo == 1:  # left arrow
+				paso = -1
+			elif evento.codigo == 2:  # right arrow
+				paso = 1
+				
+		" Sólo desconectar eventos si se toma acción "
+		if paso == 0:
+			self.conectar_eventos()
+			return
 		
 		# Fijar límites
 		actual = self.nav.actual + paso
@@ -125,14 +116,25 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.nav.actual = actual
 			
 		self.camara_x = self.nav.paso * actual + 0.0
-		print "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x 
+		
+		txt = "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x
+		main.debug(paso)
 
 		if self.camara_x != pilas.escena_actual().camara.x:
-			
+			main.debug("aca")
 			main.sim.sounds['navegacion_simulaciones_mover'].play()
-			
 			self.nav.setear_tamanios()
 			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
-			pilas.mundo.agregar_tarea(.2, self.reconectar_click)
+			pilas.mundo.agregar_tarea(.2, self.conectar_eventos)
 		else:
-			self.reconectar_click()
+			self.conectar_eventos()
+			
+			
+	def clickear_simulacion(self, evento):
+		x, y = evento.x, evento.y
+		
+		# Esta tocando la simulación?                                                                  
+		if self.nav.actores[self.nav.actual].area_contacto.colisiona_con_un_punto(x, y):
+			self.desconectar_eventos()
+			pilas.avisar("Lanzar simulación", retraso=2)
+			pilas.mundo.agregar_tarea(1, self.conectar_eventos)

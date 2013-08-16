@@ -11,8 +11,8 @@ import pygame.mixer
 class SimulacionesInteractivas:
 	
 	simulaciones = []
-	pantalla_ancho = 1000
-	pantalla_alto = 600
+	pantalla_ancho = 900
+	pantalla_alto = 500
 	sounds = []
 			
 	" Inicializa pilas y propiedades de las simulaciones "

@@ -46,13 +46,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		siguientes = self.actores[self.actual+1:]
 		for act in siguientes:
 			act.escala = .7
-			act.transparencia = 50
+			act.transparencia = 50			
 		
 		self.actores[self.actual].escala = 1
 		self.actores[self.actual].transparencia = 0
-		
-			
-	
-	
-		
-			
