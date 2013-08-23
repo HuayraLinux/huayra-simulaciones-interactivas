@@ -18,7 +18,7 @@ class EscenaBienvenida(pilas.escena.Base):
 	def texto_clickeado(self, evento):
 		# Obtengo la posicion del mouse.
 		x, y = evento.x, evento.y
-		# Esta colisionando con la pelota?                                                                           
+		# Esta colisionando con el texto de bienvenida?                                                                         
 		if self.texto.colisiona_con_un_punto(x, y):
 			pilas.cambiar_escena(EscenaSimulaciones())
 

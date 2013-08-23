@@ -5,6 +5,7 @@ import main
 from Simulacion import Simulacion
 import pygame.mixer
 
+
 class NavegacionSimulaciones(pilas.actores.Actor):
 	
 	ancho = 0
@@ -37,7 +38,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 
 
 	def setear_tamanios(self):
-		
+
 		anteriores = self.actores[:self.actual]
 		for act in anteriores:
 			act.escala = .7
@@ -50,3 +51,17 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		
 		self.actores[self.actual].escala = 1
 		self.actores[self.actual].transparencia = 0
+		
+	
+	def desaparecer_restantes(self):
+		anteriores = self.actores[:self.actual]
+		for act in anteriores:
+			act.transparencia = [100]
+			
+		siguientes = self.actores[self.actual+1:]
+		for act in siguientes:
+			act.transparencia = [100]
+		
+		self.actores[self.actual].escala = 1
+		self.actores[self.actual].transparencia = 0
+		

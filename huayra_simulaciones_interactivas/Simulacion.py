@@ -6,34 +6,31 @@ class Simulacion(pilas.actores.Actor):
 	
 	ancho = 300
 	separacion = 10
+	sims_dir = '/usr/share/huayra-simulaciones-interactivas/sims/'
 	
-	def __init__(self, x=0, y=0, titulo="", screenshot="", descripcion=""):
+	def __init__(self, x=0, y=0, titulo="", screenshot="", descripcion="", archivo=""):
 		# Área de contacto
-		superficie = pilas.imagenes.cargar_superficie(340, 450)
-		superficie.rectangulo(0, -30, 340, 400, color=pilas.colores.rojo, relleno=True)
+		superficie = pilas.imagenes.cargar_superficie(300, 300)
+		superficie.rectangulo(0, 0, 300, 300, color=pilas.colores.rojo, relleno=True)
 		
 		self.actores = pilas.grupo.Grupo([
-			pilas.actores.Texto(titulo, magnitud=15, fijo=False),
-			pilas.actores.Actor(screenshot),
-			pilas.actores.Texto(descripcion[0:30], magnitud=10, fijo=False),
+			pilas.actores.Texto(titulo.decode('utf8'), magnitud=15, fijo=False),
+			pilas.actores.Actor("imagenes/screenshots/" + screenshot),
+			pilas.actores.Texto(descripcion, magnitud=10, fijo=False),
 			pilas.actores.Actor(superficie)
 		])
 		
-		# Título
-		self.actores[0].y = 200
-		# Screenshot
-		self.actores[1].y = 60		
-		# Descripción
-		self.actores[2].y = -70
-		# Área de contacto
-		self.area_contacto = self.actores[3]		
-		
+		self.titulo = titulo
+		self.descripcion = descripcion
+		self.screenshot = screenshot
+		self.area_contacto = self.actores[3]
+		self.archivo = archivo
+
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
 				
 
-	
 	def definir_posicion(self, x, y):
 		delta_x = x - self.x
 		delta_y = y - self.y

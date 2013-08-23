@@ -4,8 +4,9 @@
 DEBUG = True
 
 def init():
-	global sim
-	sim = None
+	global sims
+	sims = None
+	simulacion_activa = None
 
 def debug(msg, categoria='DEBUG'):
 	if DEBUG:

@@ -1,10 +1,13 @@
 # -*- encoding: utf-8 -*-
+
 import pilas
 import pilas.evento
 import main
 from pilas.escena import Base
 from ..Simulacion import Simulacion
 from ..NavegacionSimulaciones import NavegacionSimulaciones
+from EscenaSimulacion import EscenaSimulacion
+
 
 class EscenaSimulaciones(pilas.escena.Base):
 	
@@ -16,19 +19,30 @@ class EscenaSimulaciones(pilas.escena.Base):
 			
 	
 	def iniciar(self):
+		
 		pilas.fondos.Color(pilas.colores.gris)
 		
 		# Categorías
 		self.nav = NavegacionSimulaciones()
 		i = 0
-		for sim in main.sim.simulaciones:				
+		for sim in main.sims.simulaciones:				
 			self.nav.actores.append(
 				Simulacion(
-					titulo=sim['nombre'], 
+					titulo=sim['titulo'], 
 					screenshot=sim['screenshot'], 
 					descripcion=sim['descripcion'],
+					archivo=sim['archivo']
 				)
 			)
+			# Título
+			self.nav.actores[i].actores[0].y = 200
+			# Screenshot
+			self.nav.actores[i].actores[1].y = 60		
+			# Descripción
+			self.nav.actores[i].actores[2].eliminar()
+			# Área de contacto
+			self.nav.actores[i].area_contacto.y = 30
+
 			i = i+1
 		
 		self.nav.iniciar_valores()
@@ -118,23 +132,31 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.camara_x = self.nav.paso * actual + 0.0
 		
 		txt = "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x
-		main.debug(paso)
-
+		
 		if self.camara_x != pilas.escena_actual().camara.x:
-			main.debug("aca")
-			main.sim.sounds['navegacion_simulaciones_mover'].play()
+			main.sims.sounds['navegacion_simulaciones_mover'].play()
 			self.nav.setear_tamanios()
 			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
 			pilas.mundo.agregar_tarea(.2, self.conectar_eventos)
 		else:
 			self.conectar_eventos()
-			
+	
+	
+	def cambiar_escena(self):
+		pilas.cambiar_escena(EscenaSimulacion())
+		
 			
 	def clickear_simulacion(self, evento):
 		x, y = evento.x, evento.y
-		
 		# Esta tocando la simulación?                                                                  
 		if self.nav.actores[self.nav.actual].area_contacto.colisiona_con_un_punto(x, y):
+			main.simulacion_activa = self.nav.actores[self.nav.actual]
 			self.desconectar_eventos()
-			pilas.avisar("Lanzar simulación", retraso=2)
-			pilas.mundo.agregar_tarea(1, self.conectar_eventos)
+			
+			self.nav.desaparecer_restantes()
+			self.prev.transparencia = [100]
+			self.next.transparencia = [100]
+			
+			pilas.mundo.agregar_tarea(1, self.cambiar_escena)
+
+			
