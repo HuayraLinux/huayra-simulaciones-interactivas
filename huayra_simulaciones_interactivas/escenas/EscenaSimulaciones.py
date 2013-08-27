@@ -25,7 +25,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		# Categorías
 		self.nav = NavegacionSimulaciones()
 		i = 0
-		for sim in main.sims.simulaciones:				
+		for sim in main.sims.simulaciones:
 			self.nav.actores.append(
 				Simulacion(
 					titulo=sim['titulo'], 
@@ -44,12 +44,10 @@ class EscenaSimulaciones(pilas.escena.Base):
 			self.nav.actores[i].area_contacto.y = 30
 
 			i = i+1
-		
-		self.nav.iniciar_valores()
-		self.nav.distribuir_simulaciones()
-		self.nav.definir_centro(("izquierda", "arriba"))
-		self.nav.setear_tamanios()
 
+
+		self.nav.aparecer()
+		
 		flecha_prev = pilas.imagenes.cargar_grilla("imagenes/DDR___Arrow_by_Blade_Genexis.png", 2)
 		self.prev = pilas.actores.Actor(flecha_prev)
 		self.prev.fijo = True

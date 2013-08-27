@@ -9,11 +9,9 @@ import pygame.mixer
 class NavegacionSimulaciones(pilas.actores.Actor):
 	
 	ancho = 0
-	mitad = 0
 	paso = 0
 	actual = 0
 	total = 0
-	sonido_mover = None
 	
 	
 	def __init__(self, x=0, y=0):
@@ -27,9 +25,15 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		self.paso = Simulacion.ancho + Simulacion.separacion
 		self.total = len(self.actores)
 		self.ancho = self.paso * NavegacionSimulaciones.total
-		self.mitad = self.ancho / 2
 		
 
+	def aparecer(self):		
+		self.iniciar_valores()
+		self.distribuir_simulaciones()
+		self.definir_centro(("izquierda", "arriba"))
+		self.setear_tamanios()
+		
+		
 	def distribuir_simulaciones(self):
 		i = 0
 		for sim in self.actores:
@@ -64,4 +68,5 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		
 		self.actores[self.actual].escala = 1
 		self.actores[self.actual].transparencia = 0
+		
 		
