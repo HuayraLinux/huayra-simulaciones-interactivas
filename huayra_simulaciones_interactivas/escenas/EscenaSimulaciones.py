@@ -28,9 +28,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		for sim in main.sims.simulaciones:
 			self.nav.actores.append(
 				Simulacion(
-					titulo=sim['titulo'], 
+					titulo=sim['titulo'].decode('utf8'), 
 					screenshot=sim['screenshot'], 
-					descripcion=sim['descripcion'],
+					descripcion=sim['descripcion'].decode('utf8'),
 					archivo=sim['archivo']
 				)
 			)
@@ -68,6 +68,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 			magnitud=12,
 			autoeliminar=True
 		)
+		
 	
 	
 	def conectar_eventos(self):
@@ -128,8 +129,6 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.nav.actual = actual
 			
 		self.camara_x = self.nav.paso * actual + 0.0
-		
-		txt = "camara_x:", self.camara_x, ", camara.x:", pilas.escena_actual().camara.x
 		
 		if self.camara_x != pilas.escena_actual().camara.x:
 			main.sims.sounds['navegacion_simulaciones_mover'].play()

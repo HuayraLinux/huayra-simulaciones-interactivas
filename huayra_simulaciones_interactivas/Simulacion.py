@@ -14,7 +14,7 @@ class Simulacion(pilas.actores.Actor):
 		superficie.rectangulo(0, 0, 300, 300, color=pilas.colores.rojo, relleno=True)
 		
 		self.actores = pilas.grupo.Grupo([
-			pilas.actores.Texto(titulo.decode('utf8'), magnitud=15, fijo=False),
+			pilas.actores.Texto(titulo, magnitud=15, fijo=False),
 			pilas.actores.Actor("imagenes/screenshots/" + screenshot),
 			pilas.actores.Texto(descripcion, magnitud=10, fijo=False),
 			pilas.actores.Actor(superficie)

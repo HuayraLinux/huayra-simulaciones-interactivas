@@ -27,7 +27,8 @@ class EscenaSimulacion(pilas.escena.Base):
 		# Título
 		self.sim.actores[0].y = 200
 		# Screenshot
-		self.sim.actores[1].y = 60
+		self.sim.actores[1].centro = ("centro", "arriba")
+		self.sim.actores[1].y = 160
 		# Descripción
 		self.sim.actores[2].magnitud = 12
 		self.sim.actores[2].centro = ("izquierda", "arriba")
@@ -60,7 +61,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
 		if self.boton_volver.colisiona_con_un_punto(x, y):
-			self.sim.x = pilas.interpolar(-1500, tipo='desaceleracion_gradual', duracion=1.5)
+			self.sim.x = pilas.interpolar(-1500, tipo='desaceleracion_gradual', duracion=1)
 			pilas.mundo.agregar_tarea(1, self.volver)
 		
 		

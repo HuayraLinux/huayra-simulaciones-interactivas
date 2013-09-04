@@ -27,5 +27,5 @@ import main
 
 main.init()
 main.sims = SimulacionesInteractivas()
-main.sims.cargar_simulaciones_desde_archivo('huayra_simulaciones_interactivas.simulaciones')
+main.sims.cargar_simulaciones_desde_archivo('simulaciones')
 main.sims.iniciar()

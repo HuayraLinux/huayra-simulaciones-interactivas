@@ -27,7 +27,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		self.ancho = self.paso * NavegacionSimulaciones.total
 		
 
-	def aparecer(self):		
+	def aparecer(self):
 		self.iniciar_valores()
 		self.distribuir_simulaciones()
 		self.definir_centro(("izquierda", "arriba"))
@@ -42,7 +42,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 
 
 	def setear_tamanios(self):
-
+		
 		anteriores = self.actores[:self.actual]
 		for act in anteriores:
 			act.escala = .7
