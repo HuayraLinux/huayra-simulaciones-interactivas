@@ -10,18 +10,14 @@ class EscenaBienvenida(pilas.escena.Base):
 	
 	
 	def iniciar(self):
-		pilas.fondos.Color(pilas.colores.negro)
-		self.texto = pilas.actores.Texto("Simulaciones Interactivas")
-		pilas.eventos.click_de_mouse.conectar(self.texto_clickeado)
-	
+		fondo = pilas.fondos.Fondo("imagenes/gui/portada.png")
+		pilas.avisar("Click en la pantalla para empezar")
+		pilas.eventos.click_de_mouse.conectar(self.clickeado)
+
 	
 	def cambiar_escena(self):
 		pilas.cambiar_escena(EscenaSimulaciones())
 		
 		
-	def texto_clickeado(self, evento):
-		# Obtengo la posicion del mouse.
-		x, y = evento.x, evento.y
-		# Esta colisionando con el texto de bienvenida?                                                                         
-		if self.texto.colisiona_con_un_punto(x, y):
-			pilas.mundo.agregar_tarea(1, self.cambiar_escena)
+	def clickeado(self, evento):
+		pilas.mundo.agregar_tarea(1, self.cambiar_escena)

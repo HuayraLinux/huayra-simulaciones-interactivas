@@ -7,19 +7,18 @@ import Config
 from escenas import EscenaBienvenida
 import pprint
 import pygame.mixer
+import main
 
 class SimulacionesInteractivas:
 	
 	simulaciones = []
-	pantalla_ancho = 900
-	pantalla_alto = 500
 	sounds = []
 			
 	" Inicializa pilas y propiedades de las simulaciones "
 	def iniciar(self):
 		pilas.iniciar(
-			ancho=SimulacionesInteractivas.pantalla_ancho, 
-			alto=SimulacionesInteractivas.pantalla_alto, 
+			ancho=main.pantalla_ancho, 
+			alto=main.pantalla_alto, 
 			titulo='Huayra - Simulaciones Interactivas', 
 			usar_motor='qtgl',
 			rendimiento=60, 

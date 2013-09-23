@@ -42,19 +42,22 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 
 
 	def setear_tamanios(self):
-		
 		anteriores = self.actores[:self.actual]
-		for act in anteriores:
-			act.escala = .7
-			act.transparencia = 50
+		for ant in anteriores:
+			ant.escala = .5
+			ant.transparencia = 50
+			#ant.x = ant.x + 30
+			
 			
 		siguientes = self.actores[self.actual+1:]
-		for act in siguientes:
-			act.escala = .7
-			act.transparencia = 50			
+		for sig in siguientes:
+			sig.escala = .5
+			sig.transparencia = 50
+			#sig.x = sig.x - 30
 		
 		self.actores[self.actual].escala = 1
 		self.actores[self.actual].transparencia = 0
+		
 		
 	
 	def desaparecer_restantes(self):

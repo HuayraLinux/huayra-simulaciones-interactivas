@@ -5,7 +5,7 @@ import pilas
 class Simulacion(pilas.actores.Actor):
 	
 	ancho = 300
-	separacion = 10
+	separacion = -30
 	sims_dir = '/usr/share/huayra-simulaciones-interactivas/sims/'
 	
 	def __init__(self, x=0, y=0, titulo="", screenshot="", descripcion="", archivo=""):

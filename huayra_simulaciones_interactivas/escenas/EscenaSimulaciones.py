@@ -20,7 +20,8 @@ class EscenaSimulaciones(pilas.escena.Base):
 	
 	def iniciar(self):
 		
-		pilas.fondos.Color(pilas.colores.gris)
+		fondo = pilas.fondos.Fondo("imagenes/gui/fondo_lista.png")
+		fondo.fijo = True
 		
 		# Categorías
 		self.nav = NavegacionSimulaciones()
@@ -35,9 +36,11 @@ class EscenaSimulaciones(pilas.escena.Base):
 				)
 			)
 			# Título
-			self.nav.actores[i].actores[0].y = 200
+			self.nav.actores[i].actores[0].y = 170
+			#self.nav.actores[i].actores[0].color = pilas.colores.Color(155, 237, 79)
 			# Screenshot
-			self.nav.actores[i].actores[1].y = 60		
+			self.nav.actores[i].actores[1].centro = ("centro", "arriba")
+			self.nav.actores[i].actores[1].y = 130
 			# Descripción
 			self.nav.actores[i].actores[2].eliminar()
 			# Área de contacto
@@ -47,20 +50,33 @@ class EscenaSimulaciones(pilas.escena.Base):
 
 
 		self.nav.aparecer()
-		
-		flecha_prev = pilas.imagenes.cargar_grilla("imagenes/DDR___Arrow_by_Blade_Genexis.png", 2)
-		self.prev = pilas.actores.Actor(flecha_prev)
+				
+		# Flechas
+		self.prev = pilas.actores.Boton(			
+			ruta_normal='imagenes/gui/flecha_volver.png',
+			ruta_press='imagenes/gui/flecha_volver_presionada.png',
+			ruta_over='imagenes/gui/flecha_volver_over.png',
+		)
 		self.prev.fijo = True
-		self.prev.x = -100
-		self.prev.y = -200
-		
-		flecha_next = pilas.imagenes.cargar_grilla("imagenes/DDR___Arrow_by_Blade_Genexis.png", 2)
-		self.next = pilas.actores.Actor(flecha_next)
+		self.prev.x = -250
+		self.prev.y = -170
+		self.prev.conectar_presionado(self.cuando_pulsan_el_boton, arg="prev")
+		self.prev.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
+		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
+				
+		self.next = pilas.actores.Boton(			
+			ruta_normal='imagenes/gui/flecha_proximo.png',
+			ruta_press='imagenes/gui/flecha_proximo_presionada.png',
+			ruta_over='imagenes/gui/flecha_proximo_over.png',
+		)
 		self.next.fijo = True
-		self.next.x = 100
-		self.next.y = -200
-		self.next.espejado = True
-		 
+		self.next.x = 250
+		self.next.y = -170
+		self.next.conectar_presionado(self.cuando_pulsan_el_boton, arg="next")
+		self.next.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="next")
+		self.next.conectar_normal(self.cuando_deja_de_pulsar, arg="next") 
+				
+		
 		self.conectar_eventos()
 		
 		ayuda = pilas.actores.TextoInferior(
@@ -69,21 +85,44 @@ class EscenaSimulaciones(pilas.escena.Base):
 			autoeliminar=True
 		)
 		
+		 
+		 
+	def cuando_pulsan_el_boton(self, arg):
+		if arg == "next":
+			self.next.pintar_presionado()
+		else:
+			self.prev.pintar_presionado()
+		pilas.avisar("Han pulsado el boton")
+
+	def cuando_pasa_sobre_el_boton(self, arg):
+		if arg == "next":
+			self.next.pintar_sobre()
+		else:
+			self.prev.pintar_sobre()
+		pilas.avisar("Pasa el mouse sobre el boton")
+
+	def cuando_deja_de_pulsar(self, arg):
+		if arg == "next":
+			self.next.pintar_normal()
+		else:
+			self.prev.pintar_normal()
+	
 	
 	
 	def conectar_eventos(self):
-		pilas.escena_actual().click_de_mouse.conectar(self.mover, id='mover_simulaciones_desde_botones')
-		pilas.escena_actual().click_de_mouse.conectar(self.clickear_simulacion, id='clickear_simulacion')
+		pilas.escena_actual().click_de_mouse.conectar(self.mover, id='clickear_flechas')
+		pilas.escena_actual().termina_click.conectar(self.clickear_simulacion, id='clickear_simulacion')
 		pilas.escena_actual().mueve_rueda.conectar(self.mover, id='mover_simulaciones_desde_rueda')
 		pilas.escena_actual().suelta_tecla.conectar(self.mover, id='mover_simulaciones_desde_teclado')
 		
 	
 	def desconectar_eventos(self):
-		pilas.escena_actual().click_de_mouse.desconectar_por_id('mover_simulaciones_desde_botones')
-		pilas.escena_actual().click_de_mouse.desconectar_por_id('clickear_simulacion')
+		pilas.escena_actual().click_de_mouse.desconectar_por_id('clickear_flechas')
+		pilas.escena_actual().termina_click.desconectar_por_id('clickear_simulacion')
 		pilas.escena_actual().mueve_rueda.desconectar_por_id('mover_simulaciones_desde_rueda')
 		pilas.escena_actual().suelta_tecla.desconectar_por_id('mover_simulaciones_desde_teclado')
 	
+		 
 	
 	def mover(self, evento):
 		self.desconectar_eventos()

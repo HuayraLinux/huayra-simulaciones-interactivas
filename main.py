@@ -2,9 +2,10 @@
 " Archivo para iniciar las variables globales de la aplicación "
 
 DEBUG = True
+pantalla_ancho = 900
+pantalla_alto = 500
 
 def init():
-	global sims
 	sims = None
 	simulacion_activa = None
 
