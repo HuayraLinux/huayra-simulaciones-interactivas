@@ -120,13 +120,3 @@ class EscenaSimulacion(pilas.escena.Base):
 		if self.sim.actores[1].colisiona_con_un_punto(x, y):
 			subprocess.call(['java', '-jar', Simulacion.sims_dir + self.sim.archivo])
 			pilas.avisar(u"Lanzando simulación...", retraso=5)
-		
-		
-		
-		
-#subprocess.call(['java', '-jar', Simulacion.sims_dir + self.nav.actores[self.nav.actual].archivo])
-#pilas.avisar(u"Lanzando simulación...", retraso=5)
-#pilas.mundo.agregar_tarea(5, self.conectar_eventos)
-			
-			
-		
