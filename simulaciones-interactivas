@@ -23,7 +23,9 @@
 from huayra_simulaciones_interactivas import SimulacionesInteractivas
 from pprint import pprint
 import main
+import sys
 
+sys.path.append('/usr/share/huayra-simulaciones-interactivas')
 
 main.init()
 main.sims = SimulacionesInteractivas()

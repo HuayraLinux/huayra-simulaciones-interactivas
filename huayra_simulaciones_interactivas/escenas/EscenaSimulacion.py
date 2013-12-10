@@ -13,7 +13,7 @@ class EscenaSimulacion(pilas.escena.Base):
 	
 	
 	def iniciar(self):
-		fondo = pilas.fondos.Fondo("imagenes/gui/fondo_item.png")
+		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_item.png")
 		
 		# posiciones corregidas
 		x_titulo_corregida = pilas.escena_actual().camara.x - main.simulacion_activa.actores[0].x		
@@ -63,9 +63,9 @@ class EscenaSimulacion(pilas.escena.Base):
 		
 		" Flecha volver "
 		self.boton_volver = pilas.actores.Boton(			
-			ruta_normal='imagenes/gui/flecha_volver.png',
-			ruta_press='imagenes/gui/flecha_volver_presionada.png',
-			ruta_over='imagenes/gui/flecha_volver_over.png',
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_over.png',
 		)
 		self.boton_volver.fijo = True
 		self.boton_volver.x = 250
@@ -74,7 +74,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		self.boton_volver.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
 		self.boton_volver.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
 		
-		self.texto_volver = pilas.actores.Actor('imagenes/gui/label_volver.png', x=170, y=-160)
+		self.texto_volver = pilas.actores.Actor(main.data_dir + 'imagenes/gui/label_volver.png', x=170, y=-160)
 		
 		
 		" Lanzar "		
@@ -118,5 +118,5 @@ class EscenaSimulacion(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
 		if self.sim.actores[1].colisiona_con_un_punto(x, y):
-			subprocess.call(['java', '-jar', Simulacion.sims_dir + self.sim.archivo])
+			subprocess.call(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])
 			pilas.avisar(u"Lanzando simulación...", retraso=5)

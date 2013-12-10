@@ -2,6 +2,7 @@
 import pilas
 from pilas.escena import Base
 from EscenaSimulaciones import EscenaSimulaciones
+import main
 
 class EscenaBienvenida(pilas.escena.Base):
 	
@@ -10,7 +11,7 @@ class EscenaBienvenida(pilas.escena.Base):
 	
 	
 	def iniciar(self):
-		fondo = pilas.fondos.Fondo("imagenes/gui/portada.png")
+		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/portada.png")
 		pilas.avisar("Click en la pantalla para empezar")
 		pilas.eventos.click_de_mouse.conectar(self.clickeado)
 

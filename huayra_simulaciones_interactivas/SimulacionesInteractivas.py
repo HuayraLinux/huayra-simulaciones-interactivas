@@ -3,7 +3,6 @@
 import pilas
 import os
 import random
-import Config
 from escenas import EscenaBienvenida
 import pprint
 import pygame.mixer
@@ -32,8 +31,8 @@ class SimulacionesInteractivas:
 		
 		pygame.mixer.init()	
 		self.sounds = {
-			'navegacion_simulaciones_mover': pygame.mixer.Sound('sounds/Arcade_S-wwwbeat-8529_hifi.ogg'),
-			'navegacion_simulaciones_aceptar': pygame.mixer.Sound('sounds/RewardSo-Mark_E_B-8078_hifi.ogg'),
+			'navegacion_simulaciones_mover': pygame.mixer.Sound(main.data_dir + 'sonidos/Arcade_S-wwwbeat-8529_hifi.ogg'),
+			'navegacion_simulaciones_aceptar': pygame.mixer.Sound(main.data_dir + 'sonidos/RewardSo-Mark_E_B-8078_hifi.ogg'),
 		}
 					
 		

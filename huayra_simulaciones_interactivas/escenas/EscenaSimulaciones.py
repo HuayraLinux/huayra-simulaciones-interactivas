@@ -20,7 +20,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 	
 	def iniciar(self):
 		
-		fondo = pilas.fondos.Fondo("imagenes/gui/fondo_lista.png")
+		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_lista.png")
 		fondo.fijo = True
 		
 		# Categorías
@@ -53,9 +53,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 				
 		# Flechas
 		self.prev = pilas.actores.Boton(			
-			ruta_normal='imagenes/gui/flecha_volver.png',
-			ruta_press='imagenes/gui/flecha_volver_presionada.png',
-			ruta_over='imagenes/gui/flecha_volver_over.png',
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_over.png',
 		)
 		self.prev.fijo = True
 		self.prev.x = -250
@@ -65,9 +65,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
 				
 		self.next = pilas.actores.Boton(			
-			ruta_normal='imagenes/gui/flecha_proximo.png',
-			ruta_press='imagenes/gui/flecha_proximo_presionada.png',
-			ruta_over='imagenes/gui/flecha_proximo_over.png',
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proximo.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_proximo_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_proximo_over.png',
 		)
 		self.next.fijo = True
 		self.next.x = 250
