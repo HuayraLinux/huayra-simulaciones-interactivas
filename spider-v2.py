@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
  
-import urllib2, json
+import urllib2, json, os
 from BeautifulSoup import BeautifulSoup
  
 HOST='phet.colorado.edu'
@@ -16,7 +16,12 @@ div_sims = index_soup.body.find('div', attrs={'class' : 'simulation-index'})
  
 cnt = 0
 simulaciones = []
-terminar = False
+
+if not os.path.exists('data/screenshots'):
+	os.makedirs('data/screenshots')
+if not os.path.exists('data/simulaciones'): 
+	os.makedirs('data/simulaciones')
+
 for div_letter in div_sims.findAll('div'):
 	link_sims = div_letter.findAll('a', href=True)
 	for sims in link_sims:
@@ -45,19 +50,15 @@ for div_letter in div_sims.findAll('div'):
 		
 		# Imagen
 		imgData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, screenshot_url)).read()
-		output = open('imagenes/screenshots/' + screenshot, 'wb')
+		output = open('data/screenshots/' + screenshot, 'wb')
 		output.write(imgData)
 		output.close()
 		
 		# Jar
 		jarData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, archivo_url)).read()
-		out = open('simulaciones/' + archivo, 'wb')
+		out = open('data/simulaciones/' + archivo, 'wb')
 		out.write(jarData)
 		out.close()
-		break
-	break
-
-exit()
 
 print "Total %d simulaciones" % (cnt)
  
@@ -71,3 +72,4 @@ with io.open('simulaciones.py', 'w', encoding='utf-8') as f:
 	f.write(unicode("# -*- encoding: utf-8 -*-\n\n"))
 	f.write(unicode("simulaciones = "))
 	f.write(unicode(json.dumps(simulaciones, ensure_ascii=False, indent=4)))
+
