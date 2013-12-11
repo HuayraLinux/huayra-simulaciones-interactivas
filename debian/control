@@ -15,7 +15,8 @@ Description: Aplicación con simulaciones interactivas.
 
 Package: huayra-simulaciones-interactivas-data
 Architecture: all
-Depends: ${misc:Depends}, jarwrapper (>= 0.43), default-jre (>= 1:1.6) | sun-java6-jre, gnome-menus, menu-xdg, menu
+Depends: ${misc:Depends}, jarwrapper (>= 0.43), default-jre (>= 1:1.6) | sun-java6-jre, 
+    gnome-menus, menu-xdg, menu, python-pilas (>= 0.83)
 Description: Aplicación con simulaciones interactivas.
  Utilizando esta aplicación podrás encontrar simulaciones interactivas 
  sobre fisica.
