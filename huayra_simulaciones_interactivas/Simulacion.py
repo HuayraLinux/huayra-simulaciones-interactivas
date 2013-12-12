@@ -21,7 +21,7 @@ class Simulacion(pilas.actores.Actor):
 		self.actores = pilas.grupo.Grupo([
 			pilas.actores.Texto(titulo, magnitud=15, fijo=False),
 			pilas.actores.Actor(_screenshot),
-			pilas.actores.Texto(descripcion, magnitud=10, fijo=False),
+			pilas.actores.Texto(descripcion, magnitud=10, fijo=False, ancho=100),
 			pilas.actores.Actor(superficie)
 		])
 		

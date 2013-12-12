@@ -6,6 +6,7 @@ DEBUG = False
 pantalla_ancho = 900
 pantalla_alto = 500
 data_dir = os.path.dirname(os.path.abspath(__file__)) + '/'
+navegacion_camara_x = 0.0
 
 def init():
 	sims = None
@@ -17,7 +18,7 @@ def debug(msg, categoria='DEBUG'):
 		print "DEBUG:", msg
 
 
-def texto_a_lineas(texto, caracteres_por_linea, separador=' '):
+def __texto_a_lineas(texto, caracteres_por_linea, separador=' '):
 	lineas = []
 	texto = texto
 	longitud = len(texto)	

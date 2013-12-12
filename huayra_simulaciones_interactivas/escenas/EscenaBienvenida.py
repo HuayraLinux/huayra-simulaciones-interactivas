@@ -21,4 +21,4 @@ class EscenaBienvenida(pilas.escena.Base):
 		
 		
 	def clickeado(self, evento):
-		pilas.mundo.agregar_tarea(1, self.cambiar_escena)
+		pilas.mundo.agregar_tarea(.2, self.cambiar_escena)

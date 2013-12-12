@@ -14,50 +14,50 @@ class EscenaSimulacion(pilas.escena.Base):
 	
 	def iniciar(self):
 		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_item.png")
-		
-		# posiciones corregidas
-		x_titulo_corregida = pilas.escena_actual().camara.x - main.simulacion_activa.actores[0].x		
-		x_screenshot_corregida = pilas.escena_actual().camara.x - main.simulacion_activa.actores[1].x		
-		
-		pilas.escena_actual().camara.x = 0
-		
-		descripcion = main.texto_a_lineas(main.simulacion_activa.descripcion, 45)
-		descripcion = '\n'.join(descripcion)
-		
+				
 		self.sim = Simulacion(
 			titulo=main.simulacion_activa.titulo,
 			screenshot=main.simulacion_activa.screenshot,
-			descripcion=descripcion,
+			descripcion=main.simulacion_activa.descripcion,
 			archivo=main.simulacion_activa.archivo,
 		)
 		
-		# Título
-		titulo = self.sim.actores[0]
-		titulo.x = x_titulo_corregida
-		titulo.y = main.simulacion_activa.actores[0].y
 		# Screenshot
 		screenshot = self.sim.actores[1]
-		screenshot.centro = ("centro", "arriba")
-		screenshot.x = x_screenshot_corregida
+		screenshot.x = main.simulacion_activa.actores[1].x
 		screenshot.y = main.simulacion_activa.actores[1].y
+		screenshot.centro = ("centro", "arriba")
+				
+		# Título
+		titulo = self.sim.actores[0]
+		
+		titulo.x = 0
+		titulo.y = main.simulacion_activa.actores[0].y
+		titulo.ancho = 440
+		titulo.centro = ('izquierda', 'arriba')
+		
 		# Descripción
 		descripcion = self.sim.actores[2]
 		descripcion.magnitud = 12
-		descripcion.centro = ("izquierda", "arriba")
+		descripcion.ancho = 440
+		descripcion.centro = ('izquierda', 'arriba')
+		
 		# Área de contacto
 		self.sim.area_contacto.y = 30
 		
 		# 
 		# las posiciones dependen del tamaño del screenshot
-		ancho_texto_activo = main.simulacion_activa.actores[0].ancho
 		ancho_screenshot_activo = main.simulacion_activa.actores[1].ancho
-		posicion_final_screenshot = -(main.pantalla_ancho / 2) + (ancho_screenshot_activo / 2) + 120
-		posicion_final_titulo = posicion_final_screenshot + (ancho_screenshot_activo / 2) + (ancho_texto_activo / 2) + 20
- 		titulo.x = pilas.interpolar(posicion_final_titulo, tipo='desaceleracion_gradual', duracion=1)
-		screenshot.x = pilas.interpolar(posicion_final_screenshot, tipo='desaceleracion_gradual', duracion=1)
+		posicion_final_screenshot = -380 + (ancho_screenshot_activo / 2)
+		posicion_final_texto = -380 + (ancho_screenshot_activo) + 20
+ 		
+ 		titulo.x = pilas.interpolar(posicion_final_texto, tipo='desaceleracion_gradual', duracion=1)
  		titulo.y = pilas.interpolar(self.sim.actores[1].y - 10, tipo='desaceleracion_gradual', duracion=1)
-		descripcion.x = posicion_final_screenshot + (ancho_screenshot_activo/2) + 20
-		descripcion.y = titulo.y - 80
+		
+		screenshot.x = pilas.interpolar(posicion_final_screenshot, tipo='desaceleracion_gradual', duracion=1)
+ 		
+		descripcion.x = posicion_final_texto
+		descripcion.y = titulo.y - titulo.alto - 60
 		descripcion.transparencia = 100
 		descripcion.transparencia = [0]
 		
@@ -79,6 +79,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		
 		" Lanzar "		
 		pilas.escena_actual().termina_click.conectar(self.clickear_flecha, id='clickear_flecha')
+		pilas.escena_actual().mueve_mouse.conectar(self.mouse_sobre_lanzador, id='sobre_lanzador')
 		pilas.escena_actual().click_de_mouse.conectar(self.clickear_lanzador, id='clickear_lanzador')
 		
 	
@@ -111,12 +112,19 @@ class EscenaSimulacion(pilas.escena.Base):
 		# Esta tocando la simulación?                                                                  
 		if self.boton_volver.colisiona_con_un_punto(x, y):
 			self.sim.x = pilas.interpolar(-1500, tipo='desaceleracion_gradual', duracion=1)
-			pilas.mundo.agregar_tarea(1, self.volver)
+			pilas.mundo.agregar_tarea(0.5, self.volver)
+
+		
+	def mouse_sobre_lanzador(self, evento):
+		x, y = evento.x, evento.y
+		# Esta tocando la simulación?                                                                  
+		if self.sim.actores[1].colisiona_con_un_punto(x, y):
+			pilas.avisar(u"Click para lanzar simulación...", retraso=5)
 
 		
 	def clickear_lanzador(self, evento):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
 		if self.sim.actores[1].colisiona_con_un_punto(x, y):
-			subprocess.call(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])
 			pilas.avisar(u"Lanzando simulación...", retraso=5)
+			subprocess.Popen(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])

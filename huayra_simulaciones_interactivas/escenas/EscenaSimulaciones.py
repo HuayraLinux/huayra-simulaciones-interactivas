@@ -12,13 +12,12 @@ from EscenaSimulacion import EscenaSimulacion
 class EscenaSimulaciones(pilas.escena.Base):
 	
 	nav = None  # Navegación de categorías
-	camara_x = 0.0
 	
 	def __init__(self):
 		Base.__init__(self)
 			
 	
-	def iniciar(self):
+	def iniciar(self):		
 		
 		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_lista.png")
 		fondo.fijo = True
@@ -50,7 +49,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 
 
 		self.nav.aparecer()
-				
+		
 		# Flechas
 		self.prev = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
@@ -86,28 +85,26 @@ class EscenaSimulaciones(pilas.escena.Base):
 		)
 		
 		 
-		 
 	def cuando_pulsan_el_boton(self, arg):
 		if arg == "next":
 			self.next.pintar_presionado()
 		else:
 			self.prev.pintar_presionado()
-		pilas.avisar("Han pulsado el boton")
+
 
 	def cuando_pasa_sobre_el_boton(self, arg):
 		if arg == "next":
 			self.next.pintar_sobre()
 		else:
 			self.prev.pintar_sobre()
-		pilas.avisar("Pasa el mouse sobre el boton")
+
 
 	def cuando_deja_de_pulsar(self, arg):
 		if arg == "next":
 			self.next.pintar_normal()
 		else:
 			self.prev.pintar_normal()
-	
-	
+			
 	
 	def conectar_eventos(self):
 		pilas.escena_actual().click_de_mouse.conectar(self.mover, id='clickear_flechas')
@@ -122,7 +119,6 @@ class EscenaSimulaciones(pilas.escena.Base):
 		pilas.escena_actual().mueve_rueda.desconectar_por_id('mover_simulaciones_desde_rueda')
 		pilas.escena_actual().suelta_tecla.desconectar_por_id('mover_simulaciones_desde_teclado')
 	
-		 
 	
 	def mover(self, evento):
 		self.desconectar_eventos()
@@ -140,7 +136,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 				paso = evento.delta
 			
 		elif evento.has_key("x"):  # click
-			x, y = evento.x - pilas.escena_actual().camara.x, evento.y  # X corregido
+			x, y = evento.x, evento.y
 			# Esta tocando la flecha?                                                                           
 			if self.prev.colisiona_con_un_punto(x, y):
 				paso = -1
@@ -169,10 +165,12 @@ class EscenaSimulaciones(pilas.escena.Base):
 			
 		self.camara_x = self.nav.paso * actual + 0.0
 		
+		
 		if self.camara_x != pilas.escena_actual().camara.x:
 			main.sims.sounds['navegacion_simulaciones_mover'].play()
 			self.nav.setear_tamanios()
 			pilas.escena_actual().camara.x = pilas.interpolar(self.camara_x, tipo='desaceleracion_gradual', duracion=.2)
+			main.navegacion_camara_x = self.camara_x
 			pilas.mundo.agregar_tarea(.2, self.conectar_eventos)
 		else:
 			self.conectar_eventos()
@@ -187,6 +185,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		# Esta tocando la simulación?                                                                  
 		if self.nav.actores[self.nav.actual].area_contacto.colisiona_con_un_punto(x, y):
 			main.simulacion_activa = self.nav.actores[self.nav.actual]
+			
 			self.desconectar_eventos()
 			
 			self.nav.desaparecer_restantes()

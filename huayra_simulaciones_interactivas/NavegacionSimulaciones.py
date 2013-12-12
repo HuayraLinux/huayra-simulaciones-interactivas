@@ -15,11 +15,12 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 	
 	
 	def __init__(self, x=0, y=0):
+		
 		self.actores = pilas.grupo.Grupo()		
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
-		
+
 
 	def iniciar_valores(self):
 		self.paso = Simulacion.ancho + Simulacion.separacion
