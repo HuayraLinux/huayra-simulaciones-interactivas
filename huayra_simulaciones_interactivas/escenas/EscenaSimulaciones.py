@@ -23,7 +23,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		fondo.fijo = True
 		
 		# Categorías
-		self.nav = NavegacionSimulaciones()
+		self.nav = NavegacionSimulaciones(actual=main.simulacion_actual)
 		i = 0
 		for sim in main.sims.simulaciones:
 			self.nav.actores.append(
@@ -47,8 +47,8 @@ class EscenaSimulaciones(pilas.escena.Base):
 
 			i = i+1
 
-
 		self.nav.aparecer()
+		pilas.escena_actual().camara.x = main.navegacion_camara_x
 		
 		# Flechas
 		self.prev = pilas.actores.Boton(			
@@ -191,6 +191,8 @@ class EscenaSimulaciones(pilas.escena.Base):
 			self.nav.desaparecer_restantes()
 			self.prev.transparencia = [100]
 			self.next.transparencia = [100]
+			
+			main.simulacion_actual = self.nav.actual
 			
 			pilas.mundo.agregar_tarea(1, self.cambiar_escena)
 

@@ -10,16 +10,16 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 	
 	ancho = 0
 	paso = 0
-	actual = 0
 	total = 0
 	
 	
-	def __init__(self, x=0, y=0):
+	def __init__(self, x=0, y=0, actual=0):
 		
 		self.actores = pilas.grupo.Grupo()		
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
 		self.y = y
+		self.actual = actual
 
 
 	def iniciar_valores(self):

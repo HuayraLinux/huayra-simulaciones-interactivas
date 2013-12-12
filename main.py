@@ -7,6 +7,7 @@ pantalla_ancho = 900
 pantalla_alto = 500
 data_dir = os.path.dirname(os.path.abspath(__file__)) + '/'
 navegacion_camara_x = 0.0
+simulacion_actual = 0
 
 def init():
 	sims = None
