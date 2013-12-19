@@ -44,7 +44,8 @@ for div_letter in div_sims.findAll('div'):
 			'titulo': sim_soup.find('h1', attrs={'class': 'simulation-main-title'}).contents[0],
 			'descripcion': contenedor.find('span', attrs={'itemprop': 'description about'}).contents[0],
 			'screenshot': screenshot,
-			'archivo': archivo
+			'archivo': archivo,
+			'categorias': []
 		}
 		simulaciones.append(sim)
 		

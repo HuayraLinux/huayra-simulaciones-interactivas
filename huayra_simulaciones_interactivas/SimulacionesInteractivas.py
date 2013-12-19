@@ -25,7 +25,7 @@ class SimulacionesInteractivas:
 			gravedad=(0, 0), 
 			pantalla_completa=False,
 			permitir_depuracion=True, 
-			audio='phonon', 
+			audio='pygame', 
 			centrado=True
 		)
 		
