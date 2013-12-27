@@ -29,5 +29,5 @@ sys.path.append('/usr/share/huayra-simulaciones-interactivas')
 
 main.init()
 main.sims = SimulacionesInteractivas()
-main.sims.cargar_simulaciones_desde_archivo('simulaciones')
+main.sims.cargar_simulaciones_desde_archivo('simulaciones_categorias')
 main.sims.iniciar()

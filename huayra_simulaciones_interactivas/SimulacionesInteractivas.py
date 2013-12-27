@@ -11,6 +11,8 @@ import main
 class SimulacionesInteractivas:
 	
 	simulaciones = []
+	simulaciones_list = []
+	categorias = []
 	sounds = []
 			
 	" Inicializa pilas y propiedades de las simulaciones "
@@ -40,9 +42,17 @@ class SimulacionesInteractivas:
 		pilas.cambiar_escena(EscenaBienvenida())	
 		pilas.ejecutar()
 
+
+	def simulaciones_por_categoria(self, categoria=main.categoria_actual):
+		print "simulaciones_por_categoria:",main.categoria_actual
+		self.simulaciones = [sim_content for sim_id, sim_content in self.simulaciones_list.iteritems() if sim_id in self.categorias[main.categoria_actual.encode('utf8')]]
+		
+	
 	" Cargar desde un archivo con formato dict de python "
 	def cargar_simulaciones_desde_archivo(self, simulaciones_file):
 		"El archivo es relativo a donde se ejecuta el script principal, y debe reemplazarse las barras por puntos"
-		exec "from " + simulaciones_file + " import simulaciones"
-		self.simulaciones = simulaciones
+		exec "from " + simulaciones_file + " import simulaciones, categorias"
+		self.categorias = categorias
+		self.simulaciones_list = simulaciones
+		
 

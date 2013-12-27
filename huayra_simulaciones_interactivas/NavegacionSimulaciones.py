@@ -12,9 +12,7 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 	paso = 0
 	total = 0
 	
-	
 	def __init__(self, x=0, y=0, actual=0):
-		
 		self.actores = pilas.grupo.Grupo()		
 		pilas.actores.Actor.__init__(self, 'invisible.png')
 		self.x = x
@@ -72,5 +70,4 @@ class NavegacionSimulaciones(pilas.actores.Actor):
 		
 		self.actores[self.actual].escala = 1
 		self.actores[self.actual].transparencia = 0
-		
 		

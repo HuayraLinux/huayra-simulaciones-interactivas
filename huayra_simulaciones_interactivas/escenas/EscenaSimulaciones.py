@@ -11,7 +11,7 @@ from EscenaSimulacion import EscenaSimulacion
 
 class EscenaSimulaciones(pilas.escena.Base):
 	
-	nav = None  # Navegación de categorías
+	nav = None
 	
 	def __init__(self):
 		Base.__init__(self)
@@ -21,9 +21,12 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_lista.png")
 		fondo.fijo = True
-		
+		print main.categoria_actual
 		# Categorías
+		main.sims.simulaciones_por_categoria(main.categoria_actual)
+		
 		self.nav = NavegacionSimulaciones(actual=main.simulacion_actual)
+		
 		i = 0
 		for sim in main.sims.simulaciones:
 			self.nav.actores.append(
@@ -83,6 +86,11 @@ class EscenaSimulaciones(pilas.escena.Base):
 			magnitud=12,
 			autoeliminar=True
 		)
+		
+		opciones = pilas.interfaz.ListaSeleccion([cat.decode('utf8') for cat in main.sims.categorias.keys()], self.cuando_selecciona_categoria)
+		opciones.x = -440
+		opciones.y = 240
+		opciones.centro = ("izquierda", "arriba")
 		
 		 
 	def cuando_pulsan_el_boton(self, arg):
@@ -196,4 +204,16 @@ class EscenaSimulaciones(pilas.escena.Base):
 			
 			pilas.mundo.agregar_tarea(1, self.cambiar_escena)
 
-			
+		
+	def cuando_selecciona_categoria(self, seleccion):
+		if seleccion == main.categoria_actual:
+			return
+		pilas.avisar(u"Ha seleccionado la opción: " + seleccion)
+		main.sims.simulacion_actual = 0
+		main.categoria_actual = seleccion
+		pilas.mundo.agregar_tarea(.2, self.recargar_escena)
+
+	
+	def recargar_escena(self):
+		pilas.cambiar_escena(EscenaSimulaciones())
+
