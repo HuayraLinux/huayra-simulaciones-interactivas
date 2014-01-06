@@ -87,7 +87,11 @@ class EscenaSimulaciones(pilas.escena.Base):
 			autoeliminar=True
 		)
 		
-		opciones = pilas.interfaz.ListaSeleccion([cat.decode('utf8') for cat in main.sims.categorias.keys()], self.cuando_selecciona_categoria)
+		
+		cats = main.sims.categorias.keys()
+		todas_sims = cats.pop(cats.index(u'Todas las simulaciones'))
+		cats = [todas_sims] + cats # Reordenando
+		opciones = pilas.interfaz.ListaSeleccion([cat.decode('utf8') for cat in cats], self.cuando_selecciona_categoria)
 		opciones.x = -440
 		opciones.y = 240
 		opciones.centro = ("izquierda", "arriba")
@@ -209,8 +213,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		if seleccion == main.categoria_actual:
 			return
 		pilas.avisar(u"Ha seleccionado la opción: " + seleccion)
-		main.sims.simulacion_actual = 0
 		main.categoria_actual = seleccion
+		main.sims.simulacion_actual = 0
+		main.navegacion_camara_x = 0.0
 		pilas.mundo.agregar_tarea(.2, self.recargar_escena)
 
 	
