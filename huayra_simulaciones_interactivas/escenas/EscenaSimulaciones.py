@@ -7,6 +7,8 @@ from pilas.escena import Base
 from huayra_simulaciones_interactivas.actores.Simulacion import Simulacion
 from huayra_simulaciones_interactivas.actores.NavegacionSimulaciones import NavegacionSimulaciones
 from EscenaSimulacion import EscenaSimulacion
+from ..Paginacion import Paginacion
+from huayra_simulaciones_interactivas.actores.Paginador import Paginador
 
 
 class EscenaSimulaciones(pilas.escena.Base):
@@ -21,7 +23,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_lista.png")
 		fondo.fijo = True
-		print main.categoria_actual
+		
 		# Categorías
 		main.sims.simulaciones_por_categoria(main.categoria_actual)
 		
@@ -95,6 +97,11 @@ class EscenaSimulaciones(pilas.escena.Base):
 		opciones.x = -440
 		opciones.y = 240
 		opciones.centro = ("izquierda", "arriba")
+		
+		# Paginador
+		paginacion = Paginacion(cantidad_elementos=len(main.sims.simulaciones))
+		paginador = Paginador(paginas=paginacion.paginas)
+		paginador.renderizar()
 		
 		 
 	def cuando_pulsan_el_boton(self, arg):
