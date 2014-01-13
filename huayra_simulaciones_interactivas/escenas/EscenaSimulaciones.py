@@ -40,8 +40,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 				)
 			)
 			# Título
-			self.nav.actores[i].actores[0].y = 170
-			#self.nav.actores[i].actores[0].color = pilas.colores.Color(155, 237, 79)
+			self.nav.actores[i].actores[0].y = 170			
 			# Screenshot
 			self.nav.actores[i].actores[1].centro = ("centro", "arriba")
 			self.nav.actores[i].actores[1].y = 130
@@ -100,7 +99,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		# Paginador
 		paginacion = Paginacion(cantidad_elementos=len(main.sims.simulaciones))
-		paginador = Paginador(paginas=paginacion.paginas)
+		paginador = Paginador(paginas=paginacion.paginas, y=1000)
 		paginador.renderizar()
 		
 		 

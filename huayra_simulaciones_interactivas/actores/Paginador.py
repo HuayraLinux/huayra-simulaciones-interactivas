@@ -22,6 +22,9 @@ class Paginador(pilas.actores.Actor):
 		
 		pagina = 1
 		while pagina <= self.paginas:
-			print "[" + str(pagina) + "]"
+			# print "[" + str(pagina) + "]"
+			self.botones.append(
+				pilas.interfaz.Boton(str(pagina), x=30*pagina)
+			)
 			pagina += 1
 		
