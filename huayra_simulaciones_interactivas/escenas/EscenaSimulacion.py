@@ -3,7 +3,7 @@ import pilas
 import subprocess  # Para lanzar la simulación
 import main
 from pilas.escena import Base
-from ..Simulacion import Simulacion
+from huayra_simulaciones_interactivas.actores.Simulacion import Simulacion
 
 
 class EscenaSimulacion(pilas.escena.Base):

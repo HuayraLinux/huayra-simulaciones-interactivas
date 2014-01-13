@@ -4,8 +4,8 @@ import pilas
 import pilas.evento
 import main
 from pilas.escena import Base
-from ..Simulacion import Simulacion
-from ..NavegacionSimulaciones import NavegacionSimulaciones
+from huayra_simulaciones_interactivas.actores.Simulacion import Simulacion
+from huayra_simulaciones_interactivas.actores.NavegacionSimulaciones import NavegacionSimulaciones
 from EscenaSimulacion import EscenaSimulacion
 
 
