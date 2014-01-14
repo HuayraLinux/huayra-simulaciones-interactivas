@@ -55,6 +55,20 @@ class EscenaSimulaciones(pilas.escena.Base):
 		pilas.escena_actual().camara.x = main.navegacion_camara_x
 		
 		# Flechas
+		
+		# Prev reloaded
+		self.prev = pilas.actores.Boton(			
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_over.png',
+		)
+		self.prev.fijo = True
+		self.prev.x = -250
+		self.prev.y = -170
+		self.prev.conectar_presionado(self.cuando_pulsan_el_boton, arg="prev")
+		self.prev.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
+		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
+		# Prev normal
 		self.prev = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
 			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
@@ -67,6 +81,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.prev.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
 		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
 				
+		
 		self.next = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proximo.png',
 			ruta_press=main.data_dir + 'imagenes/gui/flecha_proximo_presionada.png',
@@ -98,9 +113,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		opciones.centro = ("izquierda", "arriba")
 		
 		# Paginador
-		paginacion = Paginacion(cantidad_elementos=len(main.sims.simulaciones))
-		paginador = Paginador(paginas=paginacion.paginas, y=1000)
-		paginador.renderizar()
+		# paginacion = Paginacion(cantidad_elementos=len(main.sims.simulaciones))
+		# paginador = Paginador(paginas=paginacion.paginas, y=-100)
+		# paginador.renderizar()
 		
 		 
 	def cuando_pulsan_el_boton(self, arg):
