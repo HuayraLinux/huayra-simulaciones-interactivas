@@ -5,6 +5,7 @@ import pilas.evento
 import main
 from pilas.escena import Base
 from huayra_simulaciones_interactivas.actores.Simulacion import Simulacion
+from huayra_simulaciones_interactivas.interfaz.ListaSeleccion import ListaSeleccion
 from huayra_simulaciones_interactivas.actores.NavegacionSimulaciones import NavegacionSimulaciones
 from EscenaSimulacion import EscenaSimulacion
 from ..Paginacion import Paginacion
@@ -57,17 +58,18 @@ class EscenaSimulaciones(pilas.escena.Base):
 		# Flechas
 		
 		# Prev reloaded
-		self.prev = pilas.actores.Boton(			
+		self.prev_reloaded = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
 			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
 			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_over.png',
 		)
-		self.prev.fijo = True
-		self.prev.x = -250
-		self.prev.y = -170
-		self.prev.conectar_presionado(self.cuando_pulsan_el_boton, arg="prev")
-		self.prev.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
-		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
+		self.prev_reloaded.fijo = True
+		self.prev_reloaded.x = -350
+		self.prev_reloaded.y = -170
+		self.prev_reloaded.conectar_presionado(self.cuando_pulsan_el_boton, arg="prev_reloaded")
+		self.prev_reloaded.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev_reloaded")
+		self.prev_reloaded.conectar_normal(self.cuando_deja_de_pulsar, arg="prev_reloaded")
+		
 		# Prev normal
 		self.prev = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
@@ -81,7 +83,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.prev.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
 		self.prev.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
 				
-		
+		# Next normal
 		self.next = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proximo.png',
 			ruta_press=main.data_dir + 'imagenes/gui/flecha_proximo_presionada.png',
@@ -93,6 +95,19 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.next.conectar_presionado(self.cuando_pulsan_el_boton, arg="next")
 		self.next.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="next")
 		self.next.conectar_normal(self.cuando_deja_de_pulsar, arg="next") 
+		
+		# Next reloaded
+		self.next_reloaded = pilas.actores.Boton(			
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proximo.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_proximo_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_proximo_over.png',
+		)
+		self.next_reloaded.fijo = True
+		self.next_reloaded.x = 350
+		self.next_reloaded.y = -170
+		self.next_reloaded.conectar_presionado(self.cuando_pulsan_el_boton, arg="next_reloaded")
+		self.next_reloaded.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="next_reloaded")
+		self.next_reloaded.conectar_normal(self.cuando_deja_de_pulsar, arg="next_reloaded") 
 				
 		
 		self.conectar_eventos()
@@ -102,12 +117,13 @@ class EscenaSimulaciones(pilas.escena.Base):
 			magnitud=12,
 			autoeliminar=True
 		)
-		
-		
+				
 		cats = main.sims.categorias.keys()
 		todas_sims = cats.pop(cats.index('Todas las simulaciones'))
 		cats = [todas_sims] + cats # Reordenando
-		opciones = pilas.interfaz.ListaSeleccion([cat.decode('utf8') for cat in cats], self.cuando_selecciona_categoria)
+		cats = [cat.decode('utf8') for cat in cats]
+		
+		opciones = ListaSeleccion(cats, self.cuando_selecciona_categoria, indice_opcion_seleccionada=cats.index(main.categoria_actual))
 		opciones.x = -440
 		opciones.y = 240
 		opciones.centro = ("izquierda", "arriba")
@@ -119,24 +135,22 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		 
 	def cuando_pulsan_el_boton(self, arg):
-		if arg == "next":
-			self.next.pintar_presionado()
-		else:
-			self.prev.pintar_presionado()
-
+		try:
+			getattr(self, arg).pintar_presionado()
+		except Error:
+			pass
 
 	def cuando_pasa_sobre_el_boton(self, arg):
-		if arg == "next":
-			self.next.pintar_sobre()
-		else:
-			self.prev.pintar_sobre()
-
+		try:
+			getattr(self, arg).pintar_sobre()
+		except Error:
+			pass
 
 	def cuando_deja_de_pulsar(self, arg):
-		if arg == "next":
-			self.next.pintar_normal()
-		else:
-			self.prev.pintar_normal()
+		try:
+			getattr(self, arg).pintar_normal()
+		except Error:
+			pass
 			
 	
 	def conectar_eventos(self):
@@ -175,6 +189,10 @@ class EscenaSimulaciones(pilas.escena.Base):
 				paso = -1
 			elif self.next.colisiona_con_un_punto(x, y):
 				paso = 1
+			elif self.prev_reloaded.colisiona_con_un_punto(x, y):
+				paso = -3
+			elif self.next_reloaded.colisiona_con_un_punto(x, y):
+				paso = 3
 				
 		elif evento.has_key("codigo"):  # teclado
 			if evento.codigo == 1:  # left arrow
