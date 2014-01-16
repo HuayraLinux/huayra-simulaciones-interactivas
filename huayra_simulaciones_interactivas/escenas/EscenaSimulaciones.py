@@ -117,7 +117,7 @@ class EscenaSimulaciones(pilas.escena.Base):
 			magnitud=12,
 			autoeliminar=True
 		)
-				
+		
 		cats = main.sims.categorias.keys()
 		todas_sims = cats.pop(cats.index('Todas las simulaciones'))
 		cats = [todas_sims] + cats # Reordenando
@@ -133,18 +133,36 @@ class EscenaSimulaciones(pilas.escena.Base):
 		# paginador = Paginador(paginas=paginacion.paginas, y=-100)
 		# paginador.renderizar()
 		
+		# Texto contador
+		self.texto_navegacion = pilas.actores.Texto(self.get_texto_navegacion(main.simulacion_actual+1, len(main.sims.simulaciones)), y=245, ancho=200)
+		self.acomodar_texto(main.simulacion_actual+1)
 		 
+		 
+	def get_texto_navegacion(self, actual, total):
+		return str(actual) + " de " + str(total)
+		
+		
+	def acomodar_texto(self, actual):
+		self.texto_navegacion.centro = ("izquierda", "arriba")
+		if actual > 9:
+			self.texto_navegacion.x = -62
+		else:
+			self.texto_navegacion.x = -45
+	
+	
 	def cuando_pulsan_el_boton(self, arg):
 		try:
 			getattr(self, arg).pintar_presionado()
 		except Error:
 			pass
 
+
 	def cuando_pasa_sobre_el_boton(self, arg):
 		try:
 			getattr(self, arg).pintar_sobre()
 		except Error:
 			pass
+
 
 	def cuando_deja_de_pulsar(self, arg):
 		try:
@@ -225,7 +243,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 			pilas.mundo.agregar_tarea(.2, self.conectar_eventos)
 		else:
 			self.conectar_eventos()
-	
+		
+		self.texto_navegacion.texto = self.get_texto_navegacion(actual + 1, len(main.sims.simulaciones))
+		self.acomodar_texto(actual+1)
 	
 	def cambiar_escena(self):
 		pilas.cambiar_escena(EscenaSimulacion())
@@ -242,6 +262,8 @@ class EscenaSimulaciones(pilas.escena.Base):
 			self.nav.desaparecer_restantes()
 			self.prev.transparencia = [100]
 			self.next.transparencia = [100]
+			self.prev_reloaded.transparencia = [100]
+			self.next_reloaded.transparencia = [100]
 			
 			main.simulacion_actual = self.nav.actual
 			
