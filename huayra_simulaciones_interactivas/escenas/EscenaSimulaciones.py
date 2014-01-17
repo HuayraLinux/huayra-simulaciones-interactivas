@@ -52,8 +52,10 @@ class EscenaSimulaciones(pilas.escena.Base):
 
 			i = i+1
 
+		# Fix de la cámara que no se posiciona en las net
+		pilas.mundo.agregar_tarea(.001, self.acomodar_camara)
+		
 		self.nav.aparecer()
-		pilas.escena_actual().camara.x = main.navegacion_camara_x
 		
 		# Flechas
 		
@@ -137,6 +139,11 @@ class EscenaSimulaciones(pilas.escena.Base):
 		self.texto_navegacion = pilas.actores.Texto(self.get_texto_navegacion(main.simulacion_actual+1, len(main.sims.simulaciones)), y=245, ancho=200)
 		self.acomodar_texto(main.simulacion_actual+1)
 		 
+    
+	def acomodar_camara(self):
+		main.debug("Acomodando cámara")
+		pilas.escena_actual().camara.x = main.navegacion_camara_x
+			
 		 
 	def get_texto_navegacion(self, actual, total):
 		return str(actual) + " de " + str(total)
@@ -273,7 +280,6 @@ class EscenaSimulaciones(pilas.escena.Base):
 	def cuando_selecciona_categoria(self, seleccion):
 		if seleccion == main.categoria_actual:
 			return
-		pilas.avisar(u"Ha seleccionado la opción: " + seleccion)
 		main.categoria_actual = seleccion
 		main.simulacion_actual = 0
 		main.navegacion_camara_x = 0.0

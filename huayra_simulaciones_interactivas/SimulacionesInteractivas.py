@@ -44,7 +44,6 @@ class SimulacionesInteractivas:
 
 
 	def simulaciones_por_categoria(self, categoria=main.categoria_actual):
-		# print "simulaciones_por_categoria:",main.categoria_actual
 		self.simulaciones = [sim_content for sim_id, sim_content in self.simulaciones_list.iteritems() if sim_id in self.categorias[main.categoria_actual.encode('utf8')]]
 		
 	
