@@ -43,7 +43,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		descripcion.centro = ('izquierda', 'arriba')
 		
 		# Área de contacto
-		self.sim.area_contacto.y = 30
+		# self.sim.area_contacto.y = 30
 		
 		# 
 		# las posiciones dependen del tamaño del screenshot
@@ -70,36 +70,53 @@ class EscenaSimulacion(pilas.escena.Base):
 		self.boton_volver.fijo = True
 		self.boton_volver.x = 250
 		self.boton_volver.y = -170
-		self.boton_volver.conectar_presionado(self.cuando_pulsan_el_boton, arg="prev")
-		self.boton_volver.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="prev")
-		self.boton_volver.conectar_normal(self.cuando_deja_de_pulsar, arg="prev") 
+		self.boton_volver.conectar_presionado(self.cuando_pulsan_el_boton, arg="boton_volver")
+		self.boton_volver.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="boton_volver")
+		self.boton_volver.conectar_normal(self.cuando_deja_de_pulsar, arg="boton_volver") 
+		
+		self.texto_volver = pilas.actores.Actor(main.data_dir + 'imagenes/gui/label_volver.png', x=170, y=-160)
+		
+		" Botón lanzar "
+		self.boton_lanzar = pilas.actores.Boton(			
+			ruta_normal=main.data_dir + 'imagenes/gui/simular_normal.png',
+			ruta_press=main.data_dir + 'imagenes/gui/simular_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/simular_over.png',
+		)
+		self.boton_lanzar.fijo = True
+		self.boton_lanzar.x = 340
+		self.boton_lanzar.y = -170
+		self.boton_lanzar.conectar_presionado(self.cuando_pulsan_el_boton, arg="boton_lanzar")
+		self.boton_lanzar.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="boton_lanzar")
+		self.boton_lanzar.conectar_normal(self.cuando_deja_de_pulsar, arg="boton_lanzar") 
 		
 		self.texto_volver = pilas.actores.Actor(main.data_dir + 'imagenes/gui/label_volver.png', x=170, y=-160)
 		
 		
-		" Lanzar "		
+		" Lanzar "
 		pilas.escena_actual().termina_click.conectar(self.clickear_flecha, id='clickear_flecha')
 		pilas.escena_actual().mueve_mouse.conectar(self.mouse_sobre_lanzador, id='sobre_lanzador')
 		pilas.escena_actual().click_de_mouse.conectar(self.clickear_lanzador, id='clickear_lanzador')
 		
 	
 	def cuando_pulsan_el_boton(self, arg):
-		if arg == "next":
-			self.next.pintar_presionado()
-		else:
-			self.boton_volver.pintar_presionado()
+		try:
+			getattr(self, arg).pintar_presionado()
+		except Error:
+			pass
+
 
 	def cuando_pasa_sobre_el_boton(self, arg):
-		if arg == "next":
-			self.next.pintar_sobre()
-		else:
-			self.boton_volver.pintar_sobre()
+		try:
+			getattr(self, arg).pintar_sobre()
+		except Error:
+			pass
+
 
 	def cuando_deja_de_pulsar(self, arg):
-		if arg == "next":
-			self.next.pintar_normal()
-		else:
-			self.boton_volver.pintar_normal()
+		try:
+			getattr(self, arg).pintar_normal()
+		except Error:
+			pass
 			
 				
 	def volver(self):
@@ -109,7 +126,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		
 	def clickear_flecha(self, evento):
 		x, y = evento.x, evento.y
-		# Esta tocando la simulación?                                                                  
+		# Esta tocando la flecha para volver?                                                                  
 		if self.boton_volver.colisiona_con_un_punto(x, y):
 			self.sim.x = pilas.interpolar(-1500, tipo='desaceleracion_gradual', duracion=1)
 			pilas.mundo.agregar_tarea(0.5, self.volver)
@@ -118,13 +135,13 @@ class EscenaSimulacion(pilas.escena.Base):
 	def mouse_sobre_lanzador(self, evento):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
-		if self.sim.actores[1].colisiona_con_un_punto(x, y):
+		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
 			pilas.avisar(u"Click para lanzar simulación...", retraso=5)
 
 		
 	def clickear_lanzador(self, evento):
 		x, y = evento.x, evento.y
-		# Esta tocando la simulación?                                                                  
-		if self.sim.actores[1].colisiona_con_un_punto(x, y):
+		# Esta tocando la simulación?                             
+		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
 			pilas.avisar(u"Lanzando simulación...", retraso=5)
-			subprocess.Popen(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])
+			subprocess.call(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])

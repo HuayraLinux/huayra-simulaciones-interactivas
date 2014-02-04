@@ -61,9 +61,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		# Prev reloaded
 		self.prev_reloaded = pilas.actores.Boton(			
-			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver.png',
-			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_presionada.png',
-			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_over.png',
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_volver_pagina.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_volver_pagina_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_volver_pagina_over.png',
 		)
 		self.prev_reloaded.fijo = True
 		self.prev_reloaded.x = -350
@@ -100,16 +100,16 @@ class EscenaSimulaciones(pilas.escena.Base):
 		
 		# Next reloaded
 		self.next_reloaded = pilas.actores.Boton(			
-			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proximo.png',
-			ruta_press=main.data_dir + 'imagenes/gui/flecha_proximo_presionada.png',
-			ruta_over=main.data_dir + 'imagenes/gui/flecha_proximo_over.png',
+			ruta_normal=main.data_dir + 'imagenes/gui/flecha_proxima_pagina.png',
+			ruta_press=main.data_dir + 'imagenes/gui/flecha_proxima_pagina_presionada.png',
+			ruta_over=main.data_dir + 'imagenes/gui/flecha_proxima_pagina_over.png',
 		)
 		self.next_reloaded.fijo = True
 		self.next_reloaded.x = 350
 		self.next_reloaded.y = -170
 		self.next_reloaded.conectar_presionado(self.cuando_pulsan_el_boton, arg="next_reloaded")
 		self.next_reloaded.conectar_sobre(self.cuando_pasa_sobre_el_boton, arg="next_reloaded")
-		self.next_reloaded.conectar_normal(self.cuando_deja_de_pulsar, arg="next_reloaded") 
+		self.next_reloaded.conectar_normal(self.cuando_deja_de_pulsar, arg="next_reloaded")
 				
 		
 		self.conectar_eventos()
