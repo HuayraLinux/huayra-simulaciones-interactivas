@@ -137,11 +137,12 @@ class EscenaSimulacion(pilas.escena.Base):
 		# Esta tocando la simulación?                                                                  
 		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
 			pilas.avisar(u"Click para lanzar simulación...", retraso=5)
+							
 
-		
 	def clickear_lanzador(self, evento):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                             
 		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
-			pilas.avisar(u"Lanzando simulación...", retraso=5)
-			subprocess.call(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.sim.archivo])
+			from EscenaSimulacionEnCurso import EscenaSimulacionEnCurso
+			pilas.almacenar_escena(EscenaSimulacionEnCurso(self.sim.archivo))
+			
