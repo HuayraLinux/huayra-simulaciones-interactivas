@@ -16,12 +16,12 @@ class EscenaSimulacionEnCurso(pilas.escena.Base):
 	def iniciar(self):
 		fondo = pilas.fondos.Fondo(main.data_dir + "imagenes/gui/fondo_lista.png")
 		pilas.mundo.agregar_tarea(.5, self.lanzar_simulacion)
-		pilas.mundo.agregar_tarea(3, self.conectar_click)
+		pilas.mundo.agregar_tarea(5, self.conectar_click)
 		
 		grilla = pilas.imagenes.cargar_grilla(main.data_dir + "imagenes/gui/grilla-engranajes.png", 3)
-		self.engranajes = pilas.actores.Animacion(grilla, ciclica=True)
+		self.engranajes = pilas.actores.Animacion(grilla, ciclica=True, y=70)
 		
-		
+		pilas.actores.Texto(u"Simulación en curso")	
 		
 
 	def lanzar_simulacion(self):
