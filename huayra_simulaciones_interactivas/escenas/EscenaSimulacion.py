@@ -77,6 +77,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		self.texto_volver = pilas.actores.Actor(main.data_dir + 'imagenes/gui/label_volver.png', x=170, y=-160)
 		
 		" Botón lanzar "
+		self.texto_lanzar = pilas.actores.Texto(u"Lanzar Simulación", x=340, y=-220, magnitud=12)
 		self.boton_lanzar = pilas.actores.Boton(			
 			ruta_normal=main.data_dir + 'imagenes/gui/simular_normal.png',
 			ruta_press=main.data_dir + 'imagenes/gui/simular_presionada.png',
@@ -136,7 +137,7 @@ class EscenaSimulacion(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
 		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
-			pilas.avisar(u"Click para lanzar simulación...", retraso=5)
+			pilas.avisar(u"Click para lanzar simulación...", retraso=0.5)
 							
 
 	def clickear_lanzador(self, evento):
