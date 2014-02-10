@@ -4,8 +4,9 @@
 import urllib2, json, os, shutil
 import pprint
 from BeautifulSoup import BeautifulSoup
- 
-shutil.rmtree('data/')
+
+if os.path.exists('data'):
+	shutil.rmtree('data/')
 os.makedirs('data/')
 os.makedirs('data/screenshots')
 os.makedirs('data/screenshots/thumbs')
@@ -60,8 +61,6 @@ def parsear_simulacion(sim_id, thumb_url):
 
 
 def guardar_archivos(thumb_url, thumb, screenshot_url, screenshot, archivo_url, archivo):
-
-	return
 	
 	# thumb
 	thumbData = urllib2.urlopen("%s" % thumb_url).read()
