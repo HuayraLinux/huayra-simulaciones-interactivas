@@ -1,3 +1,15 @@
+huayra-simulaciones-interactivas (2.2) unstable; urgency=low
+
+  * faltaba archivo simulaciones_categorias
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Mon, 10 Feb 2014 10:19:00 -0300
+
+huayra-simulaciones-interactivas (2.1) unstable; urgency=low
+
+  * mejoras en la version 2 de simulaciones
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Thu, 06 Feb 2014 14:56:20 -0300
+
 huayra-simulaciones-interactivas (2.0) unstable; urgency=low
 
   * nueva version de simulaciones interactivas 2.0
