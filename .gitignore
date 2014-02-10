@@ -1,2 +1,4 @@
 *.pyc
 huayra-simulaciones-interactivas_*
+appdata/data/screenshots/*
+appdata/data/simulaciones/*
