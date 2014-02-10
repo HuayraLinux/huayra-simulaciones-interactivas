@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.3) unstable; urgency=medium
+
+  * separando paquetes de app y datos 
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Mon, 10 Feb 2014 12:53:34 -0300
+
 huayra-simulaciones-interactivas (2.2) unstable; urgency=low
 
   * faltaba archivo simulaciones_categorias
