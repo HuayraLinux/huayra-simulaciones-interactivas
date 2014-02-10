@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
  
-import urllib2, json, os
+import urllib2, json, os, shutil
 import pprint
 from BeautifulSoup import BeautifulSoup
  
-if not os.path.exists('data/screenshots'):
-	os.makedirs('data/screenshots')
-if not os.path.exists('data/screenshots/thumbs'):
-	os.makedirs('data/screenshots/thumbs')
-if not os.path.exists('data/simulaciones'): 
-	os.makedirs('data/simulaciones')
+shutil.rmtree('data/')
+os.makedirs('data/')
+os.makedirs('data/screenshots')
+os.makedirs('data/screenshots/thumbs')
+os.makedirs('data/simulaciones')
 
 HOST = 'phet.colorado.edu'
 PROTOCOL = 'http'
@@ -124,7 +123,7 @@ for cat, sim_list in categorias.iteritems():
 	sim_list.sort()
 
 import io
-with io.open('simulaciones_categorias.py', 'w', encoding='utf-8') as f:
+with io.open('data/simulaciones_categorias.py', 'w', encoding='utf-8') as f:
 	f.write(unicode("# -*- encoding: utf-8 -*-\n\n"))
 	f.write(unicode("\n\n"))
 	f.write(unicode("categorias = "))
