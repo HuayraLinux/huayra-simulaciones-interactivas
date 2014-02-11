@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.4) unstable; urgency=medium
+
+  * cambios de nombre del "binario"  
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Tue, 11 Feb 2014 15:23:08 -0300
+
 huayra-simulaciones-interactivas (2.3) unstable; urgency=medium
 
   * separando paquetes de app y datos 
