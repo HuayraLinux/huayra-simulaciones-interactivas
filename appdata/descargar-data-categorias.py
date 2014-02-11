@@ -4,6 +4,7 @@
 import urllib2, json, os, shutil
 import pprint
 from BeautifulSoup import BeautifulSoup
+import io
 
 if os.path.exists('data'):
 	shutil.rmtree('data/')
@@ -11,6 +12,7 @@ os.makedirs('data/')
 os.makedirs('data/screenshots')
 os.makedirs('data/screenshots/thumbs')
 os.makedirs('data/simulaciones')
+io.open('data/__init__.py', 'w')
 
 HOST = 'phet.colorado.edu'
 PROTOCOL = 'http'
@@ -61,7 +63,7 @@ def parsear_simulacion(sim_id, thumb_url):
 
 
 def guardar_archivos(thumb_url, thumb, screenshot_url, screenshot, archivo_url, archivo):
-	
+
 	# thumb
 	thumbData = urllib2.urlopen("%s" % thumb_url).read()
 	output = open('data/screenshots/thumbs/' + thumb, 'wb')
@@ -97,7 +99,6 @@ for link in links_categorias:
 		sim_url = sim.a['href']
 		sim_id = sim_url.split('/')[-1]
 		
-		print "Sim id:", sim_id
 
 		
 		if sim_id not in simulaciones:
@@ -107,6 +108,7 @@ for link in links_categorias:
 			sim_data = parsear_simulacion(sim_id, thumb_url)
 			simulaciones[sim_id] = sim_data
 			categorias['Todas las simulaciones'].append(sim_id) # agregando la simulación a la categoría principal
+			print "Sim (" + str(cnt) + "):", sim_id
 			
 		simulaciones[sim_id]['categorias'].append(categoria) # agrego la categoría a la simulación en sí
 		try:
@@ -121,7 +123,6 @@ print "Total %d simulaciones" % (cnt)
 for cat, sim_list in categorias.iteritems():
 	sim_list.sort()
 
-import io
 with io.open('data/simulaciones_categorias.py', 'w', encoding='utf-8') as f:
 	f.write(unicode("# -*- encoding: utf-8 -*-\n\n"))
 	f.write(unicode("\n\n"))

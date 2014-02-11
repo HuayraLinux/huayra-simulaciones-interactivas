@@ -1,5 +1,5 @@
 main.py usr/share/huayra-simulaciones-interactivas/
-simulaciones-interactivas usr/share/huayra-simulaciones-interactivas/
+huayra-simulaciones-interactivas usr/share/huayra-simulaciones-interactivas/
 debian/huayra-simulaciones-interactivas.desktop usr/share/applications/
 debian/simulaciones.svg usr/share/icons/hicolor/scalable/apps/
 sonidos/ usr/share/huayra-simulaciones-interactivas/
