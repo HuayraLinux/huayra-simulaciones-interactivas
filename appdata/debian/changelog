@@ -1,4 +1,10 @@
-huayra-simulaciones-interactivas (2.2) unstable; urgency=low
+huayra-simulaciones-interactivas-data (2.3) unstable; urgency=medium
+
+  * Agregando init para el paquete de datos
+
+ -- Fernando Toledo <ragnarok@docksud.com.ar>  Tue, 11 Feb 2014 14:53:23 -0300
+
+huayra-simulaciones-interactivas-data (2.2) unstable; urgency=low
 
   * faltaba archivo simulaciones_categorias
 
