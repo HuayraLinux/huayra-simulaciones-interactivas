@@ -19,4 +19,3 @@ videojuegos, pero que puede ser utilizado para otros tipo de aplicaciones.
 ![](capturas/readme-github-03.png Detalles de una simulación)
 
 ![](capturas/readme-github-04.png Simulación en todo su esplendor)
-
