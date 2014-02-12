@@ -1,9 +1,22 @@
-huayra-simulaciones-interactivas
+Huayra Simulaciones Interactivas
 ================================
 
-Huayra Simulaciones Interactivas es una aplicacion que lanza simulacion hechas por 
-el PhET de la universidad de Colorado
+Huayra Simulaciones Interactivas es un una aplicación que sirve para navegar a través de las simulaciones realizadas 
+por el [PhET de la universidad de Colorado](http://phet.colorado.edu/)
 
-http://phet.colorado.edu/
+Este software forma parte del proyecto [Huayra Gnu/Linux](http://huayra.conectarigualdad.gob.ar/), es software libre y
+se distribuye instalado en las netbooks del [Programa Conectar Igualdad](http://conectarigualdad.gob.ar/) en Argentina.
 
+La aplicación está desarrollada con [Pilas-engine](http://pilas-engine.com.ar/), un motor para desarrollar principalmente
+videojuegos, pero que puede ser utilizado para otros tipo de aplicaciones.
+
+###Capturas de Pantalla###
+
+![](capturas/readme-github-01.png Pantalla de inicio)
+
+![](capturas/readme-github-02.png Navegación de las simulaciones)
+
+![](capturas/readme-github-03.png Detalles de una simulación)
+
+![](capturas/readme-github-04.png Simulación en todo su esplendor)
 
