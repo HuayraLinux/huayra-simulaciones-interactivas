@@ -179,17 +179,26 @@ class EscenaSimulaciones(pilas.escena.Base):
 			
 	
 	def conectar_eventos(self):
-		pilas.escena_actual().click_de_mouse.conectar(self.mover, id='clickear_flechas')
-		pilas.escena_actual().termina_click.conectar(self.clickear_simulacion, id='clickear_simulacion')
-		pilas.escena_actual().mueve_rueda.conectar(self.mover, id='mover_simulaciones_desde_rueda')
-		pilas.escena_actual().suelta_tecla.conectar(self.mover, id='mover_simulaciones_desde_teclado')
+		pilas.eventos.click_de_mouse.conectar(self.mover, id='clickear_flechas')
+		pilas.eventos.termina_click.conectar(self.clickear_simulacion, id='clickear_simulacion')
+		pilas.eventos.mueve_rueda.conectar(self.mover, id='mover_simulaciones_desde_rueda')
+		pilas.eventos.suelta_tecla.conectar(self.mover, id='mover_simulaciones_desde_teclado')
+		pilas.eventos.pulsa_tecla_escape.conectar(self.volver)
 		
 	
 	def desconectar_eventos(self):
-		pilas.escena_actual().click_de_mouse.desconectar_por_id('clickear_flechas')
-		pilas.escena_actual().termina_click.desconectar_por_id('clickear_simulacion')
-		pilas.escena_actual().mueve_rueda.desconectar_por_id('mover_simulaciones_desde_rueda')
-		pilas.escena_actual().suelta_tecla.desconectar_por_id('mover_simulaciones_desde_teclado')
+		pilas.eventos.click_de_mouse.desconectar_por_id('clickear_flechas')
+		pilas.eventos.termina_click.desconectar_por_id('clickear_simulacion')
+		pilas.eventos.mueve_rueda.desconectar_por_id('mover_simulaciones_desde_rueda')
+		pilas.eventos.suelta_tecla.desconectar_por_id('mover_simulaciones_desde_teclado')
+		
+				
+	def capturar_teclas(self, evento):
+		print evento.codigo
+		if evento.codigo == 6:  # ENTER
+			pilas.mundo.agregar_tarea(.2, self.cambiar_escena)
+		elif evento.codigo == 5:
+			return
 	
 	
 	def mover(self, evento):
@@ -220,6 +229,9 @@ class EscenaSimulaciones(pilas.escena.Base):
 				paso = 3
 				
 		elif evento.has_key("codigo"):  # teclado
+			if evento.codigo == 6:  # ENTER
+				self.ir_a_slimulacion()
+				return
 			if evento.codigo == 1:  # left arrow
 				paso = -1
 			elif evento.codigo == 2:  # right arrow
@@ -262,19 +274,20 @@ class EscenaSimulaciones(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                                                                  
 		if self.nav.actores[self.nav.actual].area_contacto.colisiona_con_un_punto(x, y):
-			main.simulacion_activa = self.nav.actores[self.nav.actual]
+			self.ir_a_slimulacion()
 			
-			self.desconectar_eventos()
-			
-			self.nav.desaparecer_restantes()
-			self.prev.transparencia = [100]
-			self.next.transparencia = [100]
-			self.prev_reloaded.transparencia = [100]
-			self.next_reloaded.transparencia = [100]
-			
-			main.simulacion_actual = self.nav.actual
-			
-			pilas.mundo.agregar_tarea(1, self.cambiar_escena)
+
+	def ir_a_slimulacion(self):
+		main.simulacion_activa = self.nav.actores[self.nav.actual]		
+		self.desconectar_eventos()		
+		self.nav.desaparecer_restantes()
+		self.prev.transparencia = [100]
+		self.next.transparencia = [100]
+		self.prev_reloaded.transparencia = [100]
+		self.next_reloaded.transparencia = [100]
+		
+		main.simulacion_actual = self.nav.actual		
+		pilas.mundo.agregar_tarea(1, self.cambiar_escena)
 
 		
 	def cuando_selecciona_categoria(self, seleccion):
@@ -288,4 +301,10 @@ class EscenaSimulaciones(pilas.escena.Base):
 	
 	def recargar_escena(self):
 		pilas.cambiar_escena(EscenaSimulaciones())
+	
+		
+	def volver(self, evento):
+		from EscenaBienvenida import EscenaBienvenida
+		pilas.cambiar_escena(EscenaBienvenida())
+		
 

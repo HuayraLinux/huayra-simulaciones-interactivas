@@ -94,9 +94,13 @@ class EscenaSimulacion(pilas.escena.Base):
 		
 		
 		" Lanzar "
-		pilas.escena_actual().termina_click.conectar(self.clickear_flecha, id='clickear_flecha')
-		pilas.escena_actual().mueve_mouse.conectar(self.mouse_sobre_lanzador, id='sobre_lanzador')
-		pilas.escena_actual().click_de_mouse.conectar(self.clickear_lanzador, id='clickear_lanzador')
+		pilas.eventos.termina_click.conectar(self.clickear_flecha, id='clickear_flecha')
+		pilas.eventos.mueve_mouse.conectar(self.mouse_sobre_lanzador, id='sobre_lanzador')
+		pilas.eventos.click_de_mouse.conectar(self.clickear_lanzador, id='clickear_lanzador')
+		pilas.eventos.suelta_tecla.conectar(self.tecla_presionada)
+		
+		" Volver "
+		pilas.eventos.pulsa_tecla_escape.conectar(self.volver)
 		
 	
 	def cuando_pulsan_el_boton(self, arg):
@@ -120,7 +124,7 @@ class EscenaSimulacion(pilas.escena.Base):
 			pass
 			
 				
-	def volver(self):
+	def volver(self, evento):
 		from EscenaSimulaciones import EscenaSimulaciones
 		pilas.cambiar_escena(EscenaSimulaciones())
 
@@ -144,6 +148,14 @@ class EscenaSimulacion(pilas.escena.Base):
 		x, y = evento.x, evento.y
 		# Esta tocando la simulación?                             
 		if self.sim.actores[1].colisiona_con_un_punto(x, y) or self.boton_lanzar.colisiona_con_un_punto(x, y):
-			from EscenaSimulacionEnCurso import EscenaSimulacionEnCurso
-			pilas.almacenar_escena(EscenaSimulacionEnCurso(self.sim.archivo))
+			self.lanzar()
 			
+	def tecla_presionada(self, evento):
+		if evento.codigo == 6:  # ENTER
+			self.lanzar()
+			
+	def lanzar(self):
+		from EscenaSimulacionEnCurso import EscenaSimulacionEnCurso
+		pilas.almacenar_escena(EscenaSimulacionEnCurso(self.sim.archivo))
+		
+		

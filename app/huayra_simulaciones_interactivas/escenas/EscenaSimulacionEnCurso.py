@@ -23,6 +23,9 @@ class EscenaSimulacionEnCurso(pilas.escena.Base):
 		
 		pilas.actores.Texto(u"Simulación en curso")	
 		
+		" Volver "
+		pilas.eventos.pulsa_tecla_escape.conectar(self.volver)
+		
 
 	def lanzar_simulacion(self):
 		subprocess.Popen(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.archivo])
@@ -35,3 +38,8 @@ class EscenaSimulacionEnCurso(pilas.escena.Base):
 
 	def clickeado(self, evento):
 		pilas.recuperar_escena()
+		
+				
+	def volver(self, evento):
+		from EscenaSimulacion import EscenaSimulacion
+		pilas.cambiar_escena(EscenaSimulacion())
