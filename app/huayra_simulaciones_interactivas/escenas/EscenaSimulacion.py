@@ -124,7 +124,7 @@ class EscenaSimulacion(pilas.escena.Base):
 			pass
 			
 				
-	def volver(self, evento):
+	def volver(self, evento=None):
 		from EscenaSimulaciones import EscenaSimulaciones
 		pilas.cambiar_escena(EscenaSimulaciones())
 
