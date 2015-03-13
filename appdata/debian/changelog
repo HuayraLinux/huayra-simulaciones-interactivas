@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas-data (2.4) unstable; urgency=medium
+
+  * Actualiza simulaciones
+
+ -- Matias De lellis <mati86dl@gmail.com>  Fri, 13 Mar 2015 12:36:16 -0300
+
 huayra-simulaciones-interactivas-data (2.3) unstable; urgency=medium
 
   * Agregando init para el paquete de datos

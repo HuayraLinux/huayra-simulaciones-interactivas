@@ -44,6 +44,8 @@ def parsear_simulacion(sim_id, thumb_url):
 	screenshot = screenshot_url.split('/')[-1]
 
 	archivo_url = contenedor.find('a', attrs={'class': 'sim-download sim-button'}).get('href')
+	if archivo_url.endswith('?download'):
+		archivo_url = archivo_url[:-9]
 	archivo = archivo_url.split('/')[-1]
 	
 	thumb = thumb_url.split('/')[-1]
