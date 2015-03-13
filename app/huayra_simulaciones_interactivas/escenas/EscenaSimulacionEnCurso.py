@@ -28,7 +28,12 @@ class EscenaSimulacionEnCurso(pilas.escena.Base):
 		
 
 	def lanzar_simulacion(self):
-		subprocess.Popen(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.archivo])
+		if self.archivo.endswith('.html'):
+			subprocess.Popen(['xdg-open', main.data_dir + 'data/simulaciones/' + self.archivo])
+		elif self.archivo.endswith('.jar'):
+			subprocess.Popen(['java', '-jar', main.data_dir + 'data/simulaciones/' + self.archivo])
+		else:
+			print ("Formato de archivo para simulacion desconocido.")
 		
 		
 	def conectar_click(self):		

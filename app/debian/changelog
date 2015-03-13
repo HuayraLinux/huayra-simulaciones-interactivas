@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.8) unstable; urgency=low
+
+  * Agrega soporte para las simulaciones html5
+
+ -- Matias De lellis <mati86dl@gmail.com>  Fri, 13 Mar 2015 14:11:53 -0300
+
 huayra-simulaciones-interactivas (2.7) unstable; urgency=low
 
   * correccion fecha atras
