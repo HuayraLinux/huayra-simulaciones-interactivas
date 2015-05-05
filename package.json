@@ -1,0 +1,11 @@
+{
+  "name": "simulaciones-interactivas",
+  "version": "0.0.1",
+  "description": "¡Hola, esto es simulaciones-interactivas!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPLv3"
+}

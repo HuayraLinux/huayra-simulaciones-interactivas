@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=simulaciones-interactivas
+Comment=Comment
+Exec=/usr/bin/simulaciones-interactivas
+Terminal=false
+Type=Application
+Icon=simulaciones-interactivas
+Categories=GNOME;GTK;Huayra;Network;

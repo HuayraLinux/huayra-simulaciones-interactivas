@@ -1,0 +1,4 @@
+src/* usr/share/simulaciones-interactivas/src
+bin/simulaciones-interactivas usr/bin/
+debian/simulaciones-interactivas.desktop /usr/share/applications
+debian/simulaciones-interactivas.svg /usr/share/icons/hicolor/scalable/apps
