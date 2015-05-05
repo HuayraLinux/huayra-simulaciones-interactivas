@@ -40,45 +40,26 @@
 
 		</div>
 
-                <div style="display:none">
-
-                  				<!-- categoria -->
-				<section data-content="category">
-					<section data-background="#dddddd">
-						<h2>{{ CATEGORIA }}</h2>
-						<p>Simulaciones de {{ CATEGORIA }}.</p>
-					</section>
-
-                                        <!-- simulaciones loop -->
-					<section>
-						<h2>{{ SIMULACION }}</h2>
-						<p>{{ SIMULACION.DESCRIPCION }}</p>
-					</section>
-                                        <!-- /simulaciones loop -->
-				</section>
-                                <!-- /categoria -->
-</div>
-                
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/defiant-latest.min.js"></script>
 		<script src="js/mustache.min.js"></script>
 		<script src="data/categories.js"></script>
-                <script id="tmpl-category" type="x-tmpl-mustache">
 
-		<section data-content="category">
-		  <section data-background="#dddddd">
-		    <h2>{{ name }}</h2>
-		    <p>Simulaciones de {{ name }}.</p>
-		  </section>
+<script id="tmpl-category" type="x-tmpl-mustache">
+    <section data-content="category">
+        <section data-background="#dddddd">
+            <h2>{{ name }}</h2>
+            <p>xx simulaciones disponibles.</p>
+        </section>
 
-                  {{#simus}}
-		    <h3>{{ name }}</h3>
-		    <p>Simulaciones de {{ name }}.</p>
-		  </section>
-                  {{/simus}}
-
-                </script>
+        {{#simus}}
+        <section>
+            <h3>Nombre simulacion</h3>
+            <p>Descripción</p>
+        </section>
+        {{/simus}}
+</script>
 
 
 		<script>
@@ -116,7 +97,7 @@
 			});
 
 
-                  
+
                   }
 
 		</script>
