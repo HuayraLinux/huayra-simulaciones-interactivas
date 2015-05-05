@@ -45,6 +45,7 @@
 		<script src="js/defiant-latest.min.js"></script>
 		<script src="js/mustache.min.js"></script>
 		<script src="data/categories.js"></script>
+		<script src="data/simulations.js"></script>
 
 <script id="tmpl-category" type="x-tmpl-mustache">
     <section data-content="category">
@@ -54,9 +55,9 @@
         </section>
 
         {{#simus}}
-        <section>
-            <h3>Nombre simulacion</h3>
-            <p>Descripción</p>
+        <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
         </section>
         {{/simus}}
 </script>
@@ -64,17 +65,13 @@
 
 		<script>
 
-                  function simu_obj(simu_k){
-                        
-
-
-                  }
-
                   window.onload = function(){
 
                   var content = document.getElementById('content');
 
                   for(obj in categories){
+
+                    categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ return simulations[k]; });
                     content.innerHTML += Mustache.render(document.getElementById('tmpl-category').innerText, categories[obj]);
                   }
 
