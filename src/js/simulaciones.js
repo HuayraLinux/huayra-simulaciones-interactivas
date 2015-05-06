@@ -15,16 +15,19 @@ function load_simus(content){
 }
 
 
-function open_simulation(sim_jar){
+function open_simulation(sim_slide){
 
-    console.log( java_jar + sim_path + sim_jar );
+    sim_slide.css('cursor','wait');
 
-    exec(java_jar + sim_path + sim_jar , function(error, stdout, stderr) {
+    exec(java_jar + sim_path + sim_slide.data('open') , function(error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error !== null) {
             console.log('exec error: ' + error);
         }
+
+
+        sim_slide.css('cursor','pointer');
     });
 
 }
@@ -34,7 +37,7 @@ $(document).ready(function(){
     load_simus($('#content'));
 
     $('.simudescription').on('click', function(){
-      open_simulation($(this).data('open'));
+      open_simulation($(this));
     });
 
     Reveal.initialize({
