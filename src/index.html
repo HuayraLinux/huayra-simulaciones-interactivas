@@ -31,21 +31,18 @@
         </div>
 
 		<div class="reveal">
+            <div class="slides" id="content">Cargando ...</div>
+        </div>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides" id="content">
+        <script src="js/jquery-2.1.4.min.js"></script>
 
-
-			</div>
-
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
 		<script src="js/defiant-latest.min.js"></script>
 		<script src="js/mustache.min.js"></script>
+
 		<script src="data/categories.js"></script>
 		<script src="data/simulations.js"></script>
+
 
 <script id="tmpl-category" type="x-tmpl-mustache">
     <section data-content="category">
@@ -64,46 +61,31 @@
         {{/simus}}
     </section>
 </script>
+        <script src="js/simulaciones.js"></script>
 
 
-		<script>
+<script>
+$(document).ready(function(){
+    load_simus($('#content'));
 
-                  window.onload = function(){
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide'
+    });
+});
 
-                  var content = document.getElementById('content');
+function newew(){
+    var content = document.getElementById('content');
 
-                  for(obj in categories){
-
-                    categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ return simulations[k]; });
-                    content.innerHTML += Mustache.render(document.getElementById('tmpl-category').innerText, categories[obj]);
-                  }
-
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-
-
-
-                  }
-
-		</script>
+    for(obj in categories){
+        categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ return simulations[k]; });
+        content.innerHTML += Mustache.render(document.getElementById('tmpl-category').innerText, categories[obj]);
+    }
+}
+</script>
 
 	</body>
 </html>
