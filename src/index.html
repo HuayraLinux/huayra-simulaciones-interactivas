@@ -1,67 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Simulaciones Interactivas</title>
 
-	<head>
-		<meta charset="utf-8">
+    <meta name="description" content="Visualizador de Simlaciones Interactivas">
+    <meta name="author" content="Huayra">
 
-		<title>Simulaciones Interactivas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<meta name="description" content="Visualizador de Simlaciones Interactivas">
-		<meta name="author" content="Huayra">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/huayra.css">
+    <link rel="stylesheet" href="css/huayra-bootstrap.css">
+    <link rel="stylesheet" href="css/simulaciones.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+  </head>
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <body>
+    <div class="menubar">
+      <ul>
+        <li>Categorías</li>
+        <li>Buscar</li>
+      </ul>
+  </div>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <div class="reveal">
+    <div class="slides" id="content">Cargando ...</div>
+  </div>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/huayra.css">
-		<link rel="stylesheet" href="css/huayra-bootstrap.css">
-		<link rel="stylesheet" href="css/simulaciones.css">
-		<link rel="stylesheet" href="css/theme/white.css" id="theme">
-	</head>
+  <script src="js/jquery-2.1.4.min.js"></script>
 
-	<body>
+  <script src="js/reveal.js"></script>
+  <script src="js/defiant-latest.min.js"></script>
+  <script src="js/mustache.min.js"></script>
 
-        <div class="menubar">
-          <ul>
-            <li>Categorías</li>
-            <li>Buscar</li>
-          </ul>
-        </div>
+  <script src="data/categories.js"></script>
+  <script src="data/simulations.js"></script>
 
-		<div class="reveal">
-            <div class="slides" id="content">Cargando ...</div>
-        </div>
+  <script id="tmpl-category" type="x-tmpl-mustache">
+<section data-content="category">
+  <section data-background="#dddddd">
+    <h2>{{ name }}</h2>
+    <p>xx simulaciones disponibles.</p>
+  </section>
 
-        <script src="js/jquery-2.1.4.min.js"></script>
-
-		<script src="js/reveal.js"></script>
-		<script src="js/defiant-latest.min.js"></script>
-		<script src="js/mustache.min.js"></script>
-
-		<script src="data/categories.js"></script>
-		<script src="data/simulations.js"></script>
-
-
-<script id="tmpl-category" type="x-tmpl-mustache">
-    <section data-content="category">
-        <section data-background="#dddddd">
-            <h2>{{ name }}</h2>
-            <p>xx simulaciones disponibles.</p>
-        </section>
-
-        {{#simus}}
-        <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
-            <div class="simudescription">
-            <h3>{{title}}</h3>
-            <p>{{description}}</p>
-            </div>
-        </section>
-        {{/simus}}
-    </section>
+  {{#simus}}
+  <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
+    <div class="simudescription">
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+    </div>
+  </section>
+  {{/simus}}
+</section>
 </script>
-        <script src="js/simulaciones.js"></script>
+
+  <script src="js/simulaciones.js"></script>
 
 
 <script>
@@ -76,15 +70,6 @@ $(document).ready(function(){
         transition: 'slide'
     });
 });
-
-function newew(){
-    var content = document.getElementById('content');
-
-    for(obj in categories){
-        categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ return simulations[k]; });
-        content.innerHTML += Mustache.render(document.getElementById('tmpl-category').innerText, categories[obj]);
-    }
-}
 </script>
 
 	</body>
