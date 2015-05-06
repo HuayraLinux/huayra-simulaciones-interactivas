@@ -34,6 +34,8 @@
   <script src="js/defiant-latest.min.js"></script>
   <script src="js/mustache.min.js"></script>
 
+  <script src="js/simulaciones.js"></script>
+
   <script src="data/categories.js"></script>
   <script src="data/simulations.js"></script>
 
@@ -41,36 +43,19 @@
 <section data-content="category">
   <section data-background="#dddddd">
     <h2>{{ name }}</h2>
-    <p>xx simulaciones disponibles.</p>
+    <p>{{ cant }} simulaciones disponibles.</p>
   </section>
 
   {{#simus}}
   <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
-    <div class="simudescription">
+    <div data-open="{{file}}" class="simudescription">
       <h3>{{title}}</h3>
       <p>{{description}}</p>
     </div>
   </section>
   {{/simus}}
 </section>
-</script>
-
-  <script src="js/simulaciones.js"></script>
-
-
-<script>
-$(document).ready(function(){
-    load_simus($('#content'));
-
-    Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        transition: 'slide'
-    });
-});
-</script>
+  </script>
 
 	</body>
 </html>
