@@ -17,9 +17,15 @@
   </head>
 
   <body>
-    <nav class="menubar">
-      <input type="text" placeholder="Buscar simulaciones..." value="">
-    </nav>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="filter-sim">Filtrar Simulaciones</label>
+        <input type="text" class="form-control" id="filter-sim" placeholder="Ingresar titulo de la simulacion">
+      </div>
+      <button type="button" id="btn-filter-sim" class="btn btn-default">Filtrar</button>
+    </form>
+
+    <hr>
 
   <div class="reveal">
     <div class="slides" id="content">Cargando ...</div>
@@ -44,7 +50,7 @@
   </section>
 
   {{#simus}}
-  <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
+  <section data-background="{{scr_path}}/{{screenshot}}">
     <div data-open="{{file}}" class="simudescription">
       <h3>{{title}}</h3>
       <p>{{description}}</p>
@@ -54,5 +60,5 @@
 </section>
   </script>
 
-	</body>
+  </body>
 </html>
