@@ -7,7 +7,7 @@ function load_simus(content){
     content.html('');
 
     for(obj in categories){
-        categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ return simulations[k]; });
+        categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ if( typeof(k) == "string" ) {s = simulations[k]; s.name = k; return s;} });
         categories[obj]['scr_path'] = scr_path;
         categories[obj]['cant'] = categories[obj]['simus'].length;
         content.append(
@@ -16,10 +16,13 @@ function load_simus(content){
     }
 }
 
+function fn_open_simulation(){
+    open_simulation($(this));
+}
 
 function open_simulation(sim_slide){
-
-    sim_slide.css('cursor','wait');
+    var sim_name = sim_slide.attr('class').match(/sim-(.*)/gi);
+    $('.'+sim_name).off('click').css('cursor','wait');
 
     exec(java_jar + sim_path + sim_slide.data('open') , function(error, stdout, stderr) {
         console.log('stdout: ' + stdout);
@@ -28,8 +31,7 @@ function open_simulation(sim_slide){
             console.log('exec error: ' + error);
         }
 
-
-        sim_slide.css('cursor','pointer');
+        $('.'+sim_name).on('click', fn_open_simulation).css('cursor','pointer');
     });
 
 }
@@ -45,16 +47,15 @@ function filter_sim(input){
     var s_res = JSON.search(simulations,
                             "//*//*[contains(title, '_STR_')]//file".replace('_STR_',
                                                                              input.val()));
-    categories["filtrar"]['simus'] = s_res.map(function(s){ return s.replace('_es.jar', ''); });
+    //categories["filtrar"]['simus'] = s_res.map(function(s){ return s.replace('_es.jar', ''); });
+    categories.filtrar.simus = s_res.map(function(s){ return s.replace('_es.jar', ''); });
     load_simus($('#content'));
 }
 
 $(document).ready(function(){
     load_simus($('#content'));
 
-    $('.simudescription').on('click', function(){
-      open_simulation($(this));
-    });
+    $('.simudescription').on('click', fn_open_simulation);
 
     $('#btn-filter-sim').on('click', function(){
       filter_sim($('#filter-sim'));
