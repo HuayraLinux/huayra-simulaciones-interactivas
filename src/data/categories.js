@@ -228,7 +228,7 @@ var categories = {"biologia": {"name": "Biología",
                                        "wave-interference",
                                        "wave-on-a-string"]
                             },
-                  "filtrar": {"name": "Filtrar simulaciones",
+                  "filtrar": {"name": "Resultados de búsqueda",
                               "simus": []
                              }
                  }
