@@ -8,7 +8,7 @@ function load_simus(content){
     content.html('');
 
     for (cat in categories) {
-        simus_html = ''
+        var simus_html = ''
         for (simu in categories[cat]['simus']) {
             // Renderear cada simulación
             var simulation = simulations[categories[cat]['simus'][simu]];
@@ -29,15 +29,23 @@ function load_simus(content){
     }
 }
 
-function load_results(resutls){
-    var obj = 'filtrar';
+function load_results(results){
+    console.log(results)
 
-    categories[obj]['scr_path'] = scr_path;
-    categories[obj]['cant'] = categories[obj]['simus'].length;
+    var simus_html = ''
+    for (simus in results) {
+        // Renderear cada simulación
+        var simulation = simulations[results[simus]];
+        simulation['scr_path'] = scr_path;
 
-    content.append(
-        Mustache.render($('#tmpl-category').html(), categories[obj])
-    );
+        simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
+
+    }
+
+    $('section#sim-filtrar section').not('.category').remove();
+    $('section#sim-filtrar').append(simus_html);
+    $('section#sim-filtrar section.category span').html(results.length)
+
 }
 
 function fn_open_simulation(){
@@ -65,24 +73,17 @@ function fn_filter_sim(){
 }
 
 function filter_sim(input){
-    console.log("//*//*[contains(title, '_STR_')]".replace('_STR_',
-                                                           input.val()));
-
     var simus_copy = simulations;
     var s_res = JSON.search(simus_copy,
                             "//*//*[contains(title, '_STR_')]//file".replace('_STR_',
                                                                              input.val()));
-    //categories["filtrar"]['simus'] = s_res.map(function(s){ return s.replace('_es.jar', ''); });
-    categories.filtrar.simus = s_res.map(function(s){ return s.replace('_es.jar', ''); });
 
-
-    console.log(simulations);
-    console.log(s_res);
-
-    load_simus($('#content'));
+    load_results(
+        s_res.map(function(s){ return s.replace('_es.jar', ''); })
+    );
 
     Reveal.sync();
-    setTimeout(function(){ Reveal.slide(7); }, 50);
+    setTimeout(function(){ Reveal.slide(7,0); }, 50);
 }
 
 $(document).ready(function(){
