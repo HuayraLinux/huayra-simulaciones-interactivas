@@ -3,17 +3,41 @@ var sim_path = "/usr/share/huayra-simulaciones-interactivas/data/simulaciones/";
 var scr_path = "file:///usr/share/huayra-simulaciones-interactivas/data/screenshots"
 var java_jar = "java -jar ";
 
+
 function load_simus(content){
     content.html('');
 
-    for(obj in categories){
-        categories[obj]['simus'] = categories[obj]['simus'].map(function(k){ if( typeof(k) == "string" ) {s = simulations[k]; s.name = k; return s;} });
-        categories[obj]['scr_path'] = scr_path;
-        categories[obj]['cant'] = categories[obj]['simus'].length;
-        content.append(
-            Mustache.render($('#tmpl-category').html(), categories[obj])
-        );
+    for (cat in categories) {
+        simus_html = ''
+        for (simu in categories[cat]['simus']) {
+            // Renderear cada simulación
+            var simulation = simulations[categories[cat]['simus'][simu]];
+            simulation['scr_path'] = scr_path;
+
+            simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
+
+        }
+
+        // Renderear categoría y agregale las simulaciones
+        var html = Mustache.render($('#tmpl-category').html(), {
+            'name': categories[cat]['name'],
+            'cant': categories[cat]['simus'].length,
+            'id': cat,
+            'simus': simus_html
+        });
+        content.append(html);
     }
+}
+
+function load_results(resutls){
+    var obj = 'filtrar';
+
+    categories[obj]['scr_path'] = scr_path;
+    categories[obj]['cant'] = categories[obj]['simus'].length;
+
+    content.append(
+        Mustache.render($('#tmpl-category').html(), categories[obj])
+    );
 }
 
 function fn_open_simulation(){
@@ -44,13 +68,21 @@ function filter_sim(input){
     console.log("//*//*[contains(title, '_STR_')]".replace('_STR_',
                                                            input.val()));
 
-    var s_res = JSON.search(simulations,
+    var simus_copy = simulations;
+    var s_res = JSON.search(simus_copy,
                             "//*//*[contains(title, '_STR_')]//file".replace('_STR_',
                                                                              input.val()));
     //categories["filtrar"]['simus'] = s_res.map(function(s){ return s.replace('_es.jar', ''); });
     categories.filtrar.simus = s_res.map(function(s){ return s.replace('_es.jar', ''); });
+
+
+    console.log(simulations);
+    console.log(s_res);
+
     load_simus($('#content'));
-    setTimeout(function(){ Reveal.slide(7); },1000);
+
+    Reveal.sync();
+    setTimeout(function(){ Reveal.slide(7); }, 50);
 }
 
 $(document).ready(function(){
