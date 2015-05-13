@@ -46,6 +46,8 @@ function load_results(results){
     $('section#sim-filtrar').append(simus_html);
     $('section#sim-filtrar section.category span').html(results.length)
 
+    $('section#sim-filtrar .simudescription').on('click', fn_open_simulation);
+
 }
 
 function fn_open_simulation(){
@@ -92,7 +94,6 @@ $(document).ready(function(){
     $('.simudescription').on('click', fn_open_simulation);
 
     $('#btn-filter-sim').on('click', fn_filter_sim);
-    //$('#filter-sim').on('keyup', fn_filter_sim);
 
     Reveal.initialize({
         controls: true,
