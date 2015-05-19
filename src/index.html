@@ -17,15 +17,17 @@
   </head>
 
   <body>
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="filter-sim"></label>
-        <input type="text" class="form-control" id="filter-sim" placeholder="simulaciones">
-      </div>
-      <button type="button" id="btn-filter-sim" class="btn btn-default">Buscar</button>
-    </form>
+    <header>
+      <img src="images/logo_chico.png" alt="Simulaciones Interactivas" class="pull-left">
 
-    <hr>
+      <form class="form-inline pull-right form-filter">
+        <div class="form-group">
+          <label for="filter-sim"></label>
+          <input type="text" class="form-control" id="filter-sim" placeholder="simulaciones">
+        </div>
+        <button type="button" id="btn-filter-sim" class="btn btn-default">Buscar</button>
+      </form>
+    </header>
 
   <div class="reveal">
     <div class="slides" id="content">Cargando ...</div>
@@ -44,7 +46,7 @@
 
   <script id="tmpl-category" type="x-tmpl-mustache">
 <section data-content="category" id="sim-{{ id }}">
-  <section data-background="#dddddd" class="category">
+  <section data-background="images/fondo_seccion.png" class="category">
     <h2>{{ name }}</h2>
     <p><span>{{ cant }}</span> simulaciones disponibles.</p>
   </section>
@@ -53,7 +55,7 @@
   </script>
 
   <script id="tmpl-simu" type="x-tmpl-mustache">
-  <section data-background="{{scr_path}}/{{screenshot}}">
+  <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
     <div data-open="{{file}}" class="simudescription sim-{{name}}">
       <h3>{{title}}</h3>
       <p>{{description}}</p>

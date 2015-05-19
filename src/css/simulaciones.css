@@ -1,4 +1,16 @@
-#filter-sim {
+body{
+    background: #008080 !important;
+}
+
+header{
+    height:90px;
+}
+header img{
+    padding-top:5px;
+}
+
+.form-filter{
+    padding-top:25px;
 }
 
 .menubar {
@@ -9,6 +21,6 @@
 }
 
 .simudescription {
-    background-color: rgba(235,235,235,0.9);
+    background-color: rgba(225,225,225,0.85);
     cursor: pointer;
 }
