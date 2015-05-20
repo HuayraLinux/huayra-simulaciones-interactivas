@@ -58,7 +58,16 @@ function open_simulation(sim_slide){
     var sim_name = sim_slide.attr('class').match(/sim-(.*)/gi);
     $('.'+sim_name).off('click').css('cursor','wait');
 
-    exec(java_jar + sim_path + sim_slide.data('open') , function(error, stdout, stderr) {
+    var simu_binary = sim_path + sim_slide.data('open');
+    var simu_runner = java_jar;
+
+    if (simu_binary.match(/.html$/)) {
+        simu_runner = 'x-www-browser -new-window file://';
+    }
+
+    var linea_loca = simu_runner + sim_path + sim_slide.data('open')
+
+    exec(linea_loca, function(error, stdout, stderr) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error !== null) {
