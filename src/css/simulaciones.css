@@ -4,9 +4,18 @@ body{
 
 header{
     height:90px;
+    padding:0 20px;
 }
 header img{
     padding-top:5px;
+}
+
+.reveal h2{
+    color:#fff !important;
+    text-transform:capitalize !important;
+}
+.reveal p{
+    color:#fff !important;
 }
 
 .form-filter{
@@ -20,7 +29,30 @@ header img{
     background: #fff;
 }
 
-.simudescription {
-    background-color: rgba(225,225,225,0.85);
+
+.slide-background{
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.slide-background.categoria{
+  box-shadow: 0;
+}
+
+section.sub-simu .simudescription{
+    padding:20px;
+}
+
+.simudescription{
     cursor: pointer;
+    background-color: rgba(225,225,225,0.85);
+}
+
+.simudescription,
+.simudescription p{
+    color: #000 !important;
+}
+
+.btn-default{
+    color:#fff !important;
+    background-color:#007080 !important;
 }

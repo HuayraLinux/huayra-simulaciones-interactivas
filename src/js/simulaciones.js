@@ -1,6 +1,6 @@
 var exec = require('child_process').exec;
 var sim_path = "/usr/share/huayra-simulaciones-interactivas/data/simulaciones/";
-var scr_path = "file:///usr/share/huayra-simulaciones-interactivas/data/screenshots"
+//var scr_path = "file:///usr/share/huayra-simulaciones-interactivas/data/screenshots"
 var java_jar = "java -jar ";
 
 
@@ -12,7 +12,6 @@ function load_simus(content){
         for (simu in categories[cat]['simus']) {
             // Renderear cada simulación
             var simulation = simulations[categories[cat]['simus'][simu]];
-            simulation['scr_path'] = scr_path;
 
             simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
 
@@ -36,7 +35,6 @@ function load_results(results){
     for (simus in results) {
         // Renderear cada simulación
         var simulation = simulations[results[simus]];
-        simulation['scr_path'] = scr_path;
 
         simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
 
@@ -66,6 +64,8 @@ function open_simulation(sim_slide){
     }
 
     var linea_loca = simu_runner + sim_path + sim_slide.data('open')
+
+    console.log(linea_loca);
 
     exec(linea_loca, function(error, stdout, stderr) {
         console.log('stdout: ' + stdout);

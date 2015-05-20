@@ -23,7 +23,7 @@
       <form class="form-inline pull-right form-filter">
         <div class="form-group">
           <label for="filter-sim"></label>
-          <input type="text" class="form-control" id="filter-sim" placeholder="simulaciones">
+          <input type="text" class="form-control" id="filter-sim" placeholder="..." autocomplete="off">
         </div>
         <button type="button" id="btn-filter-sim" class="btn btn-default">Buscar</button>
       </form>
@@ -55,7 +55,7 @@
   </script>
 
   <script id="tmpl-simu" type="x-tmpl-mustache">
-  <section data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
+  <section class="sub-simu" data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
     <div data-open="{{file}}" class="simudescription sim-{{name}}">
       <h3>{{title}}</h3>
       <p>{{description}}</p>
