@@ -12,6 +12,7 @@ function load_simus(content){
         for (simu in categories[cat]['simus']) {
             // Renderear cada simulación
             var simulation = simulations[categories[cat]['simus'][simu]];
+            simulation['parent'] = categories[cat].name;
 
             simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
 

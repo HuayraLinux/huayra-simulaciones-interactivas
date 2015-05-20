@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/huayra.css">
     <link rel="stylesheet" href="css/huayra-bootstrap.css">
-    <link rel="stylesheet" href="css/simulaciones.css">
     <link rel="stylesheet" href="css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="css/simulaciones.css">
   </head>
 
   <body>
@@ -55,8 +55,9 @@
   </script>
 
   <script id="tmpl-simu" type="x-tmpl-mustache">
-  <section class="sub-simu" data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
+    <section class="sub-simu" data-background="file:///usr/share/huayra-simulaciones-interactivas/data/screenshots/{{screenshot}}">
     <div data-open="{{file}}" class="simudescription sim-{{name}}">
+      <small class="simu-parent">{{ parent }}</small>
       <h3>{{title}}</h3>
       <p>{{description}}</p>
     </div>
