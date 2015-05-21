@@ -5,6 +5,7 @@ import urllib2, json, os, shutil
 import pprint
 from BeautifulSoup import BeautifulSoup
 import io
+import sys
 
 if os.path.exists('data'):
 	shutil.rmtree('data/')
@@ -20,18 +21,17 @@ INDEX_URL = '/es/simulations/category/new'
 INDEX_URL = '/es/simulations/index'
 SIM_URL = '/es/simulation/'
 
-NO_PERSEAR = [u'Todas las simulaciones', u'Simulaciones traducidas', u'Según el grado escolar']
+NO_PARSEAR = [u'Todas las simulaciones', u'Simulaciones traducidas', u'Según el grado escolar',
+              u'Nuevas Simulaciones', u'By Device']
 
 
-index_page = urllib2.urlopen('%s://%s%s' % (PROTOCOL, HOST, INDEX_URL))
-index_soup = BeautifulSoup(index_page)
 
-lcategorias = index_soup.body.find('div', attrs={'class' : 'side-nav'}).findAll('a', attrs={'class' : 'nml-link nav1'})
-links_categorias = [{'categoria': l.contents[1].contents[0], 'url': l['href']} for l in lcategorias if l.contents[1].contents[0] not in NO_PERSEAR]
 
-cnt = 0
-simulaciones = {}
-categorias = {u'Todas las simulaciones': []}
+
+
+
+def pseudo_slug(path):
+        return path.split('/')[::-1][0]
 
 def parsear_simulacion(sim_id, thumb_url):
 	sim_page = urllib2.urlopen('%s://%s%s%s' % (PROTOCOL, HOST, SIM_URL, sim_id))
@@ -67,22 +67,63 @@ def parsear_simulacion(sim_id, thumb_url):
 def guardar_archivos(thumb_url, thumb, screenshot_url, screenshot, archivo_url, archivo):
 
 	# thumb
-	thumbData = urllib2.urlopen("%s" % thumb_url).read()
-	output = open('data/screenshots/thumbs/' + thumb, 'wb')
-	output.write(thumbData)
-	output.close()
+        print "%s" % thumb_url
+	# thumbData = urllib2.urlopen("%s" % thumb_url).read()
+	# output = open('data/screenshots/thumbs/' + thumb, 'wb')
+	# output.write(thumbData)
+	# output.close()
 
 	# imagen
-	imgData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, screenshot_url)).read()
-	output = open('data/screenshots/' + screenshot, 'wb')
-	output.write(imgData)
-	output.close()
+	print "%s://%s%s" % (PROTOCOL, HOST, screenshot_url)
+	# imgData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, screenshot_url)).read()
+	# output = open('data/screenshots/' + screenshot, 'wb')
+	# output.write(imgData)
+	# output.close()
 
 	# Jar
-	jarData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, archivo_url)).read()
-	out = open('data/simulaciones/' + archivo, 'wb')
-	out.write(jarData)
-	out.close()
+        print "%s://%s%s" % (PROTOCOL, HOST, archivo_url)
+	# jarData = urllib2.urlopen("%s://%s%s" % (PROTOCOL, HOST, archivo_url)).read()
+	# out = open('data/simulaciones/' + archivo, 'wb')
+	# out.write(jarData)
+	# out.close()
+
+
+
+
+
+index_page = urllib2.urlopen('%s://%s%s' % (PROTOCOL, HOST, INDEX_URL))
+index_soup = BeautifulSoup(index_page)
+
+lcategorias = index_soup.body.find('div', attrs={'class' : 'side-nav'}).findAll('a', attrs={'class' : 'nml-link nav1'})
+links_categorias = dict([(pseudo_slug(l['href']),
+                          {'categoria': l.contents[1].contents[0],
+                           'url': l['href'].rstrip('/')+'/index',
+                           'simulaciones': []})
+                         for l in filter(lambda l: l.text not in NO_PARSEAR, lcategorias)])
+
+
+lsimulaciones = index_soup.body.find('div', attrs={'class' : 'simulation-index'}).findAll('a')
+links_simulaciones = dict([(pseudo_slug(l['href']),
+                            {'url': l['href']})
+                           for l in lsimulaciones])
+
+cnt = 0
+simulaciones = {}
+categorias = {u'Todas las simulaciones': []}
+
+
+for categoria in links_categorias:
+        print categoria #, links_categorias[categoria]['categoria'], links_categorias[categoria]['url']
+
+	cat_page = urllib2.urlopen('%s://%s%s' % (PROTOCOL, HOST, links_categorias[categoria]['url']))
+	cat_soup = BeautifulSoup(cat_page) # or ketchup
+        links_sim_cat = cat_soup.body.find('div', attrs={'class' : 'simulation-index'}).findAll('a')
+        links_categorias[categoria]['simulaciones'] = [pseudo_slug(l['href']) for l in links_sim_cat]
+
+
+print links_categorias
+
+sys.exit()
 	
 
 
