@@ -1,2 +1,0 @@
-import main
-from SimulacionesInteractivas import SimulacionesInteractivas
