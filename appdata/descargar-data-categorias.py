@@ -52,7 +52,6 @@ def parsear_simulacion(simu):
 
 
 def guardar_archivos(screenshot_url, archivo_url):
-        return
         archivo = os.path.basename(screenshot_url)
         http_download("%s://%s%s" % (PROTOCOL, HOST, screenshot_url),
                       'data/screenshots/' + archivo)
@@ -90,7 +89,7 @@ for categoria in links_categorias:
 	cat_soup = BeautifulSoup(cat_page) # or ketchup
         links_sim_cat = cat_soup.body.find('div', attrs={'class' : 'simulation-index'}).findAll('a')
         links_categorias[categoria]['simus'] = [pseudo_slug(l['href']) for l in links_sim_cat]
-
+        del links_categorias[categoria]['url']
 
 for sim in links_simulaciones:
         simulaciones_data[sim] = parsear_simulacion(links_simulaciones[sim])
