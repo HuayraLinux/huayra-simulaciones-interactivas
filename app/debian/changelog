@@ -1,3 +1,10 @@
+huayra-simulaciones-interactivas (2.9) unstable; urgency=low
+
+  * Reescribimos la aplicacion.
+  * Nuevo Dise#o
+
+ -- Mauro <mauro@sdf.org>  Fri, 22 May 2015 16:14:13 -0300
+
 huayra-simulaciones-interactivas (2.8) unstable; urgency=low
 
   * Agrega soporte para las simulaciones html5
