@@ -2,9 +2,6 @@
 set -e
 
 if [ "$1" = "configure" ]; then
-
-  echo "Correccion de permisos en simulaciones"
-  chmod +x /usr/share/huayra-simulaciones-interactivas/huayra-simulaciones-interactivas
   echo "Limpieza de version anterior"
   rm -rf /usr/share/huayra-simulaciones-interactivas/sims
 fi

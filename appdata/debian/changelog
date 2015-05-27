@@ -1,3 +1,10 @@
+huayra-simulaciones-interactivas-data (2.5) unstable; urgency=medium
+
+  * Actualizacion de simulaciones
+  * Actualizacion de script de descargas
+
+ -- Mauro <mauro@sdf.org>  Fri, 22 May 2015 16:55:47 -0300
+
 huayra-simulaciones-interactivas-data (2.4) unstable; urgency=medium
 
   * Actualiza simulaciones
