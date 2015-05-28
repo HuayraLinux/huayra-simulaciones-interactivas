@@ -13,15 +13,20 @@ INDEX_URL = '/es/simulations/category/new'
 INDEX_URL = '/es/simulations/index'
 SIM_URL = '/es/simulation/'
 
+DIR_BASE = 'data'
+DIR_SIMULACIONES = os.path.join(DIR_BASE, 'simulaciones')
+DIR_FONDOS = os.path.join(DIR_BASE, 'fondos')
+DIR_SCREENSHOTS = os.path.join(DIR_BASE, 'screenshots')
+
 NO_PARSEAR = [u'Todas las simulaciones', u'Simulaciones traducidas', u'Según el grado escolar',
               u'Nuevas Simulaciones', u'By Device']
 
-if os.path.exists('data'):
-	shutil.rmtree('data/')
-os.makedirs('data/')
-os.makedirs('data/screenshots')
-os.makedirs('data/simulaciones')
-io.open('data/__init__.py', 'w')
+if os.path.exists(DIR_BASE):
+	shutil.rmtree(DIR_BASE)
+os.makedirs(DIR_BASE)
+os.makedirs(DIR_SCREENSHOTS)
+os.makedirs(DIR_FONDOS)
+os.makedirs(DIR_SIMULACIONES)
 
 def pseudo_slug(path):
         return path.split('/')[::-1][0]
@@ -54,11 +59,22 @@ def parsear_simulacion(simu):
 def guardar_archivos(screenshot_url, archivo_url):
         archivo = os.path.basename(screenshot_url)
         http_download("%s://%s%s" % (PROTOCOL, HOST, screenshot_url),
-                      'data/screenshots/' + archivo)
+                      os.path.join(DIR_SCREENSHOTS, archivo))
 
         archivo = os.path.basename(archivo_url).replace('?download','')
         http_download("%s://%s%s" % (PROTOCOL, HOST, archivo_url),
-                      'data/simulaciones/' + archivo)
+                      os.path.join(DIR_SIMULACIONES, archivo))
+
+def guardar_fondos(d_screenshots, d_fondos):
+    archivos = []
+    for path, dname, files in os.walk(d_screenshots):
+        archivos = map(lambda f:(os.path.join(d_screenshots, f),
+                                 os.path.join(d_fondos, f)), files)
+
+    for sshot, bg in archivos:
+        # por decision unanime:
+        os.system("convert -resize 340% -gaussian-blur 10x10 {orig} {dest}".format(orig=sshot,
+                                                                                   dest=bg))
 
 def guardar_json(archivo, data):
         with io.open(archivo, 'w', encoding='utf-8') as f:
@@ -94,9 +110,10 @@ for categoria in links_categorias:
 for sim in links_simulaciones:
         simulaciones_data[sim] = parsear_simulacion(links_simulaciones[sim])
 
+generar_fondos(DIR_SCREENSHOTS, DIR_FONDOS)
 
-guardar_json('data/simulaciones.js',
+guardar_json(os.path.join(DIR_BASE, 'simulaciones.js'),
              u"var simulations = " + unicode(json.dumps(simulaciones_data, ensure_ascii=False, indent=4)))
 
-guardar_json('data/categories.js',
+guardar_json(os.path.join(DIR_BASE, 'categories.js'),
              u"var categories = " + unicode(json.dumps(links_categorias, ensure_ascii=False, indent=4)))
