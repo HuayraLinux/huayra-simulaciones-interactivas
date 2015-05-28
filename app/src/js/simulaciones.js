@@ -1,6 +1,5 @@
 var exec = require('child_process').exec;
 var sim_path = "/usr/share/huayra-simulaciones-interactivas/data/simulaciones/";
-//var scr_path = "file:///usr/share/huayra-simulaciones-interactivas/data/screenshots"
 var java_jar = "java -jar ";
 
 

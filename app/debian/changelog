@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.9.2) unstable; urgency=low
+
+  * Update ruta a fondos.
+
+ -- Mauro <mauro@sdf.org>  Thu, 28 May 2015 13:21:33 -0300
+
 huayra-simulaciones-interactivas (2.9.1) unstable; urgency=low
 
   * Fix en postinst
