@@ -1,5 +1,5 @@
 body{
-    background: #008080 !important;
+    /*background: #008080 !important;*/
 }
 
 header{
@@ -11,11 +11,11 @@ header img{
 }
 
 .reveal h2{
-    color:#fff !important;
+    color:#000 !important;
     text-transform:capitalize !important;
 }
 .reveal p{
-    color:#fff !important;
+    color:#000 !important;
 }
 
 .form-filter{
@@ -26,12 +26,12 @@ header img{
     margin: 0;
     padding: 0;
     border: 1px dashed red;
-    background: #fff;
+    /*background: #fff;*/
 }
 
 
 .slide-background{
-  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+  /*box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);*/
 }
 
 .slide-background.categoria{
@@ -44,32 +44,32 @@ section.sub-simu .simudescription{
 
 .simudescription{
     cursor: pointer;
-    background-color: rgba(225,225,225,0.9);
+    /*background-color: rgba(225,225,225,0.9);*/
 }
 
 .simudescription,
 .simudescription p{
-    color: #000 !important;
+    /*color: #000 !important;*/
     font-size:0.9em;
 }
 
 .btn-default{
     color:#fff !important;
-    background-color:#007080 !important;
+    background-color:#ffb380 !important;
 }
 
 .reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled{
-    border-left-color:#FFED4F;
+    border-left-color:#ffb380;
 }
 
 .reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled{
-    border-right-color:#FFED4F;
+    border-right-color:#ffb380;
 }
 
 .reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled{
-    border-bottom-color:#FFED4F;
+    border-bottom-color:#ffb380;
 }
 
 .reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled{
-    border-top-color:#FFED4F;
+    border-top-color:#ffb380;
 }
