@@ -44,13 +44,16 @@ section.sub-simu .simudescription{
 
 .simudescription{
     cursor: pointer;
-    /*background-color: rgba(225,225,225,0.9);*/
+    background-color: rgba(225,225,225,0.9);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .simudescription,
 .simudescription p{
     /*color: #000 !important;*/
     font-size:0.9em;
+
 }
 
 .btn-default{
