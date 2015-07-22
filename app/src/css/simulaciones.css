@@ -1,8 +1,10 @@
 body{
+	background: #FFC096;
     /*background: #008080 !important;*/
 }
 
 header{
+	background; #FFE0CB;
     height:90px;
     padding:0 20px;
 }
@@ -11,11 +13,27 @@ header img{
 }
 
 .reveal h2{
-    color:#000 !important;
+    color:#fff !important;
     text-transform:capitalize !important;
+	font-family:"asap";
 }
+
+.reveal h3{
+	color:#fff;
+	font-family:"asap";
+}
+
 .reveal p{
     color:#000 !important;
+}
+
+.reveal td{
+	vertical-align:middle;
+}
+
+.reveal.center, .reveal.center .slides, .reveal.center .slides section {
+  min-height: 0 !important;
+  width: 94% !important;
 }
 
 .form-filter{
@@ -39,20 +57,21 @@ header img{
 }
 
 section.sub-simu .simudescription{
-    padding:20px;
+    padding:0px;
 }
 
 .simudescription{
     cursor: pointer;
-    background-color: rgba(225,225,225,0.9);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+    background-color: transparent;
+    /* -webkit-border-radius: 10px; */
+	/*    border-radius: 10px;*/
 }
 
 .simudescription,
 .simudescription p{
     /*color: #000 !important;*/
-    font-size:0.9em;
+    font-size:0.75em;
+	font-family:"asap";
 
 }
 
@@ -62,17 +81,17 @@ section.sub-simu .simudescription{
 }
 
 .reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled{
-    border-left-color:#ffb380;
+    border-left-color:#803300;
 }
 
 .reveal .controls div.navigate-left, .reveal .controls div.navigate-left.enabled{
-    border-right-color:#ffb380;
+    border-right-color:#803300;
 }
 
 .reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled{
-    border-bottom-color:#ffb380;
+    border-bottom-color:#803300;
 }
 
 .reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled{
-    border-top-color:#ffb380;
+    border-top-color:#803300;
 }

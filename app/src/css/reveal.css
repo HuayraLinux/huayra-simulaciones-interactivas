@@ -170,7 +170,7 @@ body {
   height: 110px;
   z-index: 30;
   right: 10px;
-  bottom: 10px;
+  bottom: 20%;
   -webkit-user-select: none; }
 
 .reveal .controls div {
@@ -302,7 +302,7 @@ body {
   display: none;
   position: absolute;
   width: 100%;
-  padding: 20px 0px;
+  padding: 0px 0px;
   z-index: 10;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;

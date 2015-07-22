@@ -7,7 +7,7 @@ var simulations = {
         "thumb": "gene-expression-basics-thumbnail.png",
         "screenshot": "gene-expression-basics-screenshot.png",
         "file": "gene-expression-basics_es.jar",
-        "description": "Exprésate a través de tus genes! Vea si usted puede generar y recoger tres tipos de proteínas, para luego pasar a explorar los factores que afectan la síntesis de proteínas en una célula.",
+        "description": "Exprésate a través de tus genes! Ve si puedes generar y recoger tres tipos de proteínas, para luego explorar los factores que afectan la síntesis de proteínas en una célula.",
         "title": "Expresión génica - Fundamentos"
     },
     "molecule-polarity": {
@@ -19,7 +19,7 @@ var simulations = {
         "thumb": "molecule-polarity-thumbnail.png",
         "screenshot": "molecule-polarity-screenshot.png",
         "file": "molecule-polarity_es.jar",
-        "description": "¿Cuándo es una molécula polar? Cambia la electronegatividad de los átomos en una molécula para ver cómo afecta a la polaridad. Vea cómo se comporta la molécula en un campo eléctrico. Cambia el ángulo de enlace para ver cómo afecta a la forma de polaridad. Vea cómo funciona para las moléculas reales en 3D.",
+        "description": "¿Cuándo una molécula es polar? Cambia la electronegatividad de los átomos en una molécula para ver cómo afecta a la polaridad. Ve cómo se comporta la molécula en un campo eléctrico. Cambia el ángulo de enlace para ver cómo afecta a la forma de polaridad. Ve cómo funciona para las moléculas reales en 3D.",
         "title": "Polaridad de la Molécula"
     },
     "rutherford-scattering": {
@@ -30,7 +30,7 @@ var simulations = {
         "thumb": "rutherford-scattering-thumbnail.png",
         "screenshot": "rutherford-scattering-screenshot.png",
         "file": "rutherford-scattering_es.jar",
-        "description": "¿Cómo Rutherford averiguó la estructura del átomo sin ser capaz de verlo? Simule el famoso experimento en el que echaron por tierra el modelo de pudín de ciruelo del átomo mediante la observación de las partículas alfa rebotando en los átomos y determinando que debe tener un pequeño núcleo.",
+        "description": "¿Cómo pudo Rutherford averiguar la estructura del átomo sin ser capaz de verlo? Simula el famoso experimento en el que echaron por tierra el modelo de budín de ciruelo del átomo mediante la observación de las partículas alfa rebotando en los átomos y determinando que debe tener un pequeño núcleo.",
         "title": "Dispersión de Rutherford"
     },
     "blackbody-spectrum": {
@@ -43,7 +43,7 @@ var simulations = {
         "thumb": "blackbody-spectrum-thumbnail.jpg",
         "screenshot": "blackbody-spectrum-screenshot.png",
         "file": "blackbody-spectrum_es.jar",
-        "description": "¿Cómo funciona el espectro de cuerpo negro del Sol en comparación con la luz visible? Aprenda sobre el espectro de cuerpo negro del sol, una bombilla, un horno, y la tierra. Ajuste la temperatura para ver la longitud de onda y la intensidad de los cambios del espectro. Vea el color del pico de la curva espectral.",
+        "description": "¿Cómo funciona el espectro de cuerpo negro del Sol en comparación con la luz visible? Aprendé sobre el espectro de cuerpo negro del sol, una bombilla, un horno, y la tierra. Ajustá la temperatura para ver la longitud de onda y la intensidad de los cambios del espectro. Observá el color del pico de la curva espectral.",
         "title": "Espectro del Cuerpo Negro"
     },
     "friction": {
@@ -53,7 +53,7 @@ var simulations = {
         "thumb": "friction-thumbnail.jpg",
         "screenshot": "friction-screenshot.png",
         "file": "friction_es.jar",
-        "description": "Aprenda cómo la fricción causa que un material se caliente y se funda. Frota dos objetos entre sí y y ellos se calientan. Cuando se alcanza la temperatura de fusión, las partículas se liberan como cuando el material se derrite.",
+        "description": "Aprendé cómo la fricción causa que un material se caliente y se funda. Frotá dos objetos entre sí y observá cómo se calientan. Si se alcanza la temperatura de fusión, las partículas se liberan haciendo que el material se derrita.",
         "title": "Fricción"
     },
     "greenhouse": {
@@ -65,7 +65,7 @@ var simulations = {
         "thumb": "greenhouse-thumbnail.png",
         "screenshot": "greenhouse-screenshot.png",
         "file": "greenhouse_es.jar",
-        "description": "¿Cómo gases de efecto invernadero afectan al clima? Explora la atmósfera durante la era glacial y en la actualidad. ¿Qué sucede cuando se agregan las nubes? Cambia la concentración gases de efecto invernadero y ve cómo cambia la temperatura. A continuación, compara el efecto de los cristales. Acerca y ve cómo la luz interactúa con las moléculas. ¿Todos los gases de la atmósfera contribuyen al efecto invernadero?",
+        "description": "¿Cómo afectan al clima los gases de efecto invernadero ? Explorá la atmósfera durante la era glacial y en la actualidad. ¿Qué sucede cuando se agregan las nubes? Cambiá la concentración de gases de efecto invernadero y mirá cómo cambia la temperatura. A continuación, compará el efecto de los cristales. Observá cómo la luz interactúa con las moléculas. ¿Todos los gases de la atmósfera contribuyen al efecto invernadero?",
         "title": "El Efecto de Invernadero"
     },
     "lasers": {
@@ -76,7 +76,7 @@ var simulations = {
         "thumb": "lasers-thumbnail.png",
         "screenshot": "lasers-screenshot.png",
         "file": "lasers_es.jar",
-        "description": "Crear un láser mediante el bombeo de la cámara con un haz de fotones. Manejar los estados de energía de los átomos del láser para el control de su producción.",
+        "description": "Creá un láser bombardeando la cámara con un haz de fotones. Manejá los estados de energía de los átomos del láser para el control de su producción.",
         "title": "Lasers"
     },
     "my-solar-system": {
@@ -87,7 +87,7 @@ var simulations = {
         "thumb": "my-solar-system-thumbnail.png",
         "screenshot": "my-solar-system-screenshot.png",
         "file": "my-solar-system_es.jar",
-        "description": "Construya su Propio Sistema de los cuerpos celestes y vea el ballet gravitacional. Con este simulador de órbita, puedes establecer posiciones iniciales, las velocidades y masas de 2, 3, ó 4 cuerpos, y luego velos que orbitar.",
+        "description": "Construí tu propio Sistema de cuerpos celestes y disfrutá el ballet gravitacional. Con este simulador de órbita, podés establecer posiciones iniciales, velocidades y masas de 2, 3, ó 4 cuerpos, y luego verlos orbitar.",
         "title": "Mi Sistema Solar"
     },
     "build-an-atom": {
@@ -98,7 +98,7 @@ var simulations = {
         "thumb": "build-an-atom-thumbnail.png",
         "screenshot": "build-an-atom-screenshot.png",
         "file": "build-an-atom_es.jar",
-        "description": "Construye un átomo con protones, neutrones y electrones, y ve cómo cambian el elemento, la carga y la masa. ¡Luego, juega para probar tus ideas!",
+        "description": "Construí un átomo con protones, neutrones y electrones, y mirá cómo cambian el elemento, la carga y la masa. ¡Luego, jugá para probar tus ideas!",
         "title": "Construir un átomo"
     },
     "generator": {
@@ -141,8 +141,8 @@ var simulations = {
         "thumb": "area-builder-128.png",
         "screenshot": "area-builder-screenshot.png",
         "file": "area-builder_en.html",
-        "description": "Create your own shapes using colorful blocks and explore the relationship between perimeter and area. Compare the area and perimeter of two shapes side-by-side. Challenge yourself in the game screen to build shapes or find the area of funky figures. Try to collect lots of stars!",
-        "title": "Area Builder"
+        "description": "Creá tus propias formas usando bloques coloridos y explorá las relaciones entre el perímetro y el área. Compará el área y el perímetro de dos formas una contra otra. Probá vos mismo a construir formas en la pantalla de juego o encontrá el área de figuras raras. Intentá obtener muchas estrellas !",
+        "title": "Constructor de Áreas"
     },
     "build-a-molecule": {
         "categorias": [
@@ -151,7 +151,7 @@ var simulations = {
         "thumb": "build-a-molecule-thumbnail.png",
         "screenshot": "build-a-molecule-screenshot.png",
         "file": "build-a-molecule_es.jar",
-        "description": "Partiendo de átomos, ve cómo puedes construir muchas moléculas. ¡Reúne tus moléculas y velos en 3D!",
+        "description": "Partiendo de átomos, mirá cómo podés construir muchas moléculas. ¡Reuní tus moléculas y velas en 3D!",
         "title": "Construye una molécula"
     },
     "balloons": {
@@ -164,7 +164,7 @@ var simulations = {
         "thumb": "balloons-thumbnail.png",
         "screenshot": "balloons-screenshot.png",
         "file": "balloons_es.jar",
-        "description": "¿Por qué un globo se pega a la chompa? Frote un globo con la chompa, a continuación, suelte el globo y vea que después de caer se eleva y se pega a la chompa. Vea las cargas en la chompa, los globos, y la pared.",
+        "description": "¿Por qué un globo se pega a la remera? Frotá un globo con la remera, a continuación, soltá el globo y mirá cómo después de caer se eleva y se pega a la remera. Observá las cargas en la remera, los globos, y la pared.",
         "title": "Globos y Electricidad Estática"
     },
     "bending-light": {
@@ -174,7 +174,7 @@ var simulations = {
         "thumb": "bending-light-thumbnail.png",
         "screenshot": "bending-light-screenshot.png",
         "file": "bending-light_es.jar",
-        "description": "Explora la curvatura de la luz entre dos medios con distintos índices de refracción. Vea cómo cambiando desde aire a agua, hasta vidrio cambian el ángulo de flexión (curvatura). Juega con prismas de diferentes formas y haz arco iris.",
+        "description": "Explorá la curvatura de la luz entre dos medios con distintos índices de refracción. Mirá cómo cambiando desde aire a agua, hasta vidrio cambian el ángulo de flexión (curvatura). Jugá con prismas de diferentes formas y hacé un arco iris.",
         "title": "Torciendo la luz"
     },
     "quantum-wave-interference": {
@@ -184,7 +184,7 @@ var simulations = {
         "thumb": "quantum-wave-interference-thumbnail.png",
         "screenshot": "quantum-wave-interference-screenshot.png",
         "file": "quantum-wave-interference_es.jar",
-        "description": "¿Cuándo fotones, electrones y átomos se comportan como partículas y cuando se comportan como ondas? Observa las olas que salen e interfiere a medida que pasan a través de una doble rendija, a continuación detéctalos en una pantalla como pequeños puntos. Use detectores cuánticos para explorar cómo las medidas cambian las olas y los patrones que ellos producen en la pantalla.",
+        "description": "¿Cuándo fotones, electrones y átomos se comportan como partículas y cuando se comportan como ondas? Observá las ondas que salen y se interfieren a medida que pasan a través de una doble rendija, a continuación detectálos en una pantalla como puntos pequeños. Usá detectores cuánticos para explorar cómo las medidas cambian las ondas y los patrones que producen en la pantalla.",
         "title": "Interferencia de Onda Cuántica"
     },
     "electric-hockey": {
@@ -194,7 +194,7 @@ var simulations = {
         "thumb": "electric-hockey-thumbnail.png",
         "screenshot": "electric-hockey-screenshot.png",
         "file": "electric-hockey_es.jar",
-        "description": "Juega hockey con cargas eléctricas. Coloca las cargas sobre el hielo, luego haga click en inicio para tratar de introducir el disco en la meta. MIra el campo eléctrico. Rastrea el movimiento del disco. Haz el juego más difícil localizando las paredes en frente de la meta. Este es una copia de una simulación popular del mismo nombre comercializado por \"Physics Academic Software\" y escrito por Prof. Ruth Chabay del Departamento de Física de la Universidad del Estado de Carolina del Norte.",
+        "description": "Jugá hockey con cargas eléctricas. Colocá las cargas sobre el hielo, luego hacé click en inicio para tratar de introducir el disco en la meta. Mirá el campo eléctrico. Rastreá el movimiento del disco. Hacé el juego más difícil colocando paredes en frente de la meta. Esta es una copia de una simulación popular del mismo nombre comercializado por \"Physics Academic Software\" y escrito por Prof. Ruth Chabay del Departamento de Física de la Universidad del Estado de Carolina del Norte.",
         "title": "Hockey Electrico"
     },
     "discharge-lamps": {
@@ -205,7 +205,7 @@ var simulations = {
         "thumb": "discharge-lamps-thumbnail.png",
         "screenshot": "discharge-lamps-screenshot.png",
         "file": "discharge-lamps_es.jar",
-        "description": "Produce luz bombardeando átomos con electrones. Ve cómo los espectros característicos de diferentes elementos son producidos, y configura los estados de energía de tu propio elemento para producir luz de diferentes colores.",
+        "description": "Producí luz bombardeando átomos con electrones. Mirá cómo se producen los espectros característicos de diferentes elementos, y configurá los estados de energía de tu propio elemento para producir luz de diferentes colores.",
         "title": "Luces de Neón y otras Lámparas de Descarga"
     },
     "atomic-interactions": {
@@ -215,7 +215,7 @@ var simulations = {
         "thumb": "atomic-interactions-thumbnail.png",
         "screenshot": "atomic-interactions-screenshot.png",
         "file": "atomic-interactions_es.jar",
-        "description": "Explore las interacciones entre varias combinaciones de dos átomos. Active las flechas de fuerza para ver ya sea la fuerza total actuando sobre los átomos o la fuerza atractiva o repulsiva por separado. Prueba la \"Atracción Ajustable\" del átomo para ver cómo cambiar los parámetros que afectan a la interacción.",
+        "description": "Explorá las interacciones entre varias combinaciones de dos átomos. Activá las flechas de fuerza para ver ya sea la fuerza total actuando sobre los átomos o la fuerza atractiva o repulsiva por separado. Probá la \"Atracción Ajustable\" del átomo para ver cómo cambiar los parámetros que afectan a la interacción.",
         "title": "Interacciones Atomicas"
     },
     "states-of-matter-basics": {
@@ -259,7 +259,7 @@ var simulations = {
         "thumb": "travoltage-thumbnail.png",
         "screenshot": "travoltage-screenshot.png",
         "file": "travoltage_es.jar",
-        "description": "Haz chispas con John Travoltage. Mueve los pies de Johnnie y recoge las cargas de la alfombra. Lleve su mano cerca de la perilla de la puerta y deshágase del exceso de carga.",
+        "description": "Hacé chispas con John Travoltaje. Mové los pies de Johnnie y recogé las cargas de la alfombra. Llevá tu mano cerca de la perilla de la puerta y deshacete del exceso de carga.",
         "title": "Travoltaje"
     },
     "gas-properties": {
@@ -305,7 +305,7 @@ var simulations = {
         "thumb": "balloons-and-buoyancy-thumbnail.png",
         "screenshot": "balloons-and-buoyancy-screenshot.png",
         "file": "balloons-and-buoyancy_es.jar",
-        "description": "Experimenta con un globo de helio, un globo con aire caliente, o una esfera rígida llenada con diferentes gases. Descubre lo que hace que algunos globos floten y otros se hunden.",
+        "description": "Experimenta con un globo de helio, un globo con aire caliente, o una esfera rígida llenada con diferentes gases. Descubre lo que hace que algunos globos floten y otros se hundan.",
         "title": "Globos y flotación"
     },
     "beers-law-lab": {
@@ -566,11 +566,11 @@ var simulations = {
         "categorias": [
             "Química"
         ],
-        "thumb": "ph-scale-basics-128.png",
+        "thumb": "ph-scale-basics-screenshot.png",
         "screenshot": "ph-scale-basics-screenshot.png",
         "file": "ph-scale-basics_en.html",
-        "description": "Test the pH of everyday liquids such as coffee, spit, and soap to determine whether each is acidic, basic, or neutral. Investigate how adding more of a liquid or diluting with water affects pH.",
-        "title": "pH Scale: Basics"
+        "description": "Determiná el pH de líquidos cotidianos como el café, la saliva y el jabón para saber si son ácidos, básicos o neutros. Investigá cómo diluyendo el líquido con agua se altera el pH.",
+        "title": "La escala de pH: Fundamentos"
     },
     "ladybug-motion-2d": {
         "categorias": [
@@ -601,7 +601,7 @@ var simulations = {
         "thumb": "energy-forms-and-changes-thumbnail.png",
         "screenshot": "energy-forms-and-changes-screenshot.png",
         "file": "energy-forms-and-changes_es.jar",
-        "description": "Explore how heating and cooling iron, brick, and water adds or removes energy. See how energy is transferred between objects. Build your own system, with energy sources, changers, and users. Track and visualize how energy flows and changes through your system.",
+        "description": "Explorá cómo se agrega o quita energía calentando y enfriando hierro, ladrillo y agua. Mirá como la energía se transfiere entre objetos. Construí tu propio sistema con fuentes de energía, intercambiadores y usuarios. Rastreá y visualizá cómo fluye la energía y cambia a través de tu sistema.",
         "title": "Cambios y formas de energías"
     },
     "efield": {
@@ -1326,7 +1326,7 @@ var simulations = {
         "thumb": "ph-scale-thumbnail.png",
         "screenshot": "ph-scale-screenshot.png",
         "file": "ph-scale_es.jar",
-        "description": "Prueba el pH de las cosas, como café, saliva, y jabón para determinar si cada uno es ácido, básico o neutro. Visualizar el número relativo de iones de hidróxido e iones hidrógeno en solución. Cambiar entre las escalas logarítmicas y lineales. Investigar si el cambio del volumen o la dilución con agua afecta el pH. O usted puede diseñar su propio líquido!",
+        "description": "Descubrí el pH de líquidos cotidianos como café, saliva, y jabón para determinar si cada uno es ácido, básico o neutro. Visualizá el número relativo de iones hidróxido e iones hidrógeno en solución. Cambiá entre las escalas logarítmicas y lineales. Investigá si el cambio del volumen o la dilución con agua afecta el pH. Podés incluso diseñar tu propio líquido!",
         "title": "Escala de pH"
     },
     "molecule-shapes": {

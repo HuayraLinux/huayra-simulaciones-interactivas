@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Simulaciones Interactivas</title>
 
-    <meta name="description" content="Visualizador de Simlaciones Interactivas">
+    <meta name="description" content="Visualizador de Simulaciones Interactivas">
     <meta name="author" content="Huayra">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -55,11 +55,14 @@
   </script>
 
   <script id="tmpl-simu" type="x-tmpl-mustache">
-    <section class="sub-simu" data-background="file:///usr/share/huayra-simulaciones-interactivas/data/fondos/{{screenshot}}">
-    <div data-open="{{file}}" class="simudescription sim-{{name}}">
-      <small class="simu-parent">{{ parent }}</small>
+    <section class="sub-simu" >
+    <div data-open="{{file}}" class="simudescription sim-{{name}}" align="center">
+      
+		<table><tr ><td width="400" ><img src="file:///usr/share/huayra-simulaciones-interactivas/data/fondos/{{screenshot}}" width="400"></td><td>
+<small class="simu-parent">{{ parent }}</small>
       <h3>{{title}}</h3>
-      <p>{{description}}</p>
+      <p>{{description}}</p></td>
+</tr></table>
     </div>
   </section>
   </script>

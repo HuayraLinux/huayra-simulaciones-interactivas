@@ -86,7 +86,7 @@ function fn_filter_sim(){
 function filter_sim(input){
     var simus_copy = simulations;
     var s_res = JSON.search(simus_copy,
-                            "//*//*[contains(title, '_STR_')]//file".replace('_STR_',
+                            "//*//*[contains(description, '_STR_')]//file".replace('_STR_',
                                                                              input.val()));
 
     load_results(
@@ -99,6 +99,11 @@ function filter_sim(input){
 
 $(document).ready(function(){
     load_simus($('#content'));
+	$('#filter-sim').on("keyup", function(event) {
+		if (event.keyCode === 13) {
+			fn_filter_sim.call(this);
+		}
+	});
 
     $('.simudescription').on('click', fn_open_simulation);
 
