@@ -20,6 +20,7 @@ function load_simus(content){
         // Renderear categoría y agregale las simulaciones
         var html = Mustache.render($('#tmpl-category').html(), {
             'name': categories[cat]['name'],
+			'fondo': categories[cat]['fondo'],
             'cant': categories[cat]['simus'].length,
             'id': cat,
             'simus': simus_html

@@ -88,6 +88,7 @@ lcategorias = index_soup.body.find('div', attrs={'class' : 'side-nav'}).findAll(
 links_categorias = dict([(pseudo_slug(l['href']),
                           {'name': l.contents[1].contents[0],
                            'url': l['href'].rstrip('/')+'/index',
+                           'fondo': pseudo_slug(l['href']) + '.png',
                            'simus': []})
                          for l in filter(lambda l: l.text not in NO_PARSEAR, lcategorias)])
 

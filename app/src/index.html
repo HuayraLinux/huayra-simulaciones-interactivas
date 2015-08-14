@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="css/simulaciones.css">
   </head>
 
+
   <body>
+	<div id="splash" class="background-splash">
+		<div class="splash">
+			<a id="ocultar" href="#"><img src="images/splash.png" alt="Simulaciones Interactivas" ></a>
+			<p class="comenzar" >(Click en la imagen para comenzar)</p>
+		</div>
+	</div>
     <header>
       <img src="images/logo_chico.png" alt="Simulaciones Interactivas" class="pull-left">
 
@@ -44,28 +51,40 @@
   <script src="data/categories.js"></script>
   <script src="data/simulations.js"></script>
 
+<script> $("#ocultar").click(function(){
+			$("#splash").toggleClass("invisible");
+			// $("#app").toggleClass("invisible");
+});
+ </script>
+
   <script id="tmpl-category" type="x-tmpl-mustache">
-<section data-content="category" id="sim-{{ id }}">
-  <section class="category">
-    <h2>{{ name }}</h2>
-    <p><span>{{ cant }}</span> simulaciones disponibles.</p>
-  </section>
-  {{ &simus }}
-</section>
+	<section data-content="category" id="sim-{{ id }}">
+	  <section data-background="file:///usr/share/simulaciones-interactivas/src/images/categorias/{{fondo}}" >
+		<h2>{{ name }}</h2>
+		<p><span>{{ cant }}</span> simulaciones disponibles.</p>
+	  </section>
+	  {{ &simus }}
+	</section>
   </script>
 
   <script id="tmpl-simu" type="x-tmpl-mustache">
     <section class="sub-simu" >
     <div data-open="{{file}}" class="simudescription sim-{{name}}" align="center">
-      
-		<table><tr ><td width="400" ><img src="file:///usr/share/huayra-simulaciones-interactivas/data/fondos/{{screenshot}}" width="400"></td><td>
-<small class="simu-parent">{{ parent }}</small>
-      <h3>{{title}}</h3>
-      <p>{{description}}</p></td>
-</tr></table>
+      <table>
+        <tr>
+          <td width="400" ><img src="file:///usr/share/huayra-simulaciones-interactivas/data/fondos/{{screenshot}}" width="400"></td>
+          <td>
+            <small class="simu-parent">{{ parent }}</small>
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+          </td>
+        </tr>
+      </table>
     </div>
   </section>
   </script>
 
   </body>
+
+
 </html>

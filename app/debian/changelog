@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.9.3) unstable; urgency=medium
+
+  * Se actualiza el theme de HSI de la mano de Malefico.
+
+ -- Mauro <mauro@sdf.org>  Fri, 14 Aug 2015 12:47:41 -0300
+
 huayra-simulaciones-interactivas (2.9.2.3) unstable; urgency=medium
 
   * Actualizo css de Huayra, agrego fondo semi transparente para
@@ -5,7 +11,7 @@ huayra-simulaciones-interactivas (2.9.2.3) unstable; urgency=medium
 
  -- Mauro <mauro@sdf.org>  Tue, 30 Jun 2015 14:55:23 -0300
 
- huayra-simulaciones-interactivas (2.9.2.2) unstable; urgency=medium
+huayra-simulaciones-interactivas (2.9.2.2) unstable; urgency=medium
 
   * Actualizo css de Huayra.
 

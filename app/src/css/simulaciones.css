@@ -49,6 +49,9 @@ header img{
 
 
 .slide-background{
+	width: 90% !important;
+	height: 90% !important;
+	background-position: 10% 10% !important; 
   /*box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);*/
 }
 
@@ -95,3 +98,38 @@ section.sub-simu .simudescription{
 .reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled{
     border-top-color:#803300;
 }
+
+.background-splash{
+	position: fixed;
+	left:0;
+	top:0;
+	bottom: 0;
+	right: 0;
+	background-color: #ffb380;
+	z-index: 999;	
+}
+
+.splash {
+  display: block;
+  position: absolute;
+  top:50%; left:50%;   /*positing top left corner of image to center*/
+  transform: translate(-50%, -50%); /* move left and up for 1/2 of image */
+	z-index:1000;
+	text-align: center;
+}
+
+.comenzar {
+	color:#fff;
+	font-family:"asap";
+}
+
+.comenzar hover {
+	color:#000;
+	font-family:"asap";
+}
+
+.invisible{
+	display: none;
+}
+
+
