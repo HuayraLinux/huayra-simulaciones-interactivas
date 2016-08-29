@@ -2,6 +2,7 @@
   "name": "huayra-simulaciones-interactivas",
   "version": "2.9.2",
   "main": "index.html",
+  "node-main": "js/node-main.js",
   "window": {
      "toolbar": false,
      "min_width": 850,

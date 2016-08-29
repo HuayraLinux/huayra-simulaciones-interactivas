@@ -16,6 +16,7 @@
     "node": "~0.10.0"
   },
   "dependencies": {
+    "nwjs-hack": "iglosiggio/nwjs-hack",
     "underscore": "~1.5.1",
     "express": "~2.5.9",
     "mustache": "~0.7.2",

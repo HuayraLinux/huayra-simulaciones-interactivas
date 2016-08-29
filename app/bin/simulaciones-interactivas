@@ -1,2 +1,2 @@
 #!/bin/bash
-nw /usr/share/simulaciones-interactivas/src
+exec nw /usr/share/simulaciones-interactivas/src
