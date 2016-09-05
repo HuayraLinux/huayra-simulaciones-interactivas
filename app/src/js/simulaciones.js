@@ -2,7 +2,7 @@ var exec = require('child_process').exec;
 var sim_path = "/usr/share/huayra-simulaciones-interactivas/data/simulaciones/";
 var java_jar = "java -jar ";
 
-process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "simulaciones-interactivas", true));
+process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "huayra-simulaciones-interactivas", true));
 
 
 function load_simus(content){
