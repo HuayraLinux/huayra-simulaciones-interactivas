@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.9.4) unstable; urgency=medium
+
+  * Agregado el hint de WM_CLASS para gnome3
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Mon, 05 Sep 2016 11:51:15 -0300
+
 huayra-simulaciones-interactivas (2.9.3) unstable; urgency=medium
 
   * Se actualiza el theme de HSI de la mano de Malefico.

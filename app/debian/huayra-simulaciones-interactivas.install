@@ -1,4 +1,5 @@
 src/* usr/share/simulaciones-interactivas/src
+node_modules/nwjs-hack/* usr/share/simulaciones-interactivas/node_modules/nwjs-hack
 bin/simulaciones-interactivas usr/bin/
 debian/simulaciones.svg usr/share/icons/hicolor/scalable/apps/
 debian/huayra-simulaciones-interactivas.desktop usr/share/applications/
