@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (2.9.5) UNRELEASED; urgency=medium
+
+  * WM_CLASS ahora es "hauyra-simulaciones-interactivas" y debería andar todo
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Mon, 05 Sep 2016 12:57:17 -0300
+
 huayra-simulaciones-interactivas (2.9.4) unstable; urgency=medium
 
   * Agregado el hint de WM_CLASS para gnome3

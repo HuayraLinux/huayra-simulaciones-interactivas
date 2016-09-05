@@ -1,4 +1,4 @@
-VERSION=0.0.1
+VERSION=2.9.5
 NOMBRE="simulaciones-interactivas"
 
 N=[0m
