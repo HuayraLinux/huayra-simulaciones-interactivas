@@ -1,4 +1,4 @@
-huayra-simulaciones-interactivas (2.9.5) UNRELEASED; urgency=medium
+huayra-simulaciones-interactivas (2.9.5) unstable; urgency=medium
 
   * WM_CLASS ahora es "hauyra-simulaciones-interactivas" y debería andar todo
 
