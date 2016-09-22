@@ -1,5 +1,1 @@
-*.pyc
-huayra-simulaciones-interactivas_*
-huayra-simulaciones-interactivas-data_*
-appdata/data/screenshots/*
-appdata/data/simulaciones/*
+node_modules
