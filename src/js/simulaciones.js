@@ -1,6 +1,9 @@
 var exec = require('child_process').exec;
-var sim_path = "/usr/share/huayra-simulaciones-interactivas/data/simulaciones/";
+var sim_path = "/usr/share/huayra-simulaciones-interactivas-data/simulaciones/";
 var java_jar = "java -jar ";
+
+var categories = require('/usr/share/huayra-simulaciones-interactivas-data/categories');
+var simulations = require('/usr/share/huayra-simulaciones-interactivas-data/simulations');
 
 process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "huayra-simulaciones-interactivas", true));
 
