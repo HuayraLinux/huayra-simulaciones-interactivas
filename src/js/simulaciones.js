@@ -2,8 +2,17 @@ var exec = require('child_process').exec;
 var sim_path = "/usr/share/huayra-simulaciones-interactivas-data/simulaciones/";
 var java_jar = "java -jar ";
 
-var categories = require('/usr/share/huayra-simulaciones-interactivas-data/categories');
-var simulations = require('/usr/share/huayra-simulaciones-interactivas-data/simulations');
+/* Tengo que crear esta función porque usar require() genera data de contexto
+ * node en lugar de data de contexto browser (osea, se rompe instanceof y demases)
+ */
+var categories;
+var simulations;
+
+(function() {
+  var load = require('fs').readFileSync;
+  categories = JSON.parse(load('/usr/share/huayra-simulaciones-interactivas-data/categories.json'));
+  simulations = JSON.parse(load('/usr/share/huayra-simulaciones-interactivas-data/simulations.json'));
+})();
 
 process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "huayra-simulaciones-interactivas", true));
 
@@ -35,16 +44,11 @@ function load_simus(content){
 }
 
 function load_results(results){
-    console.log(results)
+    console.log("Se encontraron", results.length, "resultados.")
 
-    var simus_html = ''
-    for (simus in results) {
-        // Renderear cada simulación
-        var simulation = simulations[results[simus]];
-
-        simus_html += Mustache.render($('#tmpl-simu').html(), simulation);
-
-    }
+    var simus_html = results.reduce(function(html, simulation){
+      return html + Mustache.render($('#tmpl-simu').html(), simulation);
+    }, '');
 
     $('section#sim-filtrar section').not('.category').remove();
     $('section#sim-filtrar').append(simus_html);
@@ -91,13 +95,11 @@ function fn_filter_sim(){
 
 function filter_sim(input){
     var simus_copy = simulations;
-    var s_res = JSON.search(simus_copy,
-                            "//*//*[contains(description, '_STR_')]//file".replace('_STR_',
-                                                                             input.val()));
+    var results = JSON.search(simus_copy,
+                            "//*[contains(description, '_STR_')]".replace('_STR_',
+                                                                          input.val()));
 
-    load_results(
-        s_res.map(function(s){ return s.replace('_es.jar', ''); })
-    );
+    load_results(results);
 
     Reveal.sync();
     setTimeout(function(){ Reveal.slide(7,0); }, 50);
@@ -105,10 +107,9 @@ function filter_sim(input){
 
 $(document).ready(function(){
     load_simus($('#content'));
-	$('#filter-sim').on("keyup", function(event) {
-		if (event.keyCode === 13) {
-			fn_filter_sim.call(this);
-		}
+	$('#form-busqueda').submit(function(event) {
+		fn_filter_sim.call(this);
+    event.preventDefault();
 	});
 
     $('.simudescription').on('click', fn_open_simulation);
@@ -117,7 +118,7 @@ $(document).ready(function(){
 
     Reveal.initialize({
         controls: true,
-        progress: true,
+        progress: false,
         history: true,
         center: true,
         transition: 'slide'
