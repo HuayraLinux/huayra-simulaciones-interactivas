@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (3.0.0) unstable; urgency=medium
+
+  * Pequeños cambios para utilizar los nuevos scripts de dumpeo
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Mon, 12 Jun 2017 14:09:35 -0300
+
 huayra-simulaciones-interactivas (2.9.5) unstable; urgency=medium
 
   * WM_CLASS ahora es "hauyra-simulaciones-interactivas" y debería andar todo
