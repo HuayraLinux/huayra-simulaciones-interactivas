@@ -7,9 +7,6 @@ por el [PhET de la universidad de Colorado](http://phet.colorado.edu/)
 Este software forma parte del proyecto [Huayra Gnu/Linux](http://huayra.conectarigualdad.gob.ar/), es software libre y
 se distribuye instalado en las netbooks del [Programa Conectar Igualdad](http://conectarigualdad.gob.ar/) en Argentina.
 
-La aplicación está desarrollada con [Pilas-engine](http://pilas-engine.com.ar/), un motor para desarrollar principalmente
-videojuegos, pero que puede ser utilizado para otros tipo de aplicaciones.
-
 ###Capturas de Pantalla###
 
 ![Pantalla de inicio](capturas/readme-github-01.png)

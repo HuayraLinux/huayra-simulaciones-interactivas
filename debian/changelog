@@ -1,3 +1,9 @@
+huayra-simulaciones-interactivas (3.0.1) unstable; urgency=medium
+
+  * Limpiando cosas no usadas del paquete
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Wed, 14 Jun 2017 12:14:09 -0300
+
 huayra-simulaciones-interactivas (3.0.0) unstable; urgency=medium
 
   * Pequeños cambios para utilizar los nuevos scripts de dumpeo

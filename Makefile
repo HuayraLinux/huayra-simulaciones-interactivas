@@ -22,6 +22,10 @@ comandos:
 	@echo "    ${G}crear_deb${N}       Empaqueta para huayra."
 	@echo ""
 
+clean:
+	rm -rf node_modules
+
+all: iniciar
 
 iniciar:
 	npm install
