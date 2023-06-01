@@ -14,9 +14,6 @@ var simulations;
   simulations = JSON.parse(load('/usr/share/huayra-simulaciones-interactivas-data/simulations.json'));
 })();
 
-process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "huayra-simulaciones-interactivas", true));
-
-
 function load_simus(content){
     content.html('');
 

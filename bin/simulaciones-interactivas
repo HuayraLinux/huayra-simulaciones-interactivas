@@ -1,2 +1,2 @@
 #!/bin/bash
-exec nw /usr/share/simulaciones-interactivas/src $@
+exec nw /usr/share/simulaciones-interactivas/src $@ --password-store=basic

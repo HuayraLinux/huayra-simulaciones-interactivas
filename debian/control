@@ -2,14 +2,14 @@ Source: huayra-simulaciones-interactivas
 Section: education
 Priority: optional
 Maintainer: Fernando Toledo <ragnarok@docksud.com.ar>
-Build-Depends: debhelper (>= 8.0.0), git, npm, nodejs-legacy
+Build-Depends: debhelper (>= 8.0.0), git, npm
 Standards-Version: 3.9.6
 Homepage: http://phet.colorado.edu/en/simulations/translated/es
 Vcs-Browser: https://github.com/HuayraLinux/huayra-simulaciones-interactivas
 
 Package: huayra-simulaciones-interactivas
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, node-webkit (>= 0.11.2.4),
+Depends: ${shlibs:Depends}, ${misc:Depends}, nwjs (>= 0.67),
          java6-runtime, huayra-simulaciones-interactivas-data (>= 3.0.0),
          www-browser
 Description: Aplicación con simulaciones interactivas.

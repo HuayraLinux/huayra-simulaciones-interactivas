@@ -1,6 +1,6 @@
 {
   "name": "simulaciones-interactivas",
-  "version": "2.9.5",
+  "version": "3.0.2",
   "description": "Visualizador de simulaciones interactivas",
   "homepage": "https://github.com/HuayraLinux/huayra-simulaciones-interactivas",
   "scripts": {
@@ -14,9 +14,6 @@
   },
   "engines": {
     "node": "~0.10.0"
-  },
-  "dependencies": {
-    "nwjs-hack": "iglosiggio/nwjs-hack"
   },
   "licenses": "GPLv3"
 }
